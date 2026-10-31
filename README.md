@@ -24,7 +24,7 @@ Status: register, PDF intake and models 303, 349 and 390 are implemented (`opens
 
 ## Install
 
-- Claude Code: copy `skills/one-invoices/` as `<skills dir>/one-invoices/` (e.g. `~/.claude/skills/one-invoices/`). It is not part of OneStack.
+- Claude Code: copy `skills/one-invoices/` as `<skills dir>/one-invoices/` (e.g. `~/.claude/skills/one-invoices/`).
 - Claude app: `python3 tools/package_app.py` builds `~/Downloads/one-invoices.zip` (without the Claude Code-only keys, so the model can invoke it); upload it as a custom skill, turn on code execution and connect Google Drive.
 
 ## Requirements
