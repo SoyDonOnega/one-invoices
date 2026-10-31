@@ -1,0 +1,38 @@
+schema: spec-driven
+
+context: |
+  Single user: a Spanish freelancer (IRPF, VAT general regime) whose client issues the invoices by self-billing.
+  Output files must match the official AEAT record design for the model and year byte for byte; the design
+  version is part of every generator. Python 3.12, standard library only. Private data (PDFs, register,
+  generated files) never enters the repo. Artifacts in English; no legal analysis in the repo.
+
+# Project context (optional)
+# Add only constraints that should guide OpenSpec artifacts and workflows.
+# Include constraints an agent cannot infer by reading the code.
+# Keep general project documentation and discoverable codebase facts out.
+# Example:
+#   context: |
+#     Designs and tasks must cover Windows, macOS, and Linux
+#     Write all artifacts in Spanish
+
+# Per-artifact rules (optional)
+# Add custom rules for specific artifacts.
+# Example:
+#   rules:
+#     proposal:
+#       - Keep proposals under 500 words
+#       - Always state what is out of scope
+#     tasks:
+#       - Break tasks into chunks of max 2 hours
+
+# Per-operation guidance (optional)
+# Add advisory guidance for how apply and archive work should be conducted.
+# This is separate from artifact rules above.
+# Example:
+#   operations:
+#     apply:
+#       guidance:
+#         - Keep test summaries concise
+#     archive:
+#       guidance:
+#         - Summarize the archive outcome before finishing

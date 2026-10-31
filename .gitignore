@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+.DS_Store
+# Private data never enters the repo
+*.pdf
