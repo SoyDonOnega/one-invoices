@@ -1,6 +1,6 @@
 # one-invoices
 
-Agent skill `/one-invoices`: register a Spanish freelancer's invoices and expenses and generate the AEAT import files for models 303, 349 and 390. Part of OneStack.
+Agent skill `/one-invoices`: register a Spanish freelancer's invoices and expenses and generate the AEAT import files for models 303, 349 and 390.
 
 ## What it does
 
@@ -22,7 +22,7 @@ Status: register, PDF intake and models 303, 349 and 390 are implemented (`opens
 
 ## Install
 
-OneStack: `./sync-install.sh` — or copy `skills/one-invoices/` as `<skills dir>/one-invoices/`.
+Copy `skills/one-invoices/` as `<skills dir>/one-invoices/` (e.g. `~/.claude/skills/one-invoices/`). It is not part of OneStack.
 
 ## Requirements
 
