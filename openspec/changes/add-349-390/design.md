@@ -34,4 +34,11 @@ See proposal.md. Sources, both checked byte for byte against the copies the user
 - [349 declaration number (13 digits starting with 349) may need to be a number the AEAT issues] → the generator takes it from `--id`; the golden export shows whether the form accepts any number.
 - [390 page set] → golden export; the generator leaves out a page only when the design says it may be left out empty.
 - [Wrapper developer fields] → same as 303: blank until a golden export shows otherwise.
-- [Carry-forward across years] → the chain runs over all years in the register; a year without register rows breaks the chain and the tool asks for `--carry`.
+- [Carry-forward assumes every negative quarter was carried forward] → a quarter refunded instead (type D) makes the chain too high; the skill asks and the user passes `--carry`. Quarters without rows inside the chain are zero returns and keep the pending amounts.
+
+## Implementation notes (2026-10-31)
+
+- **349.** Records joined with CRLF and ended with CRLF (to confirm). Declarant NIF zero-padded on the left to 9. Default declaration number: `349` + year + quarter, zero-padded to 13. EU prefixes: the annex's list without GB; Greece is EL.
+- **390 page 1.** Flags with values "0"/"1" set to "0"; flags "0 blank / 1 yes / 2 no" set to "2" for insolvency and cash accounting, "0" where the design allows blank; 347 indicator "0". Activity description, activity code and IAE heading from the configuration, as typed.
+- **390 boxes.** By rate: accrued [01]–[06], EU services accrued [545]–[552], domestic deductible [190]/[191], [603]–[606], investment [196]/[197], [611]–[614], EU services deductible [587]/[588], [635]–[638]; totals [33], [34], [47] (= [34], no recargo), [48]–[51], [597], [598], [64], [65], [84], [86]; turnover [99] = [108]. Results from the 303 chain: [95] positive results, [97] Q4 carried forward, [662] Q1–Q3 still pending, [85] earlier years applied in the year. [232] bases of `not-deductible` rows with VAT. Section 8 (territories) left at zero: common territory only. Boxes that repeat in a later section of a page are filled only the first time.
+- **To confirm with the golden exports:** 349 line breaks and declaration number; 390 page set, page 1 flags, activity code format, section 8, [232].

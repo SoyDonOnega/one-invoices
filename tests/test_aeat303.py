@@ -85,8 +85,30 @@ class Aeat303Test(unittest.TestCase):
         self.assertIn("zero return", aeat303.summary(self.design, 2026, 3, b, {}, "N"))
 
     def test_year_without_design(self):
-        with self.assertRaisesRegex(aeat303.GenError, "no record design for 2031"):
+        with self.assertRaisesRegex(aeat303.GenError, "no record design of model 303 for 2031"):
             aeat303.load_design(2031)
+
+    def test_carry_forward_from_negative_quarter(self):
+        # Q4 2026: one domestic purchase only -> -300.00; Q1 2027: 500.00 before compensation.
+        buy = {**EU, "number": "PC-1", "supplier": "Shop", "supplier_tax_id": "B99999999", "country": "ES",
+               "kind": "investment", "date": "2026-12-10", "base": "1428.57", "vat": "300.00", "total": "1728.57"}
+        sale = {**ISSUED, "number": "2027-01", "date": "2027-02-28", "base": "2380.95", "vat": "500.00", "irpf": "0",
+                "total": "2880.95"}
+        issued, received = [register.validate("issued", sale)], [register.validate("received", buy)]
+        chain = aeat303.pending(issued, received, 2027, 1)
+        self.assertEqual(chain, [(2026, 4, Decimal("300.00"))])
+        b, _ = aeat303.compute(issued, received, 2027, 1, Decimal("300.00"))
+        self.assertEqual((b["110"], b["78"], b["87"], b["71"]),
+                         (Decimal("300.00"), Decimal("300.00"), Decimal(0), Decimal("200.00")))
+        self.assertEqual(aeat303.pending(issued, received, 2027, 2), [])
+
+    def test_carry_larger_than_result_stays_pending(self):
+        b, _ = aeat303.compute([], [], 2027, 1, Decimal("50.00"))
+        self.assertEqual((b["78"], b["87"], b["71"]), (Decimal(0), Decimal("50.00"), Decimal(0)))
+
+    def test_eu_supplier_needs_country_prefix(self):
+        with self.assertRaisesRegex(register.RegisterError, "EU country code"):
+            register.validate("received", {**EU, "supplier_tax_id": "1234567X"})
 
     def test_cli_writes_and_refuses_overwrite(self):
         out = Path(self.dir.name) / "out"

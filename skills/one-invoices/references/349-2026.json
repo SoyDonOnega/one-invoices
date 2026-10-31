@@ -1,0 +1,374 @@
+{
+ "model": "349",
+ "year": 2026,
+ "version": "anexo",
+ "source_file": "DR_Anexo_349.pdf",
+ "source_url": "https://sede.agenciatributaria.gob.es/static_files/Sede/Disenyo_registro/DR_300_399/archivos_20/DR_Anexo_349.pdf",
+ "note": "Hand-copied from the PDF; pdf_page is the page number printed on the annex. Rectification records (type 2) are not copied.",
+ "pages": {
+  "type1": [
+   {
+    "n": 1,
+    "pos": 1,
+    "len": 1,
+    "type": "Num",
+    "desc": "Tipo de registro",
+    "validation": "",
+    "content": "Constante \"1\"",
+    "pdf_page": 9
+   },
+   {
+    "n": 2,
+    "pos": 2,
+    "len": 3,
+    "type": "Num",
+    "desc": "Modelo declaración",
+    "validation": "",
+    "content": "Constante \"349\"",
+    "pdf_page": 9
+   },
+   {
+    "n": 3,
+    "pos": 5,
+    "len": 4,
+    "type": "Num",
+    "desc": "Ejercicio",
+    "validation": "",
+    "content": "",
+    "pdf_page": 9
+   },
+   {
+    "n": 4,
+    "pos": 9,
+    "len": 9,
+    "type": "An",
+    "desc": "NIF del declarante",
+    "validation": "",
+    "content": "Ajustado a la derecha, carácter de control en la última posición, ceros a la izquierda",
+    "pdf_page": 9
+   },
+   {
+    "n": 5,
+    "pos": 18,
+    "len": 40,
+    "type": "An",
+    "desc": "Apellidos y nombre o razón social del declarante",
+    "validation": "",
+    "content": "Primer apellido, segundo apellido, nombre",
+    "pdf_page": 9
+   },
+   {
+    "n": 6,
+    "pos": 58,
+    "len": 1,
+    "type": "An",
+    "desc": "Blanco",
+    "validation": "",
+    "content": "BLANCOS",
+    "pdf_page": 9
+   },
+   {
+    "n": 7,
+    "pos": 59,
+    "len": 9,
+    "type": "Num",
+    "desc": "Persona con quién relacionarse - Teléfono",
+    "validation": "",
+    "content": "",
+    "pdf_page": 9
+   },
+   {
+    "n": 8,
+    "pos": 68,
+    "len": 40,
+    "type": "An",
+    "desc": "Persona con quién relacionarse - Apellidos y nombre",
+    "validation": "",
+    "content": "",
+    "pdf_page": 9
+   },
+   {
+    "n": 9,
+    "pos": 108,
+    "len": 13,
+    "type": "Num",
+    "desc": "Número identificativo de la declaración",
+    "validation": "",
+    "content": "Secuencial; los tres primeros dígitos son 349",
+    "pdf_page": 10
+   },
+   {
+    "n": 10,
+    "pos": 121,
+    "len": 1,
+    "type": "A",
+    "desc": "Declaración complementaria",
+    "validation": "",
+    "content": "\"C\" o blanco",
+    "pdf_page": 10
+   },
+   {
+    "n": 11,
+    "pos": 122,
+    "len": 1,
+    "type": "A",
+    "desc": "Declaración sustitutiva",
+    "validation": "",
+    "content": "\"S\" o blanco",
+    "pdf_page": 10
+   },
+   {
+    "n": 12,
+    "pos": 123,
+    "len": 13,
+    "type": "Num",
+    "desc": "Número identificativo de la declaración anterior",
+    "validation": "",
+    "content": "Ceros salvo complementaria o sustitutiva",
+    "pdf_page": 10
+   },
+   {
+    "n": 13,
+    "pos": 136,
+    "len": 2,
+    "type": "An",
+    "desc": "Período",
+    "validation": "",
+    "content": "\"01\"..\"12\" o \"1T\"..\"4T\"",
+    "pdf_page": 10
+   },
+   {
+    "n": 14,
+    "pos": 138,
+    "len": 9,
+    "type": "Num",
+    "desc": "Número total de operadores intracomunitarios",
+    "validation": "",
+    "content": "Registros de tipo 2 de operador",
+    "pdf_page": 11
+   },
+   {
+    "n": 15,
+    "pos": 147,
+    "len": 15,
+    "type": "Num",
+    "desc": "Importe de las operaciones intracomunitarias",
+    "validation": "",
+    "content": "13 enteros y 2 decimales",
+    "pdf_page": 11
+   },
+   {
+    "n": 16,
+    "pos": 162,
+    "len": 9,
+    "type": "Num",
+    "desc": "Número total de operadores intracomunitarios con rectificaciones",
+    "validation": "",
+    "content": "",
+    "pdf_page": 12
+   },
+   {
+    "n": 17,
+    "pos": 171,
+    "len": 15,
+    "type": "Num",
+    "desc": "Importe de las rectificaciones",
+    "validation": "",
+    "content": "13 enteros y 2 decimales",
+    "pdf_page": 12
+   },
+   {
+    "n": 18,
+    "pos": 186,
+    "len": 1,
+    "type": "A",
+    "desc": "Indicador cambio periodicidad en la obligación de declarar",
+    "validation": "",
+    "content": "\"X\" o blanco",
+    "pdf_page": 12
+   },
+   {
+    "n": 19,
+    "pos": 187,
+    "len": 204,
+    "type": "An",
+    "desc": "Blancos",
+    "validation": "",
+    "content": "BLANCOS",
+    "pdf_page": 13
+   },
+   {
+    "n": 20,
+    "pos": 391,
+    "len": 9,
+    "type": "An",
+    "desc": "NIF del representante legal",
+    "validation": "",
+    "content": "Solo declarante menor de 14 años",
+    "pdf_page": 13
+   },
+   {
+    "n": 21,
+    "pos": 400,
+    "len": 101,
+    "type": "An",
+    "desc": "Blancos",
+    "validation": "",
+    "content": "BLANCOS",
+    "pdf_page": 13
+   }
+  ],
+  "type2": [
+   {
+    "n": 1,
+    "pos": 1,
+    "len": 1,
+    "type": "Num",
+    "desc": "Tipo de registro",
+    "validation": "",
+    "content": "Constante \"2\"",
+    "pdf_page": 14
+   },
+   {
+    "n": 2,
+    "pos": 2,
+    "len": 3,
+    "type": "Num",
+    "desc": "Modelo declaración",
+    "validation": "",
+    "content": "Constante \"349\"",
+    "pdf_page": 14
+   },
+   {
+    "n": 3,
+    "pos": 5,
+    "len": 4,
+    "type": "Num",
+    "desc": "Ejercicio",
+    "validation": "",
+    "content": "Igual que en el registro de tipo 1",
+    "pdf_page": 14
+   },
+   {
+    "n": 4,
+    "pos": 9,
+    "len": 9,
+    "type": "An",
+    "desc": "NIF del declarante",
+    "validation": "",
+    "content": "Igual que en el registro de tipo 1",
+    "pdf_page": 14
+   },
+   {
+    "n": 5,
+    "pos": 18,
+    "len": 58,
+    "type": "An",
+    "desc": "Blancos",
+    "validation": "",
+    "content": "BLANCOS",
+    "pdf_page": 14
+   },
+   {
+    "n": 6,
+    "pos": 76,
+    "len": 2,
+    "type": "A",
+    "desc": "NIF operador comunitario - Código país",
+    "validation": "",
+    "content": "",
+    "pdf_page": 14
+   },
+   {
+    "n": 7,
+    "pos": 78,
+    "len": 15,
+    "type": "An",
+    "desc": "NIF operador comunitario - Número",
+    "validation": "",
+    "content": "Ajustado a la izquierda",
+    "pdf_page": 14
+   },
+   {
+    "n": 8,
+    "pos": 93,
+    "len": 40,
+    "type": "An",
+    "desc": "Apellidos y nombre o razón social del operador intracomunitario",
+    "validation": "",
+    "content": "",
+    "pdf_page": 15
+   },
+   {
+    "n": 9,
+    "pos": 133,
+    "len": 1,
+    "type": "A",
+    "desc": "Clave de operación",
+    "validation": "",
+    "content": "\"E\", \"M\", \"H\", \"A\", \"T\", \"S\", \"I\", \"R\", \"D\", \"C\"",
+    "pdf_page": 15
+   },
+   {
+    "n": 10,
+    "pos": 134,
+    "len": 13,
+    "type": "Num",
+    "desc": "Base imponible o importe",
+    "validation": "",
+    "content": "11 enteros y 2 decimales",
+    "pdf_page": 16
+   },
+   {
+    "n": 11,
+    "pos": 147,
+    "len": 32,
+    "type": "An",
+    "desc": "Blancos",
+    "validation": "",
+    "content": "BLANCOS",
+    "pdf_page": 17
+   },
+   {
+    "n": 12,
+    "pos": 179,
+    "len": 2,
+    "type": "A",
+    "desc": "NIF empresario o profesional destinatario final sustituto - Código país",
+    "validation": "",
+    "content": "Solo clave C",
+    "pdf_page": 17
+   },
+   {
+    "n": 13,
+    "pos": 181,
+    "len": 15,
+    "type": "An",
+    "desc": "NIF empresario o profesional destinatario final sustituto - Número",
+    "validation": "",
+    "content": "Solo clave C",
+    "pdf_page": 17
+   },
+   {
+    "n": 14,
+    "pos": 196,
+    "len": 40,
+    "type": "An",
+    "desc": "Apellidos y nombre o razón social del sujeto pasivo sustituto",
+    "validation": "",
+    "content": "Solo clave C",
+    "pdf_page": 18
+   },
+   {
+    "n": 15,
+    "pos": 236,
+    "len": 265,
+    "type": "An",
+    "desc": "Blancos",
+    "validation": "",
+    "content": "BLANCOS",
+    "pdf_page": 18
+   }
+  ]
+ }
+}

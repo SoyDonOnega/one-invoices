@@ -1,0 +1,5699 @@
+{
+ "model": "390",
+ "year": 2026,
+ "version": "100",
+ "source_file": "dr390e2026.xlsx",
+ "source_url": "https://sede.agenciatributaria.gob.es/static_files/Sede/Disenyo_registro/DR_300_399/archivos_26/dr390e2026.xlsx",
+ "pages": {
+  "Pág. 0": [
+   {
+    "n": 1,
+    "pos": 1,
+    "len": 2,
+    "type": "An",
+    "desc": "Inicio del identificador de modelo y página.",
+    "validation": "",
+    "content": "Constante \"<T\""
+   },
+   {
+    "n": 2,
+    "pos": 3,
+    "len": 3,
+    "type": "An",
+    "desc": "Modelo.",
+    "validation": "",
+    "content": "Constante \"390\""
+   },
+   {
+    "n": 3,
+    "pos": 6,
+    "len": 1,
+    "type": "An",
+    "desc": "Discriminante",
+    "validation": "",
+    "content": "Constante \"0\""
+   },
+   {
+    "n": 4,
+    "pos": 7,
+    "len": 4,
+    "type": "An",
+    "desc": "Ejercicio de devengo (EEEE)",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 5,
+    "pos": 11,
+    "len": 2,
+    "type": "An",
+    "desc": "Periodo (PP)",
+    "validation": "",
+    "content": "\"0A\""
+   },
+   {
+    "n": 6,
+    "pos": 13,
+    "len": 5,
+    "type": "An",
+    "desc": "Tipo y cierre",
+    "validation": "",
+    "content": "\"0000>\""
+   },
+   {
+    "n": 7,
+    "pos": 18,
+    "len": 5,
+    "type": "An",
+    "desc": "Constante",
+    "validation": "",
+    "content": "\"<AUX>\""
+   },
+   {
+    "n": 8,
+    "pos": 23,
+    "len": 70,
+    "type": "An",
+    "desc": "Reservado para la Administración. Rellenar con blancos",
+    "validation": "",
+    "content": "BLANCOS"
+   },
+   {
+    "n": 9,
+    "pos": 93,
+    "len": 4,
+    "type": "An",
+    "desc": "Versión del Programa",
+    "validation": "",
+    "content": "Nota 1"
+   },
+   {
+    "n": 10,
+    "pos": 97,
+    "len": 4,
+    "type": "An",
+    "desc": "Reservado para la Administración. Rellenar con blancos",
+    "validation": "",
+    "content": "BLANCOS"
+   },
+   {
+    "n": 11,
+    "pos": 101,
+    "len": 9,
+    "type": "An",
+    "desc": "NIF Empresa Desarrollo",
+    "validation": "",
+    "content": "Nota 1"
+   },
+   {
+    "n": 12,
+    "pos": 110,
+    "len": 213,
+    "type": "An",
+    "desc": "Reservado para la Administración. Rellenar con blancos",
+    "validation": "",
+    "content": "BLANCOS"
+   },
+   {
+    "n": 13,
+    "pos": 323,
+    "len": 6,
+    "type": "An",
+    "desc": "Constante",
+    "validation": "",
+    "content": "\"</AUX>\""
+   },
+   {
+    "n": 14,
+    "pos": 329,
+    "len": null,
+    "type": "An",
+    "desc": "Contenido del fichero. Aquí se debe incluir el contenido de las páginas correspondientes a la declaración según el formato descrito para cada página en este mismo documento",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 15,
+    "pos": null,
+    "len": 18,
+    "type": "An",
+    "desc": "Constante. </T+ modelo+discriminante+Ejercicio+periodo+Tipo+>",
+    "validation": "",
+    "content": "\"</T3900EEEEPP0000>\""
+   }
+  ],
+  "Pág. 1": [
+   {
+    "n": 1,
+    "pos": 1,
+    "len": 2,
+    "type": "An",
+    "desc": "Inicio del identificador de modelo y página.",
+    "validation": "OBLIGATORIO",
+    "content": "Constante \"<T\""
+   },
+   {
+    "n": 2,
+    "pos": 3,
+    "len": 3,
+    "type": "Num",
+    "desc": "Modelo.",
+    "validation": "OBLIGATORIO",
+    "content": "Constante \"390\""
+   },
+   {
+    "n": 3,
+    "pos": 6,
+    "len": 5,
+    "type": "Num",
+    "desc": "Página.",
+    "validation": "OBLIGATORIO",
+    "content": "Constante \"01000\""
+   },
+   {
+    "n": 4,
+    "pos": 11,
+    "len": 1,
+    "type": "An",
+    "desc": "Fin de identificador de modelo.",
+    "validation": "OBLIGATORIO",
+    "content": "Constante \">\""
+   },
+   {
+    "n": 5,
+    "pos": 12,
+    "len": 1,
+    "type": "A",
+    "desc": "Indicador de página complementaria.",
+    "validation": "",
+    "content": "En blanco"
+   },
+   {
+    "n": 6,
+    "pos": 13,
+    "len": 1,
+    "type": "A",
+    "desc": "RESERVADO PARA LA A.E.A.T. (Dejar en blanco)",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 7,
+    "pos": 14,
+    "len": 9,
+    "type": "An",
+    "desc": "1. Sujeto pasivo - NIF.",
+    "validation": "OBLIGATORIO",
+    "content": "Cualquier NIF válido PF o PJ."
+   },
+   {
+    "n": 8,
+    "pos": 23,
+    "len": 60,
+    "type": "An",
+    "desc": "1. Sujeto pasivo - Apellidos o Razón Social.",
+    "validation": "OBLIGATORIO",
+    "content": ""
+   },
+   {
+    "n": 9,
+    "pos": 83,
+    "len": 20,
+    "type": "An",
+    "desc": "1. Sujeto pasivo - Nombre.",
+    "validation": "OBLIGATORIO (persona fisica)",
+    "content": ""
+   },
+   {
+    "n": 10,
+    "pos": 103,
+    "len": 4,
+    "type": "Num",
+    "desc": "2. Devengo - Ejercicio.",
+    "validation": "OBLIGATORIO",
+    "content": ""
+   },
+   {
+    "n": 11,
+    "pos": 107,
+    "len": 2,
+    "type": "An",
+    "desc": "RESERVADO PARA LA A.E.A.T. (Dejar en blanco)",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 12,
+    "pos": 109,
+    "len": 1,
+    "type": "An",
+    "desc": "1. Sujeto pasivo - Registro de devolución mensual.",
+    "validation": "",
+    "content": "\"0\" ó \"1\""
+   },
+   {
+    "n": 13,
+    "pos": 110,
+    "len": 1,
+    "type": "An",
+    "desc": "1. Sujeto pasivo - Regimen especial del grupo de entidades",
+    "validation": "",
+    "content": "\"0\" ó \"1\""
+   },
+   {
+    "n": 14,
+    "pos": 111,
+    "len": 7,
+    "type": "An",
+    "desc": "1. Sujeto pasivo - Número de grupo",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 15,
+    "pos": 118,
+    "len": 1,
+    "type": "An",
+    "desc": "1. Sujeto pasivo - dominante?",
+    "validation": "",
+    "content": "\"0\" ó \"1\""
+   },
+   {
+    "n": 16,
+    "pos": 119,
+    "len": 1,
+    "type": "An",
+    "desc": "1. Sujeto pasivo - dependiente?",
+    "validation": "",
+    "content": "\"0\" ó \"1\""
+   },
+   {
+    "n": 17,
+    "pos": 120,
+    "len": 1,
+    "type": "An",
+    "desc": "1. Sujeto pasivo - Tipo régimen especial aplicable. Art 163 sexies.cinco. Si o No",
+    "validation": "",
+    "content": "\"0\" - blanco, \"1\" - Si, \"2\" .- No"
+   },
+   {
+    "n": 18,
+    "pos": 121,
+    "len": 9,
+    "type": "An",
+    "desc": "1. Sujeto pasivo - NIF entidad dominante",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 19,
+    "pos": 130,
+    "len": 1,
+    "type": "An",
+    "desc": "1. Sujeto pasivo - Concurso acreedores en este ejercicio",
+    "validation": "",
+    "content": "\"0\" - blanco, \"1\" - Si, \"2\" .- No"
+   },
+   {
+    "n": 20,
+    "pos": 131,
+    "len": 1,
+    "type": "An",
+    "desc": "1. Sujeto pasivo - Regimen especial del criterio de caja",
+    "validation": "",
+    "content": "\"0\" - blanco, \"1\" - Si, \"2\" .- No"
+   },
+   {
+    "n": 21,
+    "pos": 132,
+    "len": 1,
+    "type": "An",
+    "desc": "1. Sujeto pasivo - Ha sido destinatario del régimen especial del criterio de caja",
+    "validation": "",
+    "content": "\"0\" - blanco, \"1\" - Si, \"2\" .- No"
+   },
+   {
+    "n": 22,
+    "pos": 133,
+    "len": 1,
+    "type": "An",
+    "desc": "1. Sujeto pasivo - Sujeto pasivo con derecho a deducir pago a cuenta de entregas de gasolinas, gasóleos y biocarburantes posteriores a la ultimación del régimen de depósito distinto del aduanero",
+    "validation": "",
+    "content": "\"1\" - Si, \"2\" .- No"
+   },
+   {
+    "n": 23,
+    "pos": 134,
+    "len": 1,
+    "type": "Num",
+    "desc": "2. Devengo - Sustitutiva?",
+    "validation": "",
+    "content": "\"0\" ó \"1\""
+   },
+   {
+    "n": 24,
+    "pos": 135,
+    "len": 1,
+    "type": "Num",
+    "desc": "2. Devengo - Sustitutiva por rectificación de cuotas?",
+    "validation": "",
+    "content": "\"0\" ó \"1\""
+   },
+   {
+    "n": 25,
+    "pos": 136,
+    "len": 13,
+    "type": "An",
+    "desc": "2. Devengo - Nº justificante declaración anterior",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 26,
+    "pos": 149,
+    "len": 40,
+    "type": "An",
+    "desc": "3. Datos estadísticos - A - Actividades - Principal",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 27,
+    "pos": 189,
+    "len": 3,
+    "type": "An",
+    "desc": "3. Datos estadísticos - B - Código de actividad - Principal",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 28,
+    "pos": 192,
+    "len": 4,
+    "type": "An",
+    "desc": "3. Datos estadísticos - C -Epígrafe I.A.E. - Principal",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 29,
+    "pos": 196,
+    "len": 40,
+    "type": "An",
+    "desc": "3. Datos estadísticos - A - Actividades - Otras - 1ª",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 30,
+    "pos": 236,
+    "len": 3,
+    "type": "An",
+    "desc": "3. Datos estadísticos - B - Código de actividad - Otras 1ª",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 31,
+    "pos": 239,
+    "len": 4,
+    "type": "An",
+    "desc": "3. Datos estadísticos - C -Epígrafe I.A.E. - Otras 1º",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 32,
+    "pos": 243,
+    "len": 40,
+    "type": "An",
+    "desc": "3. Datos estadísticos - A - Actividades - Otras - 2ª",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 33,
+    "pos": 283,
+    "len": 3,
+    "type": "An",
+    "desc": "3. Datos estadísticos - B - Código de actividad - Otras 2ª",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 34,
+    "pos": 286,
+    "len": 4,
+    "type": "An",
+    "desc": "3. Datos estadísticos - C -Epígrafe I.A.E. - Otras 2º",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 35,
+    "pos": 290,
+    "len": 40,
+    "type": "An",
+    "desc": "3. Datos estadísticos - A - Actividades - Otras - 3ª",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 36,
+    "pos": 330,
+    "len": 3,
+    "type": "An",
+    "desc": "3. Datos estadísticos - B - Código de actividad - Otras 3ª",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 37,
+    "pos": 333,
+    "len": 4,
+    "type": "An",
+    "desc": "3. Datos estadísticos - C -Epígrafe I.A.E. - Otras 3º",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 38,
+    "pos": 337,
+    "len": 40,
+    "type": "An",
+    "desc": "3. Datos estadísticos - A - Actividades - Otras - 4ª",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 39,
+    "pos": 377,
+    "len": 3,
+    "type": "An",
+    "desc": "3. Datos estadísticos - B - Código de actividad - Otras 4ª",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 40,
+    "pos": 380,
+    "len": 4,
+    "type": "An",
+    "desc": "3. Datos estadísticos - C -Epígrafe I.A.E. - Otras 4º",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 41,
+    "pos": 384,
+    "len": 40,
+    "type": "An",
+    "desc": "3. Datos estadísticos - A - Actividades - Otras - 5ª",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 42,
+    "pos": 424,
+    "len": 3,
+    "type": "An",
+    "desc": "3. Datos estadísticos - B - Código de actividad - Otras 5ª",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 43,
+    "pos": 427,
+    "len": 4,
+    "type": "An",
+    "desc": "3. Datos estadísticos - C -Epígrafe I.A.E. - Otras 5º",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 44,
+    "pos": 431,
+    "len": 1,
+    "type": "An",
+    "desc": "3. Datos estadísticos - D - Declaración anual operac. con terceras personas.",
+    "validation": "",
+    "content": "\"0\" ó \"1\""
+   },
+   {
+    "n": 45,
+    "pos": 432,
+    "len": 9,
+    "type": "An",
+    "desc": "3. Datos estadísticos - Declaración conjunta - NIF.",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 46,
+    "pos": 441,
+    "len": 37,
+    "type": "An",
+    "desc": "3. Datos estadísticos - Declaración conjunta - Razón social",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 47,
+    "pos": 478,
+    "len": 9,
+    "type": "An",
+    "desc": "4. Representante - Personas Físicas/Comunid. Bienes - Represent. - NIF.",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 48,
+    "pos": 487,
+    "len": 80,
+    "type": "An",
+    "desc": "4. Representante - Personas Físicas/Comunid. Bienes - Represent. - Apellidos y Nombre/Razón social",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 49,
+    "pos": 567,
+    "len": 2,
+    "type": "An",
+    "desc": "4. Representante - Personas Físicas/Comunid. Bienes - Represent. - Calle/Pza./Avda.",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 50,
+    "pos": 569,
+    "len": 17,
+    "type": "An",
+    "desc": "4. Representante - Personas Físicas/Comunid. Bienes - Represent. - Nombre de la vía pública",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 51,
+    "pos": 586,
+    "len": 5,
+    "type": "An",
+    "desc": "4. Representante - Personas Físicas/Comunid. Bienes - Represent. - Número",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 52,
+    "pos": 591,
+    "len": 2,
+    "type": "An",
+    "desc": "4. Representante - Personas Físicas/Comunid. Bienes - Represent. - Esc.",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 53,
+    "pos": 593,
+    "len": 2,
+    "type": "An",
+    "desc": "4. Representante - Personas Físicas/Comunid. Bienes - Represent. - Piso",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 54,
+    "pos": 595,
+    "len": 2,
+    "type": "An",
+    "desc": "4. Representante - Personas Físicas/Comunid. Bienes - Represent. - Prta.",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 55,
+    "pos": 597,
+    "len": 9,
+    "type": "An",
+    "desc": "4. Representante - Personas Físicas/Comunid. Bienes - Represent. - Teléfono",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 56,
+    "pos": 606,
+    "len": 20,
+    "type": "A",
+    "desc": "4. Representante - Personas Físicas/Comunid. Bienes - Represent. - Municipio",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 57,
+    "pos": 626,
+    "len": 15,
+    "type": "A",
+    "desc": "4. Representante - Personas Físicas/Comunid. Bienes - Represent. - Provincia",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 58,
+    "pos": 641,
+    "len": 5,
+    "type": "An",
+    "desc": "4. Representante - Personas Físicas/Comunid. Bienes - Represent. - Código Postal",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 59,
+    "pos": 646,
+    "len": 80,
+    "type": "An",
+    "desc": "4. Representante - Personas Jurídicas - Represent. 1 - Nombre y Apellidos",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 60,
+    "pos": 726,
+    "len": 9,
+    "type": "An",
+    "desc": "4. Representante - Personas Jurídicas - Represent. 1 - NIF",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 61,
+    "pos": 735,
+    "len": 8,
+    "type": "Num",
+    "desc": "4. Representante - Personas Jurídicas - Represent. 1 - Fecha Poder (DDMMAAAA)",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 62,
+    "pos": 743,
+    "len": 12,
+    "type": "An",
+    "desc": "4. Representante - Personas Jurídicas - Represent. 1 - Notaría",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 63,
+    "pos": 755,
+    "len": 80,
+    "type": "An",
+    "desc": "4. Representante - Personas Jurídicas - Represent. 2 - Nombre y Apellidos",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 64,
+    "pos": 835,
+    "len": 9,
+    "type": "An",
+    "desc": "4. Representante - Personas Jurídicas - Represent. 2 - NIF",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 65,
+    "pos": 844,
+    "len": 8,
+    "type": "Num",
+    "desc": "4. Representante - Personas Jurídicas - Represent. 2 - Fecha Poder (DDMMAAAA)",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 66,
+    "pos": 852,
+    "len": 12,
+    "type": "An",
+    "desc": "4. Representante - Personas Jurídicas - Represent. 2 - Notaría",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 67,
+    "pos": 864,
+    "len": 80,
+    "type": "An",
+    "desc": "4. Representante - Personas Jurídicas - Represent. 3 - Nombre y Apellidos",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 68,
+    "pos": 944,
+    "len": 9,
+    "type": "An",
+    "desc": "4. Representante - Personas Jurídicas - Represent. 3 - NIF",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 69,
+    "pos": 953,
+    "len": 8,
+    "type": "Num",
+    "desc": "4. Representante - Personas Jurídicas - Represent. 3 - Fecha Poder (DDMMAAAA)",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 70,
+    "pos": 961,
+    "len": 12,
+    "type": "An",
+    "desc": "4. Representante - Personas Jurídicas - Represent. 3 - Notaría",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 71,
+    "pos": 973,
+    "len": 21,
+    "type": "An",
+    "desc": "RESERVADO PARA LA A.E.A.T. (Dejar en blanco) Incluye Nº Referencia PADRE's",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 72,
+    "pos": 994,
+    "len": 13,
+    "type": "An",
+    "desc": "RESERVADO PARA LA A.E.A.T. (Dejar en blanco) Sello electrónico",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 73,
+    "pos": 1007,
+    "len": 20,
+    "type": "An",
+    "desc": "Identificador cliente EEDD. RESERVADO PARA LAS EEDD.",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 74,
+    "pos": 1027,
+    "len": 150,
+    "type": "An",
+    "desc": "RESERVADO PARA LA A.E.A.T. (Dejar en blanco)",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 75,
+    "pos": 1177,
+    "len": 12,
+    "type": "An",
+    "desc": "Indentificador de Fin de registro",
+    "validation": "OBLIGATORIO",
+    "content": "Constante \"</T39001000>\""
+   }
+  ],
+  "Pág. 2": [
+   {
+    "n": 1,
+    "pos": 1,
+    "len": 2,
+    "type": "An",
+    "desc": "Inicio del identificador de modelo y página.",
+    "validation": "OBLIGATORIO",
+    "content": "Constante \"<T\""
+   },
+   {
+    "n": 2,
+    "pos": 3,
+    "len": 3,
+    "type": "Num",
+    "desc": "Modelo.",
+    "validation": "OBLIGATORIO",
+    "content": "Constante \"390\""
+   },
+   {
+    "n": 3,
+    "pos": 6,
+    "len": 5,
+    "type": "Num",
+    "desc": "Página.",
+    "validation": "OBLIGATORIO",
+    "content": "Constante \"02000\""
+   },
+   {
+    "n": 4,
+    "pos": 11,
+    "len": 1,
+    "type": "An",
+    "desc": "Fin de identificador de modelo.",
+    "validation": "OBLIGATORIO",
+    "content": "Constante \">\""
+   },
+   {
+    "n": 5,
+    "pos": 12,
+    "len": 1,
+    "type": "A",
+    "desc": "Indicador de página complementaria.",
+    "validation": "",
+    "content": "En Blanco"
+   },
+   {
+    "n": 6,
+    "pos": 13,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Reg. ordin. - Tipo 0% - Base imponible [700]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 7,
+    "pos": 30,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Reg. ordin. - Tipo 0% - Cuota [701]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 8,
+    "pos": 47,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Reg. ordin. - Tipo 2% - Base imponible [667]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 9,
+    "pos": 64,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Reg. ordin. - Tipo 2% - Cuota [668]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 10,
+    "pos": 81,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Reg. ordin. - Tipo 4% - Base imponible [01]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 11,
+    "pos": 98,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Reg. ordin. - Tipo 4% - Cuota [02]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 12,
+    "pos": 115,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Reg. ordin. - Tipo 5% - Base imponible [702]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 13,
+    "pos": 132,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Reg. ordin. - Tipo 5% - Cuota [703]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 14,
+    "pos": 149,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Reg. ordin. - Tipo 7,5% - Base imponible [669]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 15,
+    "pos": 166,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Reg. ordin. - Tipo 7,5% - Cuota [670]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 16,
+    "pos": 183,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Reg. ordin. - Tipo 10% - Base imponible [03]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 17,
+    "pos": 200,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Reg. ordin. - Tipo 10% - Cuota [04]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 18,
+    "pos": 217,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Reg. ordin. - Tipo 21% - Base imponible [05]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 19,
+    "pos": 234,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Reg. ordin. - Tipo 21% - Cuota [06]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 20,
+    "pos": 251,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base imponible y cuota - operaciones intragrupo - Tipo 0% - Base imponible [704]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 21,
+    "pos": 268,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base imponible y cuota - operaciones intragrupo - Tipo 0% - Cuota [705]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 22,
+    "pos": 285,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base imponible y cuota - operaciones intragrupo - Tipo 2% - Base imponible [671]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 23,
+    "pos": 302,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base imponible y cuota - operaciones intragrupo - Tipo 2% - Cuota [672]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 24,
+    "pos": 319,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base imponible y cuota - operaciones intragrupo - Tipo 4% - Base imponible [500]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 25,
+    "pos": 336,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base imponible y cuota - operaciones intragrupo - Tipo 4% - Cuota [501]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 26,
+    "pos": 353,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base imponible y cuota - operaciones intragrupo - Tipo 5% - Base imponible [706]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 27,
+    "pos": 370,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base imponible y cuota - operaciones intragrupo - Tipo 5% - Cuota [707]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 28,
+    "pos": 387,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base imponible y cuota - operaciones intragrupo - Tipo 7,5% - Base imponible [673]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 29,
+    "pos": 404,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base imponible y cuota - operaciones intragrupo - Tipo 7,5% - Cuota [674]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 30,
+    "pos": 421,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base imponible y cuota - operaciones intragrupo - Tipo 10% - Base imponible [502]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 31,
+    "pos": 438,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base imponible y cuota - operaciones intragrupo - Tipo 10% - Cuota [503]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 32,
+    "pos": 455,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base imponible y cuota - operaciones intragrupo - Tipo 21% - Base imponible [504]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 33,
+    "pos": 472,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base imponible y cuota - operaciones intragrupo - Tipo 21% - Cuota [505]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 34,
+    "pos": 489,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base imponible y cuota - regimen especial criterio caja - Tipo 0% - Base imponible [708]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 35,
+    "pos": 506,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base imponible y cuota - regimen especial criterio caja - Tipo 0% - Cuota [709]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 36,
+    "pos": 523,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base imponible y cuota - regimen especial criterio caja - Tipo 2% - Base imponible [675]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 37,
+    "pos": 540,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base imponible y cuota - regimen especial criterio caja - Tipo 2% - Cuota [676]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 38,
+    "pos": 557,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base imponible y cuota - regimen especial criterio caja - Tipo 4% - Base imponible [643]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 39,
+    "pos": 574,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base imponible y cuota - regimen especial criterio caja - Tipo 4% - Cuota [644]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 40,
+    "pos": 591,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base imponible y cuota - regimen especial criterio caja - Tipo 5% - Base imponible [710]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 41,
+    "pos": 608,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base imponible y cuota - regimen especial criterio caja - Tipo 5% - Cuota [711]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 42,
+    "pos": 625,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base imponible y cuota - regimen especial criterio caja - Tipo 7,5% - Base imponible [677]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 43,
+    "pos": 642,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base imponible y cuota - regimen especial criterio caja - Tipo 7,5% - Cuota [678]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 44,
+    "pos": 659,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base imponible y cuota - regimen especial criterio caja - Tipo 10% - Base imponible [645]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 45,
+    "pos": 676,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base imponible y cuota - regimen especial criterio caja - Tipo 10% - Cuota [646]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 46,
+    "pos": 693,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base imponible y cuota - regimen especial criterio caja - Tipo 21% - Base imponible [647]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 47,
+    "pos": 710,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base imponible y cuota - regimen especial criterio caja - Tipo 21% - Cuota [648]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 48,
+    "pos": 727,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Reg. espec. bienes usados - Tipo 0% - Base imponible [712]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 49,
+    "pos": 744,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Reg. espec. bienes usados - Tipo 0% - Cuota [713]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 50,
+    "pos": 761,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Reg. espec. bienes usados - Tipo 2% - Base imponible [679]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 51,
+    "pos": 778,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Reg. espec. bienes usados - Tipo 2% - Cuota [680]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 52,
+    "pos": 795,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Reg. espec. bienes usados - Tipo 4% - Base imponible [07]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 53,
+    "pos": 812,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Reg. espec. bienes usados - Tipo 4% - Cuota [08]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 54,
+    "pos": 829,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Reg. espec. bienes usados - Tipo 5% - Base imponible [714]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 55,
+    "pos": 846,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Reg. espec. bienes usados - Tipo 5% - Cuota [715]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 56,
+    "pos": 863,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Reg. espec. bienes usados - Tipo 7,5% - Base imponible [681]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 57,
+    "pos": 880,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Reg. espec. bienes usados - Tipo 7,5% - Cuota [682]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 58,
+    "pos": 897,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Reg. espec. bienes usados - Tipo 10% - Base imponible [09]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 59,
+    "pos": 914,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Reg. espec. bienes usados - Tipo 10% - Cuota [10]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 60,
+    "pos": 931,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Reg. espec. bienes usados - Tipo 21% - Base imponible [11]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 61,
+    "pos": 948,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Reg. espec. bienes usados - Tipo 21% - Cuota [12]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 62,
+    "pos": 965,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Reg. espec. agencias viajes - Tipo 21% - Base imponible [13]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 63,
+    "pos": 982,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Reg. espec. agencias viajes - Tipo 21% - Cuota [14]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 64,
+    "pos": 999,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Adquis. intracomunit. bienes - Tipo 0% - Base imponible [716]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 65,
+    "pos": 1016,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Adquis. intracomunit. bienes - Tipo 0% - Cuota [717]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 66,
+    "pos": 1033,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Adquis. intracomunit. bienes - Tipo 2% - Base imponible [683]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 67,
+    "pos": 1050,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Adquis. intracomunit. bienes - Tipo 2% - Cuota [684]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 68,
+    "pos": 1067,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Adquis. intracomunit. bienes - Tipo 4% - Base imponible [21]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 69,
+    "pos": 1084,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Adquis. intracomunit. bienes - Tipo 4% - Cuota [22]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 70,
+    "pos": 1101,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Adquis. intracomunit. bienes - Tipo 5% - Base imponible [718]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 71,
+    "pos": 1118,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Adquis. intracomunit. bienes - Tipo 5% - Cuota [719]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 72,
+    "pos": 1135,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Adquis. intracomunit. bienes - Tipo 7,5% - Base imponible [685]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 73,
+    "pos": 1152,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Adquis. intracomunit. bienes - Tipo 7,5% - Cuota [686]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 74,
+    "pos": 1169,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Adquis. intracomunit. bienes - Tipo 10% - Base imponible [23]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 75,
+    "pos": 1186,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Adquis. intracomunit. bienes - Tipo 10% - Cuota [24]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 76,
+    "pos": 1203,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Adquis. intracomunit. bienes - Tipo 21% - Base imponible [25]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 77,
+    "pos": 1220,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Adquis. intracomunit. bienes - Tipo 21% - Cuota [26]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 78,
+    "pos": 1237,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Adquis. intracomunit. servicios - Tipo 0% - Base Imponible [720]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 79,
+    "pos": 1254,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Adquis. intracomunit. servicios - Tipo 0% - Cuota [721]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 80,
+    "pos": 1271,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Adquis. intracomunit. servicios - Tipo 2% - Base Imponible [687]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 81,
+    "pos": 1288,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Adquis. intracomunit. servicios - Tipo 2% - Cuota [688]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 82,
+    "pos": 1305,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Adquis. intracomunit. servicios - Tipo 4% - Base Imponible [545]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 83,
+    "pos": 1322,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Adquis. intracomunit. servicios - Tipo 4% - Cuota [546]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 84,
+    "pos": 1339,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Adquis. intracomunit. servicios - Tipo 5% - Base Imponible [722]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 85,
+    "pos": 1356,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Adquis. intracomunit. servicios - Tipo 5% - Cuota [723]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 86,
+    "pos": 1373,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Adquis. intracomunit. servicios - Tipo 7,5% - Base Imponible [689]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 87,
+    "pos": 1390,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Adquis. intracomunit. servicios - Tipo 7,5% - Cuota [690]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 88,
+    "pos": 1407,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Adquis. intracomunit. servicios - Tipo 10% - Base Imponible [547]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 89,
+    "pos": 1424,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Adquis. intracomunit. servicios - Tipo 10% - Cuota [548]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 90,
+    "pos": 1441,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Adquis. intracomunit. servicios - Tipo 21% - Base Imponible [551]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 91,
+    "pos": 1458,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Adquis. intracomunit. servicios - Tipo 21% - Cuota [552]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 92,
+    "pos": 1475,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - IVA deveng. invers. sujeto pasivo - Base imponible [27]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 93,
+    "pos": 1492,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - IVA deveng. invers. sujeto pasivo - Cuota [28]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 94,
+    "pos": 1509,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Modificac. bases y cuotas - Base imponible [29]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 95,
+    "pos": 1526,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Modificac. bases y cuotas - Cuota [30]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 96,
+    "pos": 1543,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Modificac. bases y cuotas intragrupo - Base [649]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 97,
+    "pos": 1560,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Modificac. bases y cuotas intragrupo - Cuota [650]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 98,
+    "pos": 1577,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Modificac. bases/cuotas concurso acreedores - Base imponible [31]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 99,
+    "pos": 1594,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Modificac. bases/cuotas concurso acreedores - Cuota [32]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 100,
+    "pos": 1611,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Total bases y cuotas IVA - Base imponible [33]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 101,
+    "pos": 1628,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Total bases y cuotas IVA - Cuota [34]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 102,
+    "pos": 1645,
+    "len": 150,
+    "type": "An",
+    "desc": "RESERVADO PARA LA A.E.A.T. (Dejar en blanco)",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 103,
+    "pos": 1795,
+    "len": 12,
+    "type": "An",
+    "desc": "Indentificador de Fin de registro",
+    "validation": "OBLIGATORIO",
+    "content": "Constante \"</T39002000>\""
+   }
+  ],
+  "Pág. 2 bis": [
+   {
+    "n": 1,
+    "pos": 1,
+    "len": 2,
+    "type": "An",
+    "desc": "Inicio del identificador de modelo y página.",
+    "validation": "OBLIGATORIO",
+    "content": "Constante \"<T\""
+   },
+   {
+    "n": 2,
+    "pos": 3,
+    "len": 3,
+    "type": "Num",
+    "desc": "Modelo.",
+    "validation": "OBLIGATORIO",
+    "content": "Constante \"390\""
+   },
+   {
+    "n": 3,
+    "pos": 6,
+    "len": 5,
+    "type": "Num",
+    "desc": "Página.",
+    "validation": "OBLIGATORIO",
+    "content": "Constante \"02B00\""
+   },
+   {
+    "n": 4,
+    "pos": 11,
+    "len": 1,
+    "type": "An",
+    "desc": "Fin de identificador de modelo.",
+    "validation": "OBLIGATORIO",
+    "content": "Constante \">\""
+   },
+   {
+    "n": 5,
+    "pos": 12,
+    "len": 1,
+    "type": "A",
+    "desc": "Indicador de página complementaria.",
+    "validation": "",
+    "content": "En Blanco"
+   },
+   {
+    "n": 6,
+    "pos": 13,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Recargo de equivalencia - Tipo 0% - Base imponible [663]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 7,
+    "pos": 30,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Recargo de equivalencia - Tipo 0% - Cuota [664]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 8,
+    "pos": 47,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Recargo de equivalencia - Tipo 0,26% - Base imponible [691]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 9,
+    "pos": 64,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Recargo de equivalencia - Tipo 0,26% - Cuota [692]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 10,
+    "pos": 81,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Recargo de equivalencia - Tipo 0,5% - Base imponible [35]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 11,
+    "pos": 98,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Recargo de equivalencia - Tipo 0,5% - Cuota [36]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 12,
+    "pos": 115,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Recargo de equivalencia - Tipo 0,62% - Base imponible [665]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 13,
+    "pos": 132,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Recargo de equivalencia - Tipo 0,62% - Cuota [666]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 14,
+    "pos": 149,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Recargo de equivalencia - Tipo 1% - Base imponible [693]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 15,
+    "pos": 166,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Recargo de equivalencia - Tipo 1% - Cuota [694]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 16,
+    "pos": 183,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Recargo de equivalencia - Tipo 1,4% - Base imponible [599]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 17,
+    "pos": 200,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Recargo de equivalencia - Tipo 1,4% - Cuota [600]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 18,
+    "pos": 217,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Recargo de equivalencia - Tipo 5,2% - Base imponible [601]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 19,
+    "pos": 234,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Recargo de equivalencia - Tipo 5,2% - Cuota [602]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 20,
+    "pos": 251,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Recargo de equivalencia - Tipo 1,75% - Base imponible [41]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 21,
+    "pos": 268,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Recargo de equivalencia - Tipo 1,75% - Cuota [42]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 22,
+    "pos": 285,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Modific. recargo equivalencia - Base imponible [43]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 23,
+    "pos": 302,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Modific. recargo equivalencia - Cuota [44]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 24,
+    "pos": 319,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Modific. recargo equiv. Concurso acreedores - Base imponible [45]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 25,
+    "pos": 336,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Modific. recargo equiv. Concurso acreedores - Cuota [46]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 26,
+    "pos": 353,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Base Imponible y cuota - Total cuotas IVA y recargo equivalencia [47]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 27,
+    "pos": 370,
+    "len": 150,
+    "type": "An",
+    "desc": "RESERVADO PARA LA A.E.A.T. (Dejar en blanco)",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 28,
+    "pos": 520,
+    "len": 12,
+    "type": "An",
+    "desc": "Indentificador de Fin de registro",
+    "validation": "OBLIGATORIO",
+    "content": "Constante \"</T39002B00>\""
+   }
+  ],
+  "Pág. 3": [
+   {
+    "n": 1,
+    "pos": 1,
+    "len": 2,
+    "type": "An",
+    "desc": "Inicio del identificador de modelo y página.",
+    "validation": "OBLIGATORIO",
+    "content": "Constante \"<T\""
+   },
+   {
+    "n": 2,
+    "pos": 3,
+    "len": 3,
+    "type": "Num",
+    "desc": "Modelo.",
+    "validation": "OBLIGATORIO",
+    "content": "Constante \"390\""
+   },
+   {
+    "n": 3,
+    "pos": 6,
+    "len": 5,
+    "type": "Num",
+    "desc": "Página.",
+    "validation": "OBLIGATORIO",
+    "content": "Constante \"03000\""
+   },
+   {
+    "n": 4,
+    "pos": 11,
+    "len": 1,
+    "type": "An",
+    "desc": "Fin de identificador de modelo.",
+    "validation": "OBLIGATORIO",
+    "content": "Constante \">\""
+   },
+   {
+    "n": 5,
+    "pos": 12,
+    "len": 1,
+    "type": "A",
+    "desc": "Indicador de página complementaria.",
+    "validation": "",
+    "content": "En Blanco"
+   },
+   {
+    "n": 6,
+    "pos": 13,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Oper. inter. corrientes bienes y servic. - Tipo 2% - Base imponible [695]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 7,
+    "pos": 30,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Oper. inter. corrientes bienes y servic. - Tipo 2% - Cuota [696]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 8,
+    "pos": 47,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Oper. inter. corrientes bienes y servic. - Tipo 4% - Base imponible [190]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 9,
+    "pos": 64,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Oper. inter. corrientes bienes y servic. - Tipo 4% - Cuota [191]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 10,
+    "pos": 81,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Oper. inter. corrientes bienes y servic. - Tipo 5% - Base imponible [724]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 11,
+    "pos": 98,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Oper. inter. corrientes bienes y servic. - Tipo 5% - Cuota [725]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 12,
+    "pos": 115,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Oper. inter. corrientes bienes y servic. - Tipo 7,5% - Base imponible [697]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 13,
+    "pos": 132,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Oper. inter. corrientes bienes y servic. - Tipo 7,5% - Cuota [698]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 14,
+    "pos": 149,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Oper. inter. corrientes bienes y servic. - Tipo 10% - Base imponible [603]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 15,
+    "pos": 166,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Oper. inter. corrientes bienes y servic. - Tipo 10% - Cuota [604]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 16,
+    "pos": 183,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Oper. inter. corrientes bienes y servic. - Tipo 21% - Base imponible [605]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 17,
+    "pos": 200,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Oper. inter. corrientes bienes y servic. - Tipo 21% - Cuota [606]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 18,
+    "pos": 217,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Total oper. inter. corrientes bienes y servic. - Base imponible [48]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 19,
+    "pos": 234,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Total oper. inter. corrientes bienes y servic. - Cuota [49]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 20,
+    "pos": 251,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Oper. intragrupo corrientes - Tipo 2% - Base imponible [745]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 21,
+    "pos": 268,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Oper. intragrupo corrientes - Tipo 2% - Cuota [746]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 22,
+    "pos": 285,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Oper. intragrupo corrientes - Tipo 4% - Base imponible [506]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 23,
+    "pos": 302,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Oper. intragrupo corrientes - Tipo 4% - Cuota [507]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 24,
+    "pos": 319,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Oper. intragrupo corrientes - Tipo 5% - Base imponible [726]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 25,
+    "pos": 336,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Oper. intragrupo corrientes - Tipo 5% - Cuota [727]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 26,
+    "pos": 353,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Oper. intragrupo corrientes - Tipo 7,5% - Base imponible [747]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 27,
+    "pos": 370,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Oper. intragrupo corrientes - Tipo 7,5% - Cuota [748]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 28,
+    "pos": 387,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Oper. intragrupo corrientes - Tipo 10% - Base imponible [607]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 29,
+    "pos": 404,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Oper. intragrupo corrientes - Tipo 10% - Cuota [608]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 30,
+    "pos": 421,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Oper. intragrupo corrientes - Tipo 21% - Base imponible [609]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 31,
+    "pos": 438,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Oper. intragrupo corrientes - Tipo 21% - Cuota [610]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 32,
+    "pos": 455,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Total oper. intragrupo corrientes - Base imponible [512]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 33,
+    "pos": 472,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Total oper. intragrupo corrientes - Cuota [513]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 34,
+    "pos": 489,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Oper. inter. bienes de inversion - Tipo 2% - Base imponible [749]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 35,
+    "pos": 506,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Oper. inter. bienes de inversion - Tipo 2% - Cuota [750]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 36,
+    "pos": 523,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Oper. inter. bienes de inversion - Tipo 4% - Base imponible [196]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 37,
+    "pos": 540,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Oper. inter. bienes de inversion - Tipo 4% - Cuota [197]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 38,
+    "pos": 557,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Oper. inter. bienes de inversion - Tipo 5% - Base imponible [728]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 39,
+    "pos": 574,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Oper. inter. bienes de inversion - Tipo 5% - Cuota [729]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 40,
+    "pos": 591,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Oper. inter. bienes de inversion - Tipo 7,5% - Base imponible [751]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 41,
+    "pos": 608,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Oper. inter. bienes de inversion - Tipo 7,5% - Cuota [752]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 42,
+    "pos": 625,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Oper. inter. bienes de inversion - Tipo 10% - Base imponible [611]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 43,
+    "pos": 642,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Oper. inter. bienes de inversion - Tipo 10% - Cuota [612]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 44,
+    "pos": 659,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Oper. inter. bienes de inversion - Tipo 21% - Base imponible [613]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 45,
+    "pos": 676,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Oper. inter. bienes de inversion - Tipo 21% - Cuota [614]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 46,
+    "pos": 693,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Total oper. inter. bienes de inversion - Base imponible [50]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 47,
+    "pos": 710,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Total oper. inter. bienes de inversion - Cuota [51]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 48,
+    "pos": 727,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Oper. intra. bienes de inversion - Tipo 2% - Base imponible [753]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 49,
+    "pos": 744,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Oper. intra. bienes de inversion - Tipo 2% - Cuota [754]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 50,
+    "pos": 761,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Oper. intra. bienes de inversion - Tipo 4% - Base imponible [514]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 51,
+    "pos": 778,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Oper. intra. bienes de inversion - Tipo 4% - Cuota [515]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 52,
+    "pos": 795,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Oper. intra. bienes de inversion - Tipo 5% - Base imponible [730]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 53,
+    "pos": 812,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Oper. intra. bienes de inversion - Tipo 5% - Cuota [731]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 54,
+    "pos": 829,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Oper. intra. bienes de inversion - Tipo 7,5% - Base imponible [755]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 55,
+    "pos": 846,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Oper. intra. bienes de inversion - Tipo 7,5% - Cuota [756]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 56,
+    "pos": 863,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Oper. intra. bienes de inversion - Tipo 10% - Base imponible [615]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 57,
+    "pos": 880,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Oper. intra. bienes de inversion - Tipo 10% - Cuota [616]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 58,
+    "pos": 897,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Oper. intra. bienes de inversion - Tipo 21% - Base imponible [617]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 59,
+    "pos": 914,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Oper. intra. bienes de inversion - Tipo 21% - Cuota [618]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 60,
+    "pos": 931,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Total oper. intra. bienes de inversion - Base imponible [520]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 61,
+    "pos": 948,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Total oper. intra. bienes de inversion - Cuota [521]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 62,
+    "pos": 965,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Import. bienes corrientes - Tipo 2% - Base imponible [757]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 63,
+    "pos": 982,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Import. bienes corrientes - Tipo 2% - Cuota [758]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 64,
+    "pos": 999,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Import. bienes corrientes - Tipo 4% - Base imponible [202]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 65,
+    "pos": 1016,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Import. bienes corrientes - Tipo 4% - Cuota [203]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 66,
+    "pos": 1033,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Import. bienes corrientes - Tipo 5% - Base imponible [732]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 67,
+    "pos": 1050,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Import. bienes corrientes - Tipo 5% - Cuota [733]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 68,
+    "pos": 1067,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Import. bienes corrientes - Tipo 7,5% - Base imponible [759]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 69,
+    "pos": 1084,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Import. bienes corrientes - Tipo 7,5% - Cuota [760]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 70,
+    "pos": 1101,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Import. bienes corrientes - Tipo 10% - Base imponible [619]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 71,
+    "pos": 1118,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Import. bienes corrientes - Tipo 10% - Cuota [620]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 72,
+    "pos": 1135,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Import. bienes corrientes - Tipo 21% - Base imponible [621]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 73,
+    "pos": 1152,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Import. bienes corrientes - Tipo 21% - Cuota [622]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 74,
+    "pos": 1169,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Total import. bienes corrientes - Base imponible [52]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 75,
+    "pos": 1186,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Total import. bienes corrientes - Cuota [53]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 76,
+    "pos": 1203,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Importacion bienes inversion - Tipo 2% - Base imponible [761]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 77,
+    "pos": 1220,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Importacion bienes inversion - Tipo 2% - Cuota [762]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 78,
+    "pos": 1237,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Importacion bienes inversion - Tipo 4% - Base imponible [208]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 79,
+    "pos": 1254,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Importacion bienes inversion - Tipo 4% - Cuota [209]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 80,
+    "pos": 1271,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Importacion bienes inversion - Tipo 5% - Base imponible [734]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 81,
+    "pos": 1288,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Importacion bienes inversion - Tipo 5% - Cuota [735]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 82,
+    "pos": 1305,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Importacion bienes inversion - Tipo 7,5% - Base imponible [763]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 83,
+    "pos": 1322,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Importacion bienes inversion - Tipo 7,5% - Cuota [764]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 84,
+    "pos": 1339,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Importacion bienes inversion - Tipo 10% - Base imponible [623]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 85,
+    "pos": 1356,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Importacion bienes inversion - Tipo 10% - Cuota [624]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 86,
+    "pos": 1373,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Importacion bienes inversion - Tipo 21% - Base imponible [625]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 87,
+    "pos": 1390,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Importacion bienes inversion - Tipo 21% - Cuota [626]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 88,
+    "pos": 1407,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Total importacion bienes inversion - Base imponible [54]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 89,
+    "pos": 1424,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Total importacion bienes inversion - Cuota [55]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 90,
+    "pos": 1441,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Adqui. intra. bienes corrientes - Tipo 2% - Base imponible [765]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 91,
+    "pos": 1458,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Adqui. intra. bienes corrientes - Tipo 2% - Cuota [766]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 92,
+    "pos": 1475,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Adqui. intra. bienes corrientes - Tipo 4% - Base imponible [214]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 93,
+    "pos": 1492,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Adqui. intra. bienes corrientes - Tipo 4% - Cuota [215]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 94,
+    "pos": 1509,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Adqui. intra. bienes corrientes - Tipo 5% - Base imponible [736]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 95,
+    "pos": 1526,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Adqui. intra. bienes corrientes - Tipo 5% - Cuota [737]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 96,
+    "pos": 1543,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Adqui. intra. bienes corrientes - Tipo 7,5% - Base imponible [767]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 97,
+    "pos": 1560,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Adqui. intra. bienes corrientes - Tipo 7,5% - Cuota [768]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 98,
+    "pos": 1577,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Adqui. intra. bienes corrientes - Tipo 10% - Base imponible [627]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 99,
+    "pos": 1594,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Adqui. intra. bienes corrientes - Tipo 10% - Cuota [628]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 100,
+    "pos": 1611,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Adqui. intra. bienes corrientes - Tipo 21% - Base imponible [629]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 101,
+    "pos": 1628,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Adqui. intra. bienes corrientes - Tipo 21% - Cuota [630]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 102,
+    "pos": 1645,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Total adqui. intra. bienes corrientes - Base imponible [56]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 103,
+    "pos": 1662,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Total adqui. intra. bienes corrientes - Cuota [57]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 104,
+    "pos": 1679,
+    "len": 150,
+    "type": "An",
+    "desc": "RESERVADO PARA LA A.E.A.T. (Dejar en blanco)",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 105,
+    "pos": 1829,
+    "len": 12,
+    "type": "An",
+    "desc": "Indentificador de Fin de registro",
+    "validation": "OBLIGATORIO",
+    "content": "Constante \"</T39003000>\""
+   }
+  ],
+  "Pág. 4": [
+   {
+    "n": 1,
+    "pos": 1,
+    "len": 2,
+    "type": "An",
+    "desc": "Inicio del identificador de modelo y página.",
+    "validation": "OBLIGATORIO",
+    "content": "Constante \"<T\""
+   },
+   {
+    "n": 2,
+    "pos": 3,
+    "len": 3,
+    "type": "Num",
+    "desc": "Modelo.",
+    "validation": "OBLIGATORIO",
+    "content": "Constante \"390\""
+   },
+   {
+    "n": 3,
+    "pos": 6,
+    "len": 5,
+    "type": "Num",
+    "desc": "Página.",
+    "validation": "OBLIGATORIO",
+    "content": "Constante \"04000\""
+   },
+   {
+    "n": 4,
+    "pos": 11,
+    "len": 1,
+    "type": "An",
+    "desc": "Fin de identificador de modelo.",
+    "validation": "OBLIGATORIO",
+    "content": "Constante \">\""
+   },
+   {
+    "n": 5,
+    "pos": 12,
+    "len": 1,
+    "type": "A",
+    "desc": "Indicador de página complementaria.",
+    "validation": "",
+    "content": "En Blanco"
+   },
+   {
+    "n": 6,
+    "pos": 13,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Adqui. intra. bienes inversion - Tipo 2% - Base imponible [769]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 7,
+    "pos": 30,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Adqui. intra. bienes inversion - Tipo 2% - Cuota [770]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 8,
+    "pos": 47,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Adqui. intra. bienes inversion - Tipo 4% - Base imponible [220]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 9,
+    "pos": 64,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Adqui. intra. bienes inversion - Tipo 4% - Cuota [221]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 10,
+    "pos": 81,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Adqui. intra. bienes inversion - Tipo 5% - Base imponible [738]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 11,
+    "pos": 98,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Adqui. intra. bienes inversion - Tipo 5% - Cuota [739]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 12,
+    "pos": 115,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Adqui. intra. bienes inversion - Tipo 7,5% - Base imponible [771]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 13,
+    "pos": 132,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Adqui. intra. bienes inversion - Tipo 7,5% - Cuota [772]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 14,
+    "pos": 149,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Adqui. intra. bienes inversion - Tipo 10% - Base imponible [631]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 15,
+    "pos": 166,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Adqui. intra. bienes inversion - Tipo 10% - Cuota [632]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 16,
+    "pos": 183,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Adqui. intra. bienes inversion - Tipo 21% - Base imponible [633]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 17,
+    "pos": 200,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Adqui. intra. bienes inversion - Tipo 21% - Cuota [634]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 18,
+    "pos": 217,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Total adqui. intra. bienes inversion - Base imponible [58]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 19,
+    "pos": 234,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Total adqui. intra. bienes inversion - Cuota [59]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 20,
+    "pos": 251,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Adqui. intra. servicios - Tipo 2% - Base imponible [773]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 21,
+    "pos": 268,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Adqui. intra. servicios - Tipo 2% - Cuota [774]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 22,
+    "pos": 285,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Adqui. intra. servicios - Tipo 4% - Base imponible [587]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 23,
+    "pos": 302,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Adqui. intra. servicios - Tipo 4% - Cuota [588]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 24,
+    "pos": 319,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Adqui. intra. servicios - Tipo 5% - Base imponible [740]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 25,
+    "pos": 336,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Adqui. intra. servicios - Tipo 5% - Cuota [741]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 26,
+    "pos": 353,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Adqui. intra. servicios - Tipo 7,5% - Base imponible [775]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 27,
+    "pos": 370,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Adqui. intra. servicios - Tipo 7,5% - Cuota [776]",
+    "validation": "",
+    "content": "Nota 2"
+   },
+   {
+    "n": 28,
+    "pos": 387,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Adqui. intra. servicios - Tipo 10% - Base imponible [635]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 29,
+    "pos": 404,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Adqui. intra. servicios - Tipo 10% - Cuota [636]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 30,
+    "pos": 421,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Adqui. intra. servicios - Tipo 21% - Base imponible [637]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 31,
+    "pos": 438,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Adqui. intra. servicios - Tipo 21% - Cuota [638]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 32,
+    "pos": 455,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Total adqui. intra. servicios - Base imponible [597]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 33,
+    "pos": 472,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Total adqui. intra. servicios - Cuota [598]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 34,
+    "pos": 489,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Compensac. rég. especial agric./ganad./pesca - Base impon. [60]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 35,
+    "pos": 506,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Compensac. rég. especial agric./ganad./pesca - Cuota deduc. [61]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 36,
+    "pos": 523,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Cuotas deducibles en virtud de resolución administrativa o sentencia firmes con tipos no vigentes - Base impon. [660]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 37,
+    "pos": 540,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Cuotas deducibles en virtud de resolución administrativa o sentencia firmes con tipos no vigentes - Cuota deduc. [661]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 38,
+    "pos": 557,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Rectificación de deducciones - Base imponible [639]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 39,
+    "pos": 574,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Rectificación de deducciones - Cuota [62]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 40,
+    "pos": 591,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Rectificación de deducciones intragrupo - Base impon. [651]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 41,
+    "pos": 608,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Rectificación de deducciones intragrupo - Cuota [652]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 42,
+    "pos": 625,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Regularización de inversiones [63]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 43,
+    "pos": 642,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Regularización por aplicación porcentaje definitivo de prorrata [522]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 44,
+    "pos": 659,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - IVA deducible - Suma de deducciones [64]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 45,
+    "pos": 676,
+    "len": 17,
+    "type": "N",
+    "desc": "5. Operaciones Reg. Gral. - Resultado régimen general [65]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 46,
+    "pos": 693,
+    "len": 150,
+    "type": "An",
+    "desc": "RESERVADO PARA LA A.E.A.T. (Dejar en blanco)",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 47,
+    "pos": 843,
+    "len": 12,
+    "type": "An",
+    "desc": "Indentificador de Fin de registro",
+    "validation": "OBLIGATORIO",
+    "content": "Constante \"</T39004000>\""
+   }
+  ],
+  "Pág. 5": [
+   {
+    "n": 1,
+    "pos": 1,
+    "len": 2,
+    "type": "An",
+    "desc": "Inicio del identificador de modelo y página.",
+    "validation": "OBLIGATORIO",
+    "content": "Constante \"<T\""
+   },
+   {
+    "n": 2,
+    "pos": 3,
+    "len": 3,
+    "type": "Num",
+    "desc": "Modelo.",
+    "validation": "OBLIGATORIO",
+    "content": "Constante \"390\""
+   },
+   {
+    "n": 3,
+    "pos": 6,
+    "len": 5,
+    "type": "Num",
+    "desc": "Página.",
+    "validation": "OBLIGATORIO",
+    "content": "Constante \"05000\""
+   },
+   {
+    "n": 4,
+    "pos": 11,
+    "len": 1,
+    "type": "An",
+    "desc": "Fin de identificador de modelo.",
+    "validation": "OBLIGATORIO",
+    "content": "Constante \">\""
+   },
+   {
+    "n": 5,
+    "pos": 12,
+    "len": 1,
+    "type": "A",
+    "desc": "Indicador de página complementaria.",
+    "validation": "",
+    "content": "Blanco (No complementaria) o \"C\" (Complementaria)"
+   },
+   {
+    "n": 6,
+    "pos": 13,
+    "len": 4,
+    "type": "An",
+    "desc": "6. Operaciones Reg. Simplificado - Actividad 1 - Epígrafe I.A.E. [66]",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 7,
+    "pos": 17,
+    "len": 10,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Actividad 1 - A - Nº unidades Módulo 1",
+    "validation": "",
+    "content": "8 enteros 2 decimales"
+   },
+   {
+    "n": 8,
+    "pos": 27,
+    "len": 17,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Actividad 1 - B - Importe Módulo 1",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 9,
+    "pos": 44,
+    "len": 10,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Actividad 1 - A - Nº unidades Módulo 2",
+    "validation": "",
+    "content": "8 enteros 2 decimales"
+   },
+   {
+    "n": 10,
+    "pos": 54,
+    "len": 17,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Actividad 1 - B - Importe Módulo 2",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 11,
+    "pos": 71,
+    "len": 10,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Actividad 1 - A - Nº unidades Módulo 3",
+    "validation": "",
+    "content": "8 enteros 2 decimales"
+   },
+   {
+    "n": 12,
+    "pos": 81,
+    "len": 17,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Actividad 1 - B - Importe Módulo 3",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 13,
+    "pos": 98,
+    "len": 10,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Actividad 1 - A - Nº unidades Módulo 4",
+    "validation": "",
+    "content": "8 enteros 2 decimales"
+   },
+   {
+    "n": 14,
+    "pos": 108,
+    "len": 17,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Actividad 1 - B - Importe Módulo 4",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 15,
+    "pos": 125,
+    "len": 10,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Actividad 1 - A - Nº unidades Módulo 5",
+    "validation": "",
+    "content": "8 enteros 2 decimales"
+   },
+   {
+    "n": 16,
+    "pos": 135,
+    "len": 17,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Actividad 1 - B - Importe Módulo 5",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 17,
+    "pos": 152,
+    "len": 10,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Actividad 1 - A - Nº unidades Módulo 6",
+    "validation": "",
+    "content": "8 enteros 2 decimales"
+   },
+   {
+    "n": 18,
+    "pos": 162,
+    "len": 17,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Actividad 1 - B - Importe Módulo 6",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 19,
+    "pos": 179,
+    "len": 10,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Actividad 1 - A - Nº unidades Módulo 7",
+    "validation": "",
+    "content": "8 enteros 2 decimales"
+   },
+   {
+    "n": 20,
+    "pos": 189,
+    "len": 17,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Actividad 1 - B - Importe Módulo 7",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 21,
+    "pos": 206,
+    "len": 17,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Actividad 1 - C- Cuota devengada operaciones corrientes",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 22,
+    "pos": 223,
+    "len": 17,
+    "type": "An",
+    "desc": "RESERVADO PARA LA A.E.A.T. (Dejar en blanco)",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 23,
+    "pos": 240,
+    "len": 17,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Actividad 1 - D- Cuota soportadas operaciones corrientes",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 24,
+    "pos": 257,
+    "len": 3,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Actividad 1 - E - Índice corrector",
+    "validation": "",
+    "content": "1 enteros 2 decimales"
+   },
+   {
+    "n": 25,
+    "pos": 260,
+    "len": 17,
+    "type": "N",
+    "desc": "6. Operaciones Reg. Simplificado - Actividad 1 - F - Resultado",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 26,
+    "pos": 277,
+    "len": 5,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Actividad 1 - G - % Cuota mínima",
+    "validation": "",
+    "content": "3 enteros 2 decimales"
+   },
+   {
+    "n": 27,
+    "pos": 282,
+    "len": 17,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Actividad 1 - H - Devolución cuotas soportadas otros países",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 28,
+    "pos": 299,
+    "len": 17,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Actividad 1 - I - Cuota mínima",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 29,
+    "pos": 316,
+    "len": 17,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Actividad 1 - Cuota derivada régimen simplificado [J1]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 30,
+    "pos": 333,
+    "len": 4,
+    "type": "An",
+    "desc": "6. Operaciones Reg. Simplificado - Actividad 2 - Epígrafe I.A.E. [66]",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 31,
+    "pos": 337,
+    "len": 10,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Actividad 2 - A - Nº unidades Módulo 1",
+    "validation": "",
+    "content": "8 enteros 2 decimales"
+   },
+   {
+    "n": 32,
+    "pos": 347,
+    "len": 17,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Actividad 2 - B - Importe Módulo 1",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 33,
+    "pos": 364,
+    "len": 10,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Actividad 2 - A - Nº unidades Módulo 2",
+    "validation": "",
+    "content": "8 enteros 2 decimales"
+   },
+   {
+    "n": 34,
+    "pos": 374,
+    "len": 17,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Actividad 2 - B - Importe Módulo 2",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 35,
+    "pos": 391,
+    "len": 10,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Actividad 2 - A - Nº unidades Módulo 3",
+    "validation": "",
+    "content": "8 enteros 2 decimales"
+   },
+   {
+    "n": 36,
+    "pos": 401,
+    "len": 17,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Actividad 2 - B - Importe Módulo 3",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 37,
+    "pos": 418,
+    "len": 10,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Actividad 2 - A - Nº unidades Módulo 4",
+    "validation": "",
+    "content": "8 enteros 2 decimales"
+   },
+   {
+    "n": 38,
+    "pos": 428,
+    "len": 17,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Actividad 2 - B - Importe Módulo 4",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 39,
+    "pos": 445,
+    "len": 10,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Actividad 2 - A - Nº unidades Módulo 5",
+    "validation": "",
+    "content": "8 enteros 2 decimales"
+   },
+   {
+    "n": 40,
+    "pos": 455,
+    "len": 17,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Actividad 2 - B - Importe Módulo 5",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 41,
+    "pos": 472,
+    "len": 10,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Actividad 2 - A - Nº unidades Módulo 6",
+    "validation": "",
+    "content": "8 enteros 2 decimales"
+   },
+   {
+    "n": 42,
+    "pos": 482,
+    "len": 17,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Actividad 2 - B - Importe Módulo 6",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 43,
+    "pos": 499,
+    "len": 10,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Actividad 2 - A - Nº unidades Módulo 7",
+    "validation": "",
+    "content": "8 enteros 2 decimales"
+   },
+   {
+    "n": 44,
+    "pos": 509,
+    "len": 17,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Actividad 2 - B - Importe Módulo 7",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 45,
+    "pos": 526,
+    "len": 17,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Actividad 2 - C- Cuota devengada operaciones corrientes",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 46,
+    "pos": 543,
+    "len": 17,
+    "type": "An",
+    "desc": "RESERVADO PARA LA A.E.A.T. (Dejar en blanco)",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 47,
+    "pos": 560,
+    "len": 17,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Actividad 2 - D- Cuota soportadas operaciones corrientes",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 48,
+    "pos": 577,
+    "len": 3,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Actividad 2 - E - Índice corrector",
+    "validation": "",
+    "content": "1 enteros 2 decimales"
+   },
+   {
+    "n": 49,
+    "pos": 580,
+    "len": 17,
+    "type": "N",
+    "desc": "6. Operaciones Reg. Simplificado - Actividad 2 - F - Resultado",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 50,
+    "pos": 597,
+    "len": 5,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Actividad 2 - G - % Cuota mínima",
+    "validation": "",
+    "content": "3 enteros 2 decimales"
+   },
+   {
+    "n": 51,
+    "pos": 602,
+    "len": 17,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Actividad 2 - H - Devolución cuotas soportadas otros países",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 52,
+    "pos": 619,
+    "len": 17,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Actividad 2 - I - Cuota mínima",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 53,
+    "pos": 636,
+    "len": 17,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Actividad 2 - Cuota derivada régimen simplificado [J2]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 54,
+    "pos": 653,
+    "len": 2,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Act. Agrícolas y Ganaderas - Actividad 1 - Código",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 55,
+    "pos": 655,
+    "len": 17,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Act. Agrícolas y Ganaderas - Actividad 1 - Volumen ingresos",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 56,
+    "pos": 672,
+    "len": 6,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Act. Agrícolas y Ganaderas - Actividad 1 - Indice cuota",
+    "validation": "",
+    "content": "1 entero 5 decimales"
+   },
+   {
+    "n": 57,
+    "pos": 678,
+    "len": 17,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Act. Agrícolas y Ganaderas - Actividad 1 - Cuota devengada",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 58,
+    "pos": 695,
+    "len": 17,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Act. Agrícolas y Ganaderas - Actividad 1 - Cuota soportada",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 59,
+    "pos": 712,
+    "len": 17,
+    "type": "N",
+    "desc": "6. Operaciones Reg. Simplificado - Act. Agrícolas y Ganaderas - Actividad 1 - Cuota derivada Regimen Simplificado [K1]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 60,
+    "pos": 729,
+    "len": 2,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Act. Agrícolas y Ganaderas - Actividad 2 - Código",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 61,
+    "pos": 731,
+    "len": 17,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Act. Agrícolas y Ganaderas - Actividad 2 - Volumen ingresos",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 62,
+    "pos": 748,
+    "len": 6,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Act. Agrícolas y Ganaderas - Actividad 2 - Indice cuota",
+    "validation": "",
+    "content": "1 entero 5 decimales"
+   },
+   {
+    "n": 63,
+    "pos": 754,
+    "len": 17,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Act. Agrícolas y Ganaderas - Actividad 2 - Cuota devengada",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 64,
+    "pos": 771,
+    "len": 17,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Act. Agrícolas y Ganaderas - Actividad 2 - Cuota soportada",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 65,
+    "pos": 788,
+    "len": 17,
+    "type": "N",
+    "desc": "6. Operaciones Reg. Simplificado - Act. Agrícolas y Ganaderas - Actividad 2 - Cuota derivada Regimen Simplificado [K2]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 66,
+    "pos": 805,
+    "len": 2,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Act. Agrícolas y Ganaderas - Actividad 3 - Código",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 67,
+    "pos": 807,
+    "len": 17,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Act. Agrícolas y Ganaderas - Actividad 3 - Volumen ingresos",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 68,
+    "pos": 824,
+    "len": 6,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Act. Agrícolas y Ganaderas - Actividad 3 - Indice cuota",
+    "validation": "",
+    "content": "1 entero 5 decimales"
+   },
+   {
+    "n": 69,
+    "pos": 830,
+    "len": 17,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Act. Agrícolas y Ganaderas - Actividad 3 - Cuota devengada",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 70,
+    "pos": 847,
+    "len": 17,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Act. Agrícolas y Ganaderas - Actividad 3 - Cuota soportada",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 71,
+    "pos": 864,
+    "len": 17,
+    "type": "N",
+    "desc": "6. Operaciones Reg. Simplificado - Act. Agrícolas y Ganaderas - Actividad 3 - Cuota derivada Regimen Simplificado [K3]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 72,
+    "pos": 881,
+    "len": 2,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Act. Agrícolas y Ganaderas - Actividad 4 - Código",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 73,
+    "pos": 883,
+    "len": 17,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Act. Agrícolas y Ganaderas - Actividad 4 - Volumen ingresos",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 74,
+    "pos": 900,
+    "len": 6,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Act. Agrícolas y Ganaderas - Actividad 4 - Indice cuota",
+    "validation": "",
+    "content": "1 entero 5 decimales"
+   },
+   {
+    "n": 75,
+    "pos": 906,
+    "len": 17,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Act. Agrícolas y Ganaderas - Actividad 4 - Cuota devengada",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 76,
+    "pos": 923,
+    "len": 17,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Act. Agrícolas y Ganaderas - Actividad 4 - Cuota soportada",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 77,
+    "pos": 940,
+    "len": 17,
+    "type": "N",
+    "desc": "6. Operaciones Reg. Simplificado - Act. Agrícolas y Ganaderas - Actividad 4 - Cuota derivada Regimen Simplificado [K4]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 78,
+    "pos": 957,
+    "len": 2,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Act. Agrícolas y Ganaderas - Actividad 5 - Código",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 79,
+    "pos": 959,
+    "len": 17,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Act. Agrícolas y Ganaderas - Actividad 5 - Volumen ingresos",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 80,
+    "pos": 976,
+    "len": 6,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Act. Agrícolas y Ganaderas - Actividad 5 - Indice cuota",
+    "validation": "",
+    "content": "1 entero 5 decimales"
+   },
+   {
+    "n": 81,
+    "pos": 982,
+    "len": 17,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Act. Agrícolas y Ganaderas - Actividad 5 - Cuota devengada",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 82,
+    "pos": 999,
+    "len": 17,
+    "type": "Num",
+    "desc": "6. Operaciones Reg. Simplificado - Act. Agrícolas y Ganaderas - Actividad 5 - Cuota soportada",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 83,
+    "pos": 1016,
+    "len": 17,
+    "type": "N",
+    "desc": "6. Operaciones Reg. Simplificado - Act. Agrícolas y Ganaderas - Actividad 5 - Cuota derivada Regimen Simplificado [K5]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 84,
+    "pos": 1033,
+    "len": 17,
+    "type": "N",
+    "desc": "6. Operaciones Reg. Simplificado - IVA devengado - Suma cuotas actividades no agríc., ganad. y forest. [74]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 85,
+    "pos": 1050,
+    "len": 17,
+    "type": "N",
+    "desc": "6. Operaciones Reg. Simplificado - IVA devengado - Suma cuotas actividades agríc., ganad. y forest. [75]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 86,
+    "pos": 1067,
+    "len": 17,
+    "type": "N",
+    "desc": "6. Operaciones Reg. Simplificado - IVA devengado en adquisiciones intracomunitarias [76]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 87,
+    "pos": 1084,
+    "len": 17,
+    "type": "N",
+    "desc": "6. Operaciones Reg. Simplificado - IVA devengado - IVA devengado por inversión del sujeto pasivo [77]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 88,
+    "pos": 1101,
+    "len": 17,
+    "type": "N",
+    "desc": "6. Operaciones Reg. Simplificado - IVA devengado - IVA devengado en entregas de activos fijos [78]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 89,
+    "pos": 1118,
+    "len": 17,
+    "type": "N",
+    "desc": "6. Operaciones Reg. Simplificado - IVA devengado - Total cuota resultante [79]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 90,
+    "pos": 1135,
+    "len": 17,
+    "type": "N",
+    "desc": "6. Operaciones Reg. Simplificado - Deducciones - IVA soportado en adquisicion de activos fijos [80]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 91,
+    "pos": 1152,
+    "len": 17,
+    "type": "N",
+    "desc": "6. Operaciones Reg. Simplificado - Deducciones - Regularización de bienes de inversion [81]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 92,
+    "pos": 1169,
+    "len": 17,
+    "type": "N",
+    "desc": "6. Operaciones Reg. Simplificado - Deducciones - Suma de deducciones [82]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 93,
+    "pos": 1186,
+    "len": 17,
+    "type": "N",
+    "desc": "6. Operaciones Reg. Simplificado - Resultado régimen simplificado [83]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 94,
+    "pos": 1203,
+    "len": 1,
+    "type": "An",
+    "desc": "6. Operaciones Reg. Simplificado - Actividad 1 - Epigrafe IAE - Indicador auxiliar de actividad en el caso de epígrafes 691.9 y 722",
+    "validation": "",
+    "content": "blanco, \"1\" o \"2\" (Nota 2)"
+   },
+   {
+    "n": 95,
+    "pos": 1204,
+    "len": 1,
+    "type": "An",
+    "desc": "6. Operaciones Reg. Simplificado - Actividad 2 - Epigrafe IAE - Indicador auxiliar de actividad en el caso de epígrafes 691.9 y 722",
+    "validation": "",
+    "content": "blanco, \"1\" o \"2\" (Nota 2)"
+   },
+   {
+    "n": 96,
+    "pos": 1205,
+    "len": 303,
+    "type": "An",
+    "desc": "RESERVADO PARA LA A.E.A.T. (Dejar en blanco)",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 97,
+    "pos": 1508,
+    "len": 12,
+    "type": "An",
+    "desc": "Indentificador de Fin de registro",
+    "validation": "OBLIGATORIO",
+    "content": "Constante \"</T39005000>\""
+   }
+  ],
+  "Pág. 6": [
+   {
+    "n": 1,
+    "pos": 1,
+    "len": 2,
+    "type": "An",
+    "desc": "Inicio del identificador de modelo y página.",
+    "validation": "OBLIGATORIO",
+    "content": "Constante \"<T\""
+   },
+   {
+    "n": 2,
+    "pos": 3,
+    "len": 3,
+    "type": "Num",
+    "desc": "Modelo..",
+    "validation": "OBLIGATORIO",
+    "content": "Constante \"390\""
+   },
+   {
+    "n": 3,
+    "pos": 6,
+    "len": 5,
+    "type": "Num",
+    "desc": "Página.",
+    "validation": "OBLIGATORIO.",
+    "content": "Constante \"06000\""
+   },
+   {
+    "n": 4,
+    "pos": 11,
+    "len": 1,
+    "type": "An",
+    "desc": "Fin de identificador de modelo.",
+    "validation": "OBLIGATORIO",
+    "content": "Constante \">\""
+   },
+   {
+    "n": 5,
+    "pos": 12,
+    "len": 1,
+    "type": "A",
+    "desc": "Indicador de página complementaria.",
+    "validation": "",
+    "content": "En blanco"
+   },
+   {
+    "n": 6,
+    "pos": 13,
+    "len": 17,
+    "type": "N",
+    "desc": "7. Resultado liquidación anual - Regularización cuotas art. 80.Cinco.5ª LIVA [658]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 7,
+    "pos": 30,
+    "len": 17,
+    "type": "N",
+    "desc": "7. Resultado liquidación anual - Suma de resultados [84]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 8,
+    "pos": 47,
+    "len": 17,
+    "type": "Num",
+    "desc": "7. Resultado liquidación anual - IVA a la importación liquidado por la Aduana (sólo sujetos pasivos con opción de diferimiento) [659]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 9,
+    "pos": 64,
+    "len": 17,
+    "type": "Num",
+    "desc": "7. Resultado liquidación anual - Compensación de cuotas ejercicio anterior [85]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 10,
+    "pos": 81,
+    "len": 17,
+    "type": "Num",
+    "desc": "7. Resultado liquidación anual - Pago a cuenta atribuible a la Administración del Estado deducido en el ejercicio por entregas de gasolinas,gasóleos y biocarburantes [112]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 11,
+    "pos": 98,
+    "len": 17,
+    "type": "N",
+    "desc": "7. Resultado liquidación anual - Resultado de la liquidación [86]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 12,
+    "pos": 115,
+    "len": 5,
+    "type": "Num",
+    "desc": "8. Tributación razón de territorio - Administraciones - Territorio común [87]",
+    "validation": "",
+    "content": "3 enteros 2 decimales"
+   },
+   {
+    "n": 13,
+    "pos": 120,
+    "len": 5,
+    "type": "Num",
+    "desc": "8. Tributación razón de territorio - Administraciones - Araba/Álava [88]",
+    "validation": "",
+    "content": "3 enteros 2 decimales"
+   },
+   {
+    "n": 14,
+    "pos": 125,
+    "len": 5,
+    "type": "Num",
+    "desc": "8. Tributación razón de territorio - Administraciones - Gipuzkoa [89]",
+    "validation": "",
+    "content": "3 enteros 2 decimales"
+   },
+   {
+    "n": 15,
+    "pos": 130,
+    "len": 5,
+    "type": "Num",
+    "desc": "8. Tributación razón de territorio - Administraciones - Bizkaia [90]",
+    "validation": "",
+    "content": "3 enteros 2 decimales"
+   },
+   {
+    "n": 16,
+    "pos": 135,
+    "len": 5,
+    "type": "Num",
+    "desc": "8. Tributación razón de territorio - Administraciones - Navarra [91]",
+    "validation": "",
+    "content": "3 enteros 2 decimales"
+   },
+   {
+    "n": 17,
+    "pos": 140,
+    "len": 17,
+    "type": "N",
+    "desc": "8. Tributación razón de territorio - Administraciones - Regularización cuotas art. 80.Cinco.5ª LIVA [658]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 18,
+    "pos": 157,
+    "len": 17,
+    "type": "N",
+    "desc": "8. Tributación razón de territorio - Administraciones - Suma de resultados [84]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 19,
+    "pos": 174,
+    "len": 17,
+    "type": "N",
+    "desc": "8. Tributación razón de territorio - Administraciones - Resultado atribuible a territorio común [92]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 20,
+    "pos": 191,
+    "len": 17,
+    "type": "Num",
+    "desc": "8. Tributación razón de territorio - Administraciones - IVA a la importación liquidado por la Aduana(sólo sujetos pasivos con opción de diferimiento) [659]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 21,
+    "pos": 208,
+    "len": 17,
+    "type": "Num",
+    "desc": "8. Tributación razón de territorio - Administraciones - Compens. cuotas ej. anterior atrib. territ. com. [93]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 22,
+    "pos": 225,
+    "len": 17,
+    "type": "Num",
+    "desc": "8. Tributación razón de territorio - Administraciones - Pago a cuenta atribuible a la Administración del Estado deducido en el ejercicio por entregas de gasolinas,gasóleos y biocarburantes [112]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 23,
+    "pos": 242,
+    "len": 17,
+    "type": "N",
+    "desc": "8. Tributación razón de territorio - Administraciones - Resultado liq. anual atribuible territ. comun [94]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 24,
+    "pos": 259,
+    "len": 17,
+    "type": "Num",
+    "desc": "9. Resultado de las liquidaciones - Total resultados a ingresar autoliquidaciones de IVA del ejercicio [95]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 25,
+    "pos": 276,
+    "len": 17,
+    "type": "Num",
+    "desc": "9. Resultado de las liquidaciones - Total devoluc. mensuales IVA suj. pasivos Regtro. de devolución mensual [96]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 26,
+    "pos": 293,
+    "len": 17,
+    "type": "Num",
+    "desc": "9. Resultado de las liquidaciones - Total devoluc. Por cuotas en la adquisicion de elementos de transporte [524]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 27,
+    "pos": 310,
+    "len": 17,
+    "type": "Num",
+    "desc": "9. Resultado de las liquidaciones - Resultado declaración-liquidación último periodo - A compensar [97]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 28,
+    "pos": 327,
+    "len": 17,
+    "type": "Num",
+    "desc": "9. Resultado de las liquidaciones - Resultado declaración-liquidación último periodo - A devolver [98]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 29,
+    "pos": 344,
+    "len": 17,
+    "type": "Num",
+    "desc": "9. Resultado de las liquidaciones - Cuotas pendientes de compensación generadas en el ejercicio y distintas de las incluidas en la casilla 97 [662]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 30,
+    "pos": 361,
+    "len": 17,
+    "type": "Num",
+    "desc": "9. Resultado de las liquidaciones - Total resultados positivos del ejercicio (modelo 322) [525]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 31,
+    "pos": 378,
+    "len": 17,
+    "type": "Num",
+    "desc": "9. Resultado de las liquidaciones - Total resultados negativos del ejercicio (modelo 322) [526]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 32,
+    "pos": 395,
+    "len": 17,
+    "type": "N",
+    "desc": "10. Volumen de operaciones - Operaciones en régimen general [99]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 33,
+    "pos": 412,
+    "len": 17,
+    "type": "N",
+    "desc": "10. Volumen de operaciones - Operaciones régimen especial del criterio de caja [653]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 34,
+    "pos": 429,
+    "len": 17,
+    "type": "N",
+    "desc": "10. Volumen de operaciones - Entregas intracomunitarias de bienes y servicios [103]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 35,
+    "pos": 446,
+    "len": 17,
+    "type": "N",
+    "desc": "10. Volumen de operaciones - Exportaciones y otras operaciones exentas con derecho a deducción [104]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 36,
+    "pos": 463,
+    "len": 17,
+    "type": "N",
+    "desc": "10. Volumen de operaciones - Operaciones exentas sin derecho a deducción [105]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 37,
+    "pos": 480,
+    "len": 17,
+    "type": "N",
+    "desc": "10. Volumen de operaciones - Operaciones no sujetas por reglas de localización (excepto las incluidas en la casilla 126) [110]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 38,
+    "pos": 497,
+    "len": 17,
+    "type": "N",
+    "desc": "10. Volumen de operaciones - Operaciones sujetas con inversión del sujeto pasivo [125]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 39,
+    "pos": 514,
+    "len": 17,
+    "type": "N",
+    "desc": "10. Volumen de operaciones - OSS. Operaciones no sujetas por reglas de localización acogidas a la OSS [126]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 40,
+    "pos": 531,
+    "len": 17,
+    "type": "N",
+    "desc": "10. Volumen de operaciones - OSS. Operaciones sujetas y acogidas a la OSS [127]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 41,
+    "pos": 548,
+    "len": 17,
+    "type": "N",
+    "desc": "10. Volumen de operaciones - Operaciones intragrupo valoradas conforme a lo dispuesto en los arts. 78 y 79 LIVA [128]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 42,
+    "pos": 565,
+    "len": 17,
+    "type": "N",
+    "desc": "10. Volumen de operaciones - Operaciones en régimen simplificado [100]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 43,
+    "pos": 582,
+    "len": 17,
+    "type": "N",
+    "desc": "10. Volumen de operaciones - Operaciones en régimen especias de la agricultura, ganadería y pesca [101]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 44,
+    "pos": 599,
+    "len": 17,
+    "type": "N",
+    "desc": "10. Volumen de operaciones - Operaciones en régimen especial del recargo de equivalencia [102].",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 45,
+    "pos": 616,
+    "len": 17,
+    "type": "N",
+    "desc": "10. Volumen de operaciones - Operaciones en régimen especias de bienes usados, objetos de arte, antigüedades y objetos de colección [227].",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 46,
+    "pos": 633,
+    "len": 17,
+    "type": "N",
+    "desc": "10. Volumen de operaciones - Operaciones en régimen especial de agencias de viajes [228].",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 47,
+    "pos": 650,
+    "len": 17,
+    "type": "N",
+    "desc": "10. Volumen de operaciones - Entrega de bienes inmuebles y operaciones financieras no habituales [106]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 48,
+    "pos": 667,
+    "len": 17,
+    "type": "N",
+    "desc": "10. Volumen de operaciones - Entrega de bienes de inversion [107]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 49,
+    "pos": 684,
+    "len": 17,
+    "type": "N",
+    "desc": "10. Volumen de operaciones - Total volumen de operaciones [108]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 50,
+    "pos": 701,
+    "len": 150,
+    "type": "An",
+    "desc": "RESERVADO PARA LA A.E.A.T. (Dejar en blanco)",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 51,
+    "pos": 851,
+    "len": 12,
+    "type": "An",
+    "desc": "Indentificador de Fin de registro",
+    "validation": "OBLIGATORIO",
+    "content": "Constante \"</T39006000>\""
+   }
+  ],
+  "Pág. 7": [
+   {
+    "n": 1,
+    "pos": 1,
+    "len": 2,
+    "type": "An",
+    "desc": "Inicio del identificador de modelo y página.",
+    "validation": "OBLIGATORIO",
+    "content": "Constante \"<T\""
+   },
+   {
+    "n": 2,
+    "pos": 3,
+    "len": 3,
+    "type": "Num",
+    "desc": "Modelo",
+    "validation": "OBLIGATORIO",
+    "content": "Constante \"390\""
+   },
+   {
+    "n": 3,
+    "pos": 6,
+    "len": 5,
+    "type": "Num",
+    "desc": "Página",
+    "validation": "OBLIGATORIO.",
+    "content": "Constante \"07000\""
+   },
+   {
+    "n": 4,
+    "pos": 11,
+    "len": 1,
+    "type": "An",
+    "desc": "Fin de identificador de modelo.",
+    "validation": "OBLIGATORIO",
+    "content": "Constante \">\""
+   },
+   {
+    "n": 5,
+    "pos": 12,
+    "len": 1,
+    "type": "A",
+    "desc": "Indicador de página complementaria.",
+    "validation": "",
+    "content": "Blanco (No complementaria) o \"C\" (Complementaria)"
+   },
+   {
+    "n": 6,
+    "pos": 13,
+    "len": 17,
+    "type": "N",
+    "desc": "11. Oper. Específicas - Adquisiciones interiores exentas [230]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 7,
+    "pos": 30,
+    "len": 17,
+    "type": "N",
+    "desc": "11. Oper. específicas - Adquisiciones intracomunitarias exentas [109]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 8,
+    "pos": 47,
+    "len": 17,
+    "type": "N",
+    "desc": "11. Oper. Específicas - Importaciones exentas [231]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 9,
+    "pos": 64,
+    "len": 17,
+    "type": "N",
+    "desc": "11. Oper. Específicas - Bases imponibles IVA soportado no deducible [232]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 10,
+    "pos": 81,
+    "len": 17,
+    "type": "N",
+    "desc": "11. Oper. específicas - Oper. sujetas que originan el derecho a la devolución mensual [111]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 11,
+    "pos": 98,
+    "len": 17,
+    "type": "N",
+    "desc": "11. Oper. específicas - Entrega interior bienes devengada por invers. sujet. pasiv. operac. triangul. [113]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 12,
+    "pos": 115,
+    "len": 17,
+    "type": "N",
+    "desc": "11. Oper. Específicas - Servicios localizados en el territorio de aplicación del impuesto por inversión del sujeto pasivo [523]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 13,
+    "pos": 132,
+    "len": 17,
+    "type": "N",
+    "desc": "11. Oper. Específicas - Importes de las entregas de bienes regimen especial criterio caja - Base imponible [654]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 14,
+    "pos": 149,
+    "len": 17,
+    "type": "N",
+    "desc": "11. Oper. Específicas - Importes de las entregas de bienes regimen especial criterio caja - Cuota [655]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 15,
+    "pos": 166,
+    "len": 17,
+    "type": "N",
+    "desc": "11. Oper. Específicas - Importes de las adquisiciones de bienes regimen especial criterio caja - Base imponible [656]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 16,
+    "pos": 183,
+    "len": 17,
+    "type": "N",
+    "desc": "11. Oper. Específicas - Importes de las adquisiciones de bienes regimen especial criterio caja - Cuota [657]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 17,
+    "pos": 200,
+    "len": 40,
+    "type": "An",
+    "desc": "12. Prorratas - 1 - Actividad desarrollada",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 18,
+    "pos": 240,
+    "len": 4,
+    "type": "An",
+    "desc": "12. Prorratas - 1 - Código CNAE [114]",
+    "validation": "",
+    "content": "CNAE-2025"
+   },
+   {
+    "n": 19,
+    "pos": 244,
+    "len": 17,
+    "type": "Num",
+    "desc": "12. Prorratas - 1 - Importe de operaciones [115]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 20,
+    "pos": 261,
+    "len": 17,
+    "type": "Num",
+    "desc": "12. Prorratas - 1 - Importe de operaciones con derecho a deducción [116]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 21,
+    "pos": 278,
+    "len": 1,
+    "type": "An",
+    "desc": "12. Prorratas - 1 - Tipo de prorrata [117]",
+    "validation": "",
+    "content": "\"G\", \"E\" o blanco."
+   },
+   {
+    "n": 22,
+    "pos": 279,
+    "len": 5,
+    "type": "Num",
+    "desc": "12. Prorratas - 1 - % de prorrata [118]",
+    "validation": "",
+    "content": "3 enteros 2 decimales, menor o igual que 100."
+   },
+   {
+    "n": 23,
+    "pos": 284,
+    "len": 40,
+    "type": "An",
+    "desc": "12. Prorratas - 2 - Actividad desarrollada",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 24,
+    "pos": 324,
+    "len": 4,
+    "type": "An",
+    "desc": "12. Prorratas - 2 - Código CNAE [114]",
+    "validation": "",
+    "content": "CNAE-2025"
+   },
+   {
+    "n": 25,
+    "pos": 328,
+    "len": 17,
+    "type": "Num",
+    "desc": "12. Prorratas - 2 - Importe de operaciones [115]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 26,
+    "pos": 345,
+    "len": 17,
+    "type": "Num",
+    "desc": "12. Prorratas - 2 - Importe de operaciones con derecho a deducción [116]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 27,
+    "pos": 362,
+    "len": 1,
+    "type": "An",
+    "desc": "12. Prorratas - 2 - Tipo de prorrata [117]",
+    "validation": "",
+    "content": "\"G\", \"E\" o blanco."
+   },
+   {
+    "n": 28,
+    "pos": 363,
+    "len": 5,
+    "type": "Num",
+    "desc": "12. Prorratas - 2 - % de prorrata [118]",
+    "validation": "",
+    "content": "3 enteros 2 decimales, menor o igual que 100."
+   },
+   {
+    "n": 29,
+    "pos": 368,
+    "len": 40,
+    "type": "An",
+    "desc": "12. Prorratas - 3 - Actividad desarrollada",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 30,
+    "pos": 408,
+    "len": 4,
+    "type": "An",
+    "desc": "12. Prorratas - 3 - Código CNAE [114]",
+    "validation": "",
+    "content": "CNAE-2025"
+   },
+   {
+    "n": 31,
+    "pos": 412,
+    "len": 17,
+    "type": "Num",
+    "desc": "12. Prorratas - 3 - Importe de operaciones [115]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 32,
+    "pos": 429,
+    "len": 17,
+    "type": "Num",
+    "desc": "12. Prorratas - 3 - Importe de operaciones con derecho a deducción [116]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 33,
+    "pos": 446,
+    "len": 1,
+    "type": "An",
+    "desc": "12. Prorratas - 3 - Tipo de prorrata [117]",
+    "validation": "",
+    "content": "\"G\", \"E\" o blanco."
+   },
+   {
+    "n": 34,
+    "pos": 447,
+    "len": 5,
+    "type": "Num",
+    "desc": "12. Prorratas - 3 - % de prorrata [118]",
+    "validation": "",
+    "content": "3 enteros 2 decimales, menor o igual que 100."
+   },
+   {
+    "n": 35,
+    "pos": 452,
+    "len": 40,
+    "type": "An",
+    "desc": "12. Prorratas - 4 - Actividad desarrollada",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 36,
+    "pos": 492,
+    "len": 4,
+    "type": "An",
+    "desc": "12. Prorratas - 4 - Código CNAE [114]",
+    "validation": "",
+    "content": "CNAE-2025"
+   },
+   {
+    "n": 37,
+    "pos": 496,
+    "len": 17,
+    "type": "Num",
+    "desc": "12. Prorratas - 4 - Importe de operaciones [115]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 38,
+    "pos": 513,
+    "len": 17,
+    "type": "Num",
+    "desc": "12. Prorratas - 4 - Importe de operaciones con derecho a deducción [116]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 39,
+    "pos": 530,
+    "len": 1,
+    "type": "An",
+    "desc": "12. Prorratas - 4 - Tipo de prorrata [117]",
+    "validation": "",
+    "content": "\"G\", \"E\" o blanco."
+   },
+   {
+    "n": 40,
+    "pos": 531,
+    "len": 5,
+    "type": "Num",
+    "desc": "12. Prorratas - 4 - % de prorrata [118]",
+    "validation": "",
+    "content": "3 enteros 2 decimales, menor o igual que 100."
+   },
+   {
+    "n": 41,
+    "pos": 536,
+    "len": 40,
+    "type": "An",
+    "desc": "12. Prorratas - 5 - Actividad desarrollada",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 42,
+    "pos": 576,
+    "len": 4,
+    "type": "An",
+    "desc": "12. Prorratas - 5 - Código CNAE [114]",
+    "validation": "",
+    "content": "CNAE-2025"
+   },
+   {
+    "n": 43,
+    "pos": 580,
+    "len": 17,
+    "type": "Num",
+    "desc": "12. Prorratas - 5 - Importe de operaciones [115]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 44,
+    "pos": 597,
+    "len": 17,
+    "type": "Num",
+    "desc": "12. Prorratas - 5 - Importe de operaciones con derecho a deducción [116]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 45,
+    "pos": 614,
+    "len": 1,
+    "type": "An",
+    "desc": "12. Prorratas - 5 - Tipo de prorrata [117]",
+    "validation": "",
+    "content": "\"G\", \"E\" o blanco."
+   },
+   {
+    "n": 46,
+    "pos": 615,
+    "len": 5,
+    "type": "Num",
+    "desc": "12. Prorratas - 5 - % de prorrata [118]",
+    "validation": "",
+    "content": "3 enteros 2 decimales, menor o igual que 100."
+   },
+   {
+    "n": 47,
+    "pos": 620,
+    "len": 150,
+    "type": "An",
+    "desc": "RESERVADO PARA LA A.E.A.T. (Dejar en blanco)",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 48,
+    "pos": 770,
+    "len": 12,
+    "type": "An",
+    "desc": "Indentificador de Fin de registro",
+    "validation": "OBLIGATORIO",
+    "content": "Constante \"</T39007000>\""
+   }
+  ],
+  "Pág. 8": [
+   {
+    "n": 1,
+    "pos": 1,
+    "len": 2,
+    "type": "An",
+    "desc": "Inicio del identificador de modelo y página.",
+    "validation": "OBLIGATORIO",
+    "content": "Constante \"<T\""
+   },
+   {
+    "n": 2,
+    "pos": 3,
+    "len": 3,
+    "type": "Num",
+    "desc": "Modelo",
+    "validation": "OBLIGATORIO",
+    "content": "Constante \"390\""
+   },
+   {
+    "n": 3,
+    "pos": 6,
+    "len": 5,
+    "type": "Num",
+    "desc": "Página",
+    "validation": "OBLIGATORIO.",
+    "content": "Constante \"08000\""
+   },
+   {
+    "n": 4,
+    "pos": 11,
+    "len": 1,
+    "type": "An",
+    "desc": "Fin de identificador de modelo.",
+    "validation": "OBLIGATORIO",
+    "content": "Constante \">\""
+   },
+   {
+    "n": 5,
+    "pos": 12,
+    "len": 1,
+    "type": "A",
+    "desc": "Indicador de página complementaria.",
+    "validation": "",
+    "content": "En blanco"
+   },
+   {
+    "n": 6,
+    "pos": 13,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 1 - IVA ded. Operac. Interiores - Bienes y servic. - Base imponible [139]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 7,
+    "pos": 30,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 1 - IVA ded. Operac. Interiores - Bienes y servic. - Cuota deducible [140]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 8,
+    "pos": 47,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 1 - IVA ded. Operac. Interiores - Bienes inversión - Base imponible [141]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 9,
+    "pos": 64,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 1 - IVA ded. Operac. Interiores - Bienes inversión - Cuota deducible [142]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 10,
+    "pos": 81,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 1 - IVA ded. Importaciones - Bienes corrientes - Base imponible [143]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 11,
+    "pos": 98,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 1 - IVA ded. Importaciones - Bienes corrientes - Cuota deducible [144]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 12,
+    "pos": 115,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 1 - IVA ded. Importaciones - Bienes inversión - Base imponible [145]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 13,
+    "pos": 132,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 1 - IVA ded. Importaciones - Bienes inversión - Cuota deducible [146]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 14,
+    "pos": 149,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 1 - IVA ded. Adquisic. intracomun. - Bienes corrientes - Base imponible [147]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 15,
+    "pos": 166,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 1 - IVA ded. Adquisic. intracomun. - Bienes corrientes - Cuota deducible [148]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 16,
+    "pos": 183,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 1 - IVA ded. Adquisic. intracomun. - Bienes inversión - Base imponible [149]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 17,
+    "pos": 200,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 1 - IVA ded. Adquisic. intracomun. - Bienes inversión - Cuota deducible [150]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 18,
+    "pos": 217,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 1 - Compensac. rég. especial agric./ganad./pesca - Base impon. [151]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 19,
+    "pos": 234,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 1 - Compensac. rég. especial agric./ganad./pesca - Cuota deduc. [152]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 20,
+    "pos": 251,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 1 - Rectificación de deducciones - Base impon. [640]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 21,
+    "pos": 268,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 1 - Rectificación de deducciones - Cuota deduc. [153]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 22,
+    "pos": 285,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 1 - Regularización de inversiones [154]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 23,
+    "pos": 302,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 1 - Suma de deducciones [155]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 24,
+    "pos": 319,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 2 - IVA ded. Operac. Interiores - Bienes y servic. - Base imponible [156]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 25,
+    "pos": 336,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 2 - IVA ded. Operac. Interiores - Bienes y servic. - Cuota deducible [157]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 26,
+    "pos": 353,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 2 - IVA ded. Operac. Interiores - Bienes inversión - Base imponible [158]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 27,
+    "pos": 370,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 2 - IVA ded. Operac. Interiores - Bienes inversión - Cuota deducible [159]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 28,
+    "pos": 387,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 2 - IVA ded. Importaciones - Bienes corrientes - Base imponible [160]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 29,
+    "pos": 404,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 2 - IVA ded. Importaciones - Bienes corrientes - Cuota deducible [161]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 30,
+    "pos": 421,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 2 - IVA ded. Importaciones - Bienes inversión - Base imponible [162]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 31,
+    "pos": 438,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 2 - IVA ded. Importaciones - Bienes inversión - Cuota deducible [163]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 32,
+    "pos": 455,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 2 - IVA ded. Adquisic. intracomun. - Bienes corrientes - Base imponible [164]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 33,
+    "pos": 472,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 2 - IVA ded. Adquisic. intracomun. - Bienes corrientes - Cuota deducible [165]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 34,
+    "pos": 489,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 2 - IVA ded. Adquisic. intracomun. - Bienes inversión - Base imponible [166]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 35,
+    "pos": 506,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 2 - IVA ded. Adquisic. intracomun. - Bienes inversión - Cuota deducible [167]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 36,
+    "pos": 523,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 2 - Compensac. rég. especial agric./ganad./pesca - Base impon. [168]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 37,
+    "pos": 540,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 2 - Compensac. rég. especial agric./ganad./pesca - Cuota deduc. [169]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 38,
+    "pos": 557,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 2 - Rectificación de deducciones - Base impon. [641]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 39,
+    "pos": 574,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 2 - Rectificación de deducciones - Cuota decuc. [170]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 40,
+    "pos": 591,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 2 - Regularización de inversiones [171]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 41,
+    "pos": 608,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 2 - Suma de deducciones [172]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 42,
+    "pos": 625,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 3 - IVA ded. Operac. Interiores - Bienes y servic. - Base imponible [173]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 43,
+    "pos": 642,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 3 - IVA ded. Operac. Interiores - Bienes y servic. - Cuota deducible [174]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 44,
+    "pos": 659,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 3 - IVA ded. Operac. Interiores - Bienes inversión - Base imponible [175]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 45,
+    "pos": 676,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 3 - IVA ded. Operac. Interiores - Bienes inversión - Cuota deducible [176]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 46,
+    "pos": 693,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 3 - IVA ded. Importaciones - Bienes corrientes - Base imponible [177]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 47,
+    "pos": 710,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 3 - IVA ded. Importaciones - Bienes corrientes - Cuota deducible [178]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 48,
+    "pos": 727,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 3 - IVA ded. Importaciones - Bienes inversión - Base imponible [179]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 49,
+    "pos": 744,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 3 - IVA ded. Importaciones - Bienes inversión - Cuota deducible [180]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 50,
+    "pos": 761,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 3 - IVA ded. Adquisic. intracomun. - Bienes corrientes - Base imponible [181]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 51,
+    "pos": 778,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 3 - IVA ded. Adquisic. intracomun. - Bienes corrientes - Cuota deducible [182]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 52,
+    "pos": 795,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 3 - IVA ded. Adquisic. intracomun. - Bienes inversión - Base imponible [183]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 53,
+    "pos": 812,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 3 - IVA ded. Adquisic. intracomun. - Bienes inversión - Cuota deducible [184]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 54,
+    "pos": 829,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 3 - Compensac. rég. especial agric./ganad./pesca - Base impon. [185]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 55,
+    "pos": 846,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 3 - Compensac. rég. especial agric./ganad./pesca - Cuota deduc. [186]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 56,
+    "pos": 863,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 3 - Rectificación de deducciones - Base impon. [642]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 57,
+    "pos": 880,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 3 - Rectificación de deducciones - Cuota deduc. [187]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 58,
+    "pos": 897,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 3 - Regularización de inversiones [188]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 59,
+    "pos": 914,
+    "len": 17,
+    "type": "N",
+    "desc": "13. Reg. Deducc. Diferenc.- 3 - Suma de deducciones [189]",
+    "validation": "",
+    "content": "15 enteros 2 decimales"
+   },
+   {
+    "n": 60,
+    "pos": 931,
+    "len": 150,
+    "type": "An",
+    "desc": "RESERVADO PARA LA A.E.A.T. (Dejar en blanco)",
+    "validation": "",
+    "content": ""
+   },
+   {
+    "n": 61,
+    "pos": 1081,
+    "len": 12,
+    "type": "An",
+    "desc": "Indentificador de Fin de registro",
+    "validation": "OBLIGATORIO",
+    "content": "Constante \"</T39008000>\""
+   }
+  ]
+ }
+}

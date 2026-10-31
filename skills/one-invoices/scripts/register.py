@@ -27,6 +27,9 @@ KEYS = {
 }
 AMOUNTS = {"base", "vat", "irpf", "total"}
 KINDS = {"domestic", "eu-services", "investment", "not-deductible"}
+# EU VAT number prefixes (model 349 annex, without GB; Greece is EL).
+EU_PREFIXES = {"AT", "BE", "BG", "CY", "CZ", "DE", "DK", "EE", "EL", "ES", "FI", "FR", "HR", "HU", "IE", "IT", "LT", "LU",
+               "LV", "MT", "NL", "PL", "PT", "RO", "SE", "SI", "SK"}
 CENT = Decimal("0.01")
 
 
@@ -130,6 +133,8 @@ def validate(kind: str, row: dict) -> dict:
             raise RegisterError(f"base {base} + VAT {vat} = {base + vat}, but total is {total}")
     party = "client_tax_id" if kind == "issued" else "supplier_tax_id"
     r[party] = r[party].upper().replace(" ", "")
+    if kind == "received" and r["kind"] == "eu-services" and (r[party][:2] not in EU_PREFIXES - {"ES"} or len(r[party]) < 4):
+        raise RegisterError(f"EU service invoice {r['number']}: supplier tax ID {r[party]!r} must start with an EU country code")
     return r
 
 
