@@ -4,7 +4,7 @@ description: >-
   Registers a Spanish freelancer's issued and received invoices from their PDFs and generates
   the AEAT import files for models 303, 349 and 390 with a summary. Never files anything.
   Use when the user asks to add invoice PDFs to the register or to build a model 303, 349 or 390 file
-  (/one-invoices add [<pdf> …] | 303 <year> <quarter> | 349 <year> <quarter> | 390 <year>).
+  (/one-invoices add [PDF …] | 303 YEAR QUARTER | 349 YEAR QUARTER | 390 YEAR).
 license: MIT
 compatibility: Local files, or code execution plus a Google Drive connector. Python 3.12; pdftotext (poppler) when available.
 argument-hint: "add [<pdf> …] | 303 <year> <T1-T4> | 349 <year> <T1-T4> | 390 <year>"

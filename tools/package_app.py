@@ -8,6 +8,7 @@ The app has no slash commands, so the zip drops the frontmatter keys that only C
 (`argument-hint`, `disable-model-invocation`); the model then invokes the skill from its description.
 Standard library only.
 """
+import re
 import sys
 import zipfile
 from pathlib import Path
@@ -19,6 +20,8 @@ DROP = ("argument-hint:", "disable-model-invocation:")
 def app_skill_md(text: str) -> str:
     head, sep, body = text.partition("\n---\n")
     lines = [l for l in head.splitlines() if not l.startswith(DROP)]
+    if re.search(r"<[^<>]*>", "\n".join(lines)):  # the app refuses tag-like text in the frontmatter
+        raise SystemExit("SKILL.md frontmatter has text like <tag>: the Claude app refuses it")
     return "\n".join(lines) + sep + body
 
 
