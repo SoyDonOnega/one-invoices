@@ -67,9 +67,12 @@ def parse_sheet(table: list[list[str]]) -> list[dict]:
     head = next((i for i, r in enumerate(table) if r and r[0].startswith("Nº") and len(r) > 2 and r[1].startswith("Posic")), None)
     if head is None:
         return []
+    # Columns by header name: some sheets add a "Comp" column before "Descripción".
+    names = {"desc": "Descrip", "validation": "Valid", "content": "Contenido"}
+    col = {k: next((i for i, h in enumerate(table[head]) if h.startswith(v)), None) for k, v in names.items()}
     fields = []
     for r in table[head + 1:]:
-        r = r + [""] * (7 - len(r))
+        r = r + [""] * (len(table[head]) + 1 - len(r))
         if not r[0].isdigit():
             if fields and r[0].lower().startswith("total"):
                 break
@@ -77,8 +80,17 @@ def parse_sheet(table: list[list[str]]) -> list[dict]:
         pos = int(r[1]) if r[1].isdigit() else None
         length = int(r[2]) if r[2].isdigit() else None
         fields.append({"n": int(r[0]), "pos": pos, "len": length, "type": r[3].strip(),
-                       "desc": r[4], "validation": r[5], "content": r[6]})
+                       **{k: r[i] if i is not None else "" for k, i in col.items()}})
     return fields
+
+
+def sheet_version(table: list[list[str]]) -> str | None:
+    """'versión 1.01' / 'vers.1.00' in the sheet heading -> '101' / '100'."""
+    for r in table[:6]:
+        for cell in r:
+            if m := re.search(r"vers(?:i[oó]n|\.)\s*(\d+)\.(\d+)", cell, re.I):
+                return m.group(1) + m.group(2)
+    return None
 
 
 def main() -> int:
@@ -86,14 +98,21 @@ def main() -> int:
         print(__doc__.strip(), file=sys.stderr)
         return 2
     src, url, out = Path(sys.argv[1]), sys.argv[2], Path(sys.argv[3])
-    m = re.match(r"DR(\d{3})e(\d{2})v(\d+)", src.stem, re.I)
+    # DR303e26v101.xlsx, dr390e2026.xlsx: model, year (2 or 4 digits), optional version.
+    m = re.match(r"DR(\d{3})e(\d{4}|\d{2})(?:v(\d+))?$", src.stem, re.I)
     if not m:
-        print(f"error: cannot read model/year/version from file name {src.name}", file=sys.stderr)
+        print(f"error: cannot read model/year from file name {src.name}", file=sys.stderr)
         return 1
     with zipfile.ZipFile(src) as z:
         strings = shared_strings(z)
-        pages = {name: parse_sheet(rows(z, path, strings)) for name, path in sheet_paths(z)}
-    design = {"model": m.group(1), "year": 2000 + int(m.group(2)), "version": m.group(3),
+        tables = {name: rows(z, path, strings) for name, path in sheet_paths(z)}
+    version = m.group(3) or next(filter(None, map(sheet_version, tables.values())), None)
+    if not version:
+        print(f"error: no version in the file name or the sheet headings of {src.name}", file=sys.stderr)
+        return 1
+    pages = {name: parse_sheet(t) for name, t in tables.items()}
+    year = int(m.group(2))
+    design = {"model": m.group(1), "year": year if year > 99 else 2000 + year, "version": version,
               "source_file": src.name, "source_url": url,
               "pages": {k: v for k, v in pages.items() if v}}
     out.write_text(json.dumps(design, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")

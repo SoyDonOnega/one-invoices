@@ -75,6 +75,10 @@ class Aeat303Test(unittest.TestCase):
         with self.assertRaises(aeat303.GenError):
             aeat303.encode({**f, "type": "Num"}, Decimal("-1"))
 
+    def test_text_is_iso_8859_1_upper_without_accents(self):
+        f = {"n": 1, "len": 12, "type": "An", "content": "", "desc": "x"}
+        self.assertEqual(aeat303.encode(f, "Óñega, Façé"), "OÑEGA  FAÇE ")
+
     def test_zero_quarter(self):
         b, _ = aeat303.compute([], [], 2026, 3)
         self.assertEqual(b["71"], Decimal(0))

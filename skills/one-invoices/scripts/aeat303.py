@@ -47,7 +47,7 @@ def box_fields(page: list[dict]) -> dict[str, dict]:
 def clean_text(s: str) -> str:
     s = s.upper()
     s = s.translate(str.maketrans("ÁÉÍÓÚÜÀÈÌÒÙ", "AEIOUUAEIOU"))
-    return re.sub(r"[^A-Z0-9Ñ ]", " ", s)
+    return re.sub(r"[^A-Z0-9ÑÇ ]", " ", s)  # ISO-8859-1 keeps Ñ and Ç
 
 
 def encode(f: dict, value) -> str:
