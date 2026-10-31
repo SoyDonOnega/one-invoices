@@ -1,16 +1,20 @@
 #!/usr/bin/env python3
-"""Invoice register kept as two Markdown tables in a note: issued and received invoices.
+"""Invoice register kept as one Markdown note per invoice, with the fields as note properties (frontmatter).
 
 Usage:
-    python3 scripts/register.py init <note.md>
-    python3 scripts/register.py list <note.md> [issued|received]
-    python3 scripts/register.py add <note.md> issued|received '<row as JSON>' [--pdf <file> --to <folder>]
+    python3 scripts/register.py init <register folder>
+    python3 scripts/register.py list <register folder> [issued|received]
+    python3 scripts/register.py add <register folder> issued|received '<row as JSON>' [--pdf <file> --to <folder>]
+    python3 scripts/register.py check <register folder> issued|received '<row as JSON>'
+    python3 scripts/register.py render issued|received '<row as JSON>' [--pdf-dir <PDF folder>]
 
-With --pdf, the file is moved into --to as YYYY-MM_<party>_<number>.pdf and the row links to it; the move
-happens only after the row passes every check, and is undone if the row cannot be written.
-
-Rows are append-only. Amounts are written with a dot and two decimals (1200.00); dates as YYYY-MM-DD.
-Standard library only.
+add writes a new note YYYY-MM_<party>_<number>.md and never changes an existing one. With --pdf, the file is
+moved into --to as YYYY-MM_<party>_<number>.pdf and the note links to it; the move happens only after the row
+passes every check, and is undone if the note cannot be written.
+check validates the row against a copy of the register (totals, duplicates) without writing. render validates the
+row and prints {"note": name, "pdf": name, "text": note content} with the PDF link set to <PDF folder>/<pdf name>,
+without writing anything: for callers that write through another channel (e.g. a Drive connector).
+Amounts with a dot and two decimals (1200.00); dates as YYYY-MM-DD. Standard library only.
 """
 import json
 import re
@@ -22,11 +26,6 @@ from decimal import ROUND_HALF_UP, Decimal
 from pathlib import Path
 from urllib.parse import quote
 
-HEADINGS = {"issued": "## Issued invoices", "received": "## Received invoices"}
-COLUMNS = {
-    "issued": ["Nº", "Date", "Client", "Client tax ID", "Base", "VAT %", "VAT", "IRPF withheld", "Total", "PDF"],
-    "received": ["Nº", "Date", "Supplier", "Supplier tax ID", "Country", "Kind", "Base", "VAT %", "VAT", "Total", "PDF"],
-}
 KEYS = {
     "issued": ["number", "date", "client", "client_tax_id", "base", "vat_rate", "vat", "irpf", "total", "pdf"],
     "received": ["number", "date", "supplier", "supplier_tax_id", "country", "kind", "base", "vat_rate", "vat", "total", "pdf"],
@@ -50,64 +49,54 @@ def money(v) -> Decimal:
         raise RegisterError(f"not an amount: {v!r}")
 
 
-def header_lines(kind: str) -> list[str]:
-    cols = COLUMNS[kind]
-    return ["| " + " | ".join(cols) + " |", "|" + "|".join("---" for _ in cols) + "|"]
+def init(folder: Path) -> bool:
+    """Create the register folder if missing. Returns True when it was created."""
+    if folder.is_dir():
+        return False
+    folder.mkdir(parents=True)
+    return True
 
 
-def cells(line: str) -> list[str]:
-    return [c.strip() for c in line.strip().strip("|").split("|")]
-
-
-def find_table(lines: list[str], kind: str) -> tuple[int, int] | None:
-    """Return (header index, end index exclusive) of the table under the kind's heading, or None."""
-    try:
-        h = next(i for i, l in enumerate(lines) if l.strip() == HEADINGS[kind])
-    except StopIteration:
-        return None
-    start = next((i for i in range(h + 1, len(lines)) if lines[i].lstrip().startswith("|")), None)
-    if start is None or any(lines[i].startswith("## ") for i in range(h + 1, start)):
-        raise RegisterError(f"'{HEADINGS[kind]}' has no table")
-    if cells(lines[start]) != COLUMNS[kind]:
-        got = cells(lines[start])
-        diff = next((f"column {i + 1}: expected '{e}', found '{g}'" for i, (e, g) in enumerate(zip(COLUMNS[kind], got)) if e != g),
-                    f"expected {len(COLUMNS[kind])} columns, found {len(got)}")
-        raise RegisterError(f"'{HEADINGS[kind]}' header changed by hand — {diff}")
-    end = start + 2
-    while end < len(lines) and lines[end].lstrip().startswith("|"):
-        end += 1
-    return start, end
-
-
-def init(note: Path) -> list[str]:
-    """Add any missing table (with its heading) at the end of the note. Returns the kinds added."""
-    lines = note.read_text(encoding="utf-8").splitlines()
-    added = []
-    for kind in ("issued", "received"):
-        if find_table(lines, kind) is None:
-            lines += ["", HEADINGS[kind], ""] + header_lines(kind)
-            added.append(kind)
-    if added:
-        note.write_text("\n".join(lines) + "\n", encoding="utf-8")
-    return added
-
-
-def read(note: Path, kind: str) -> list[dict]:
-    lines = note.read_text(encoding="utf-8").splitlines()
-    t = find_table(lines, kind)
-    if t is None:
-        raise RegisterError(f"no '{HEADINGS[kind]}' table in {note} — run init")
-    rows = []
-    for line in lines[t[0] + 2:t[1]]:
-        c = cells(line)
-        if not any(c):
+def frontmatter(text: str, name: str) -> dict[str, str]:
+    """Flat 'key: value' frontmatter. Quoted values are JSON strings."""
+    m = re.match(r"---\n(.*?)\n---(?:\n|$)", text, re.S)
+    if not m:
+        raise RegisterError(f"{name}: no properties block")
+    out = {}
+    for line in m.group(1).splitlines():
+        if not line.strip():
             continue
-        row = dict(zip(KEYS[kind], c))
+        k, sep, v = line.partition(":")
+        if not sep:
+            raise RegisterError(f"{name}: cannot read property line {line!r}")
+        v = v.strip()
+        if v.startswith('"'):
+            try:
+                v = json.loads(v)
+            except json.JSONDecodeError:
+                raise RegisterError(f"{name}: cannot read value of {k.strip()!r}")
+        out[k.strip()] = v
+    return out
+
+
+def read(folder: Path, kind: str) -> list[dict]:
+    if not folder.is_dir():
+        raise RegisterError(f"no register folder {folder} — run init")
+    rows = []
+    for f in sorted(folder.glob("*.md")):
+        props = frontmatter(f.read_text(encoding="utf-8"), f.name)
+        if props.get("register") != kind:
+            continue
+        missing = [k for k in KEYS[kind] if k != "pdf" and k not in props]
+        if missing:
+            raise RegisterError(f"{f.name}: missing properties {', '.join(missing)}")
+        row = {k: props.get(k, "") for k in KEYS[kind]}
         for k in AMOUNTS & row.keys():
             row[k] = money(row[k])
         row["vat_rate"] = Decimal(row["vat_rate"])
+        row["note"] = f.name
         rows.append(row)
-    return rows
+    return sorted(rows, key=lambda r: (r["date"], r["number"]))
 
 
 def validate(kind: str, row: dict) -> dict:
@@ -131,7 +120,7 @@ def validate(kind: str, row: dict) -> dict:
         if r["kind"] not in KINDS:
             raise RegisterError(f"kind must be one of {', '.join(sorted(KINDS))}: {r['kind']!r}")
         if r["kind"] == "eu-services":
-            # Reverse charge: the supplier charges no VAT; the VAT column holds the Spanish VAT the buyer self-assesses.
+            # Reverse charge: the supplier charges no VAT; the VAT field holds the Spanish VAT the buyer self-assesses.
             r["vat"] = (base * r["vat_rate"] / 100).quantize(CENT, rounding=ROUND_HALF_UP)
             if abs(total - base) > CENT:
                 raise RegisterError(f"EU service invoice: total {total} should equal base {base} (no VAT charged)")
@@ -148,66 +137,94 @@ def fmt(v) -> str:
     return f"{v:.2f}" if isinstance(v, Decimal) else str(v)
 
 
-def check_new(note: Path, kind: str, r: dict) -> None:
+def check_new(folder: Path, kind: str, r: dict) -> None:
     party = "client_tax_id" if kind == "issued" else "supplier_tax_id"
-    for old in read(note, kind):
+    for old in read(folder, kind):
         if old["number"] == r["number"] and old[party].upper() == r[party]:
             raise RegisterError(f"already in the register: {old['number']} ({old[party]}) of {old['date']}")
+    if (folder / note_name(kind, r)).exists():
+        raise RegisterError(f"{note_name(kind, r)} already exists in the register")
 
 
-def pdf_name(kind: str, r: dict) -> str:
-    """YYYY-MM_<party>_<number>.pdf, ASCII letters, digits and hyphens only."""
+def file_stem(kind: str, r: dict) -> str:
+    """YYYY-MM_<party>_<number>, ASCII letters, digits and hyphens only."""
     def slug(s: str) -> str:
         s = unicodedata.normalize("NFKD", s).encode("ascii", "ignore").decode()
         return re.sub(r"[^A-Za-z0-9]+", "-", s).strip("-") or "x"
     party = r["client"] if kind == "issued" else r["supplier"]
-    return f"{r['date'][:7]}_{slug(party.split()[0] if party else '')}_{slug(r['number'])}.pdf"
+    return f"{r['date'][:7]}_{slug(party.split()[0] if party else '')}_{slug(r['number'])}"
+
+
+def pdf_name(kind: str, r: dict) -> str:
+    return file_stem(kind, r) + ".pdf"
+
+
+def note_name(kind: str, r: dict) -> str:
+    return file_stem(kind, r) + ".md"
 
 
 def pdf_link(path: Path) -> str:
     return f"[{path.name}](file://{quote(str(path))})"
 
 
-def add_with_pdf(note: Path, kind: str, row: dict, src: Path, folder: Path) -> dict:
-    """Validate the row, move the PDF into folder with a uniform name, then write the row linking to it."""
+def note_text(kind: str, r: dict, pdf_path: str = "") -> str:
+    """The invoice note: properties in a fixed order, then a link to the PDF."""
+    lines = ["---", f"register: {kind}"]
+    for k in KEYS[kind]:
+        if k == "pdf":
+            continue
+        v = r[k]
+        if k == "vat_rate":
+            lines.append(f"{k}: {v.normalize()}")
+        elif isinstance(v, Decimal):
+            lines.append(f"{k}: {v:.2f}")
+        elif k == "date":
+            lines.append(f"{k}: {v}")
+        else:
+            lines.append(f"{k}: {json.dumps(v, ensure_ascii=False)}")
+    if pdf_path:
+        lines.append(f"pdf: {json.dumps('file://' + quote(pdf_path))}")
+    party = r["client"] if kind == "issued" else r["supplier"]
+    lines += ["---", "", f"{'Issued' if kind == 'issued' else 'Received'} invoice {r['number']} — {party}, {r['date']}."]
+    if pdf_path:
+        lines += ["", f"PDF: {pdf_link(Path(pdf_path))}"]
+    return "\n".join(lines) + "\n"
+
+
+def add(folder: Path, kind: str, row: dict, pdf_path: str = "") -> dict:
     r = validate(kind, row)
-    check_new(note, kind, r)
+    check_new(folder, kind, r)
+    (folder / note_name(kind, r)).write_text(note_text(kind, r, pdf_path), encoding="utf-8")
+    return r
+
+
+def add_with_pdf(folder: Path, kind: str, row: dict, src: Path, pdf_folder: Path) -> dict:
+    """Validate the row, move the PDF into pdf_folder with a uniform name, then write the note linking to it."""
+    r = validate(kind, row)
+    check_new(folder, kind, r)
     if not src.is_file() or src.suffix.lower() != ".pdf":
         raise RegisterError(f"not a PDF file: {src}")
-    dest = folder.expanduser() / pdf_name(kind, r)
+    dest = pdf_folder.expanduser() / pdf_name(kind, r)
     if src.resolve() != dest.resolve():
         if dest.exists():
             raise RegisterError(f"{dest} already exists")
-        folder.expanduser().mkdir(parents=True, exist_ok=True)
+        pdf_folder.expanduser().mkdir(parents=True, exist_ok=True)
         shutil.move(str(src), str(dest))
     try:
-        return add(note, kind, {**row, "pdf": pdf_link(dest)})
+        return add(folder, kind, row, str(dest))
     except Exception:
         if src.resolve() != dest.resolve():
             shutil.move(str(dest), str(src))
         raise
 
 
-def add(note: Path, kind: str, row: dict) -> dict:
-    r = validate(kind, row)
-    check_new(note, kind, r)
-    lines = note.read_text(encoding="utf-8").splitlines()
-    _, end = find_table(lines, kind)
-    rate = r["vat_rate"].normalize()
-    values = [str(rate) if k == "vat_rate" else fmt(r[k]) for k in KEYS[kind]]
-    lines.insert(end, "| " + " | ".join(v.replace("|", "/") for v in values) + " |")
-    note.write_text("\n".join(lines) + "\n", encoding="utf-8")
-    return r
-
-
 def main(argv: list[str]) -> int:
     try:
         if len(argv) >= 2 and argv[0] == "init":
-            added = init(Path(argv[1]))
-            print(f"added: {', '.join(added)}" if added else "both tables already present")
+            print("register folder created" if init(Path(argv[1]).expanduser()) else "register folder already present")
         elif len(argv) >= 2 and argv[0] == "list":
             for kind in argv[2:] or ["issued", "received"]:
-                for r in read(Path(argv[1]), kind):
+                for r in read(Path(argv[1]).expanduser(), kind):
                     print(kind, json.dumps({k: str(v.normalize()) if k == "vat_rate" else fmt(v) for k, v in r.items()},
                                            ensure_ascii=False))
         elif len(argv) in (4, 8) and argv[0] == "add" and argv[2] in KEYS:
@@ -215,12 +232,25 @@ def main(argv: list[str]) -> int:
             if len(argv) == 8 and set(opts) != {"--pdf", "--to"}:
                 print(__doc__.strip(), file=sys.stderr)
                 return 2
-            row = json.loads(argv[3])
+            folder, row = Path(argv[1]).expanduser(), json.loads(argv[3])
             if opts:
-                r = add_with_pdf(Path(argv[1]), argv[2], row, Path(opts["--pdf"]).expanduser(), Path(opts["--to"]))
+                r = add_with_pdf(folder, argv[2], row, Path(opts["--pdf"]).expanduser(), Path(opts["--to"]))
             else:
-                r = add(Path(argv[1]), argv[2], row)
-            print(f"added {argv[2]} {r['number']} of {r['date']}: total {r['total']}")
+                r = add(folder, argv[2], row)
+            print(f"added {argv[2]} {r['number']} of {r['date']}: total {r['total']} → {note_name(argv[2], r)}")
+        elif len(argv) == 4 and argv[0] == "check" and argv[2] in KEYS:
+            r = validate(argv[2], json.loads(argv[3]))
+            check_new(Path(argv[1]).expanduser(), argv[2], r)
+            print(f"ok: {note_name(argv[2], r)}")
+        elif len(argv) in (3, 5) and argv[0] == "render" and argv[1] in KEYS:
+            opts = dict(zip(argv[3::2], argv[4::2]))
+            if len(argv) == 5 and set(opts) != {"--pdf-dir"}:
+                print(__doc__.strip(), file=sys.stderr)
+                return 2
+            r = validate(argv[1], json.loads(argv[2]))
+            pdf_path = str(Path(opts["--pdf-dir"]) / pdf_name(argv[1], r)) if opts else ""
+            print(json.dumps({"note": note_name(argv[1], r), "pdf": pdf_name(argv[1], r),
+                              "text": note_text(argv[1], r, pdf_path)}, ensure_ascii=False))
         else:
             print(__doc__.strip(), file=sys.stderr)
             return 2

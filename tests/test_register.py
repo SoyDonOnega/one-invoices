@@ -16,8 +16,7 @@ EU = {"number": "IE-1", "date": "2026-11-05", "supplier": "Anthropic Ireland", "
 class RegisterTest(unittest.TestCase):
     def setUp(self):
         self.dir = tempfile.TemporaryDirectory()
-        self.note = Path(self.dir.name) / "Facturación.md"
-        self.note.write_text("# Facturación\n\nIntro text.\n", encoding="utf-8")
+        self.note = Path(self.dir.name) / "Register"
         register.init(self.note)
 
     def tearDown(self):
@@ -36,8 +35,9 @@ class RegisterTest(unittest.TestCase):
         self.assertTrue(dest.exists())
         self.assertFalse(src.exists())
         row = register.read(self.note, "received")[0]
-        self.assertEqual(row["pdf"], register.pdf_link(dest))
-        self.assertIn("Received%20%C3%91/2026-11_Anthropic_IE-1.pdf", row["pdf"])
+        self.assertTrue(row["pdf"].endswith("Received%20%C3%91/2026-11_Anthropic_IE-1.pdf"))
+        text = (self.note / "2026-11_Anthropic_IE-1.md").read_text(encoding="utf-8")
+        self.assertIn(register.pdf_link(dest), text)
 
     def test_add_with_pdf_leaves_file_on_bad_row(self):
         src, folder = self.pdf(), Path(self.dir.name) / "Received"
@@ -58,12 +58,15 @@ class RegisterTest(unittest.TestCase):
             register.add_with_pdf(self.note, "received", EU, src, folder)
         self.assertTrue(src.exists())
 
-    def test_init_adds_both_tables_once(self):
-        self.assertEqual(register.init(self.note), [])
-        text = self.note.read_text(encoding="utf-8")
-        self.assertIn("Intro text.", text)
-        self.assertEqual(text.count("## Issued invoices"), 1)
-        self.assertEqual(text.count("## Received invoices"), 1)
+    def test_init_creates_folder_once(self):
+        self.assertFalse(register.init(self.note))
+        self.assertTrue(self.note.is_dir())
+
+    def test_note_properties(self):
+        register.add(self.note, "issued", ISSUED)
+        text = (self.note / "2026-10_Shakers_2026-001.md").read_text(encoding="utf-8")
+        self.assertTrue(text.startswith("---\nregister: issued\nnumber: \"2026-001\"\ndate: 2026-10-31\n"))
+        self.assertIn("\nbase: 1200.00\nvat_rate: 21\nvat: 252.00\nirpf: 84.00\ntotal: 1368.00\n---\n", text)
 
     def test_add_and_read(self):
         register.add(self.note, "issued", ISSUED)
@@ -83,12 +86,15 @@ class RegisterTest(unittest.TestCase):
 
     def test_append_only(self):
         register.add(self.note, "issued", ISSUED)
-        before = self.note.read_text(encoding="utf-8")
-        register.add(self.note, "issued", {**ISSUED, "number": "2026-002"})
-        after = self.note.read_text(encoding="utf-8")
-        first_row = [l for l in before.splitlines() if "2026-001" in l][0]
-        self.assertIn(first_row, after)
-        self.assertLess(after.index("2026-001"), after.index("2026-002"))
+        first = (self.note / "2026-10_Shakers_2026-001.md").read_text(encoding="utf-8")
+        register.add(self.note, "issued", {**ISSUED, "number": "2026-002", "date": "2026-11-30"})
+        self.assertEqual((self.note / "2026-10_Shakers_2026-001.md").read_text(encoding="utf-8"), first)
+        self.assertEqual([r["number"] for r in register.read(self.note, "issued")], ["2026-001", "2026-002"])
+
+    def test_render_writes_nothing(self):
+        out = register.note_text("received", register.validate("received", EU), "/x/Received/2026-11_Anthropic_IE-1.pdf")
+        self.assertIn('pdf: "file:///x/Received/2026-11_Anthropic_IE-1.pdf"', out)
+        self.assertEqual(list(self.note.iterdir()), [])
 
     def test_eu_services_self_assess_vat(self):
         r = register.add(self.note, "received", EU)
@@ -99,11 +105,14 @@ class RegisterTest(unittest.TestCase):
         with self.assertRaisesRegex(register.RegisterError, "kind must be one of"):
             register.add(self.note, "received", {**EU, "kind": "other"})
 
-    def test_header_changed_by_hand(self):
-        text = self.note.read_text(encoding="utf-8").replace("| Nº | Date | Client |", "| No | Date | Client |")
-        self.note.write_text(text, encoding="utf-8")
-        with self.assertRaisesRegex(register.RegisterError, "column 1: expected 'Nº', found 'No'"):
-            register.add(self.note, "issued", ISSUED)
+    def test_note_broken_by_hand(self):
+        (self.note / "bad.md").write_text("no properties here\n", encoding="utf-8")
+        with self.assertRaisesRegex(register.RegisterError, "bad.md: no properties block"):
+            register.read(self.note, "issued")
+
+    def test_other_notes_ignored(self):
+        (self.note / "other.md").write_text("---\nregister: other\n---\n", encoding="utf-8")
+        self.assertEqual(register.read(self.note, "issued"), [])
 
 
 if __name__ == "__main__":

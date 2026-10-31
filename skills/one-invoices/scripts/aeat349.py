@@ -79,19 +79,19 @@ def main(argv: list[str]) -> int:
         print(__doc__.strip(), file=sys.stderr)
         return 2
     try:
-        cfg = json.loads(Path(args[0]).expanduser().read_text(encoding="utf-8"))
+        cfg = aeat303.load_config(args[0])
         year, q = int(args[1]), int(args[2])
         if q not in (1, 2, 3, 4):
             raise GenError("quarter must be 1-4")
-        missing = [k for k in ("nif", "name", "phone", "contact_name", "register_note", "output_dir") if not cfg.get(k)]
+        missing = [k for k in ("nif", "name", "phone", "contact_name", "register_dir", "output_dir") if not cfg.get(k)]
         if missing:
             raise GenError(f"config is missing: {', '.join(missing)}")
         decl_id = opts.get("--id") or f"349{year}{q}".ljust(13, "0")
         if len(decl_id) != 13 or not decl_id.isdigit() or not decl_id.startswith("349"):
             raise GenError(f"--id must be 13 digits starting with 349: {decl_id!r}")
         design = aeat303.load_design(year, "349")
-        note = Path(cfg["register_note"]).expanduser()
-        ops = operations(register.read(note, "issued"), register.read(note, "received"), year, q)
+        reg = Path(cfg["register_dir"]).expanduser()
+        ops = operations(register.read(reg, "issued"), register.read(reg, "received"), year, q)
         if not ops:
             print(f"nothing to declare: no EU operations in {year} Q{q}; no file written")
             return 0

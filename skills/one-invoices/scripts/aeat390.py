@@ -26,7 +26,7 @@ EU_ACCRUED = {Decimal(4): ("545", "546"), Decimal(10): ("547", "548"), Decimal(2
 DOMESTIC = {Decimal(4): ("190", "191"), Decimal(10): ("603", "604"), Decimal(21): ("605", "606")}
 INVESTMENT = {Decimal(4): ("196", "197"), Decimal(10): ("611", "612"), Decimal(21): ("613", "614")}
 EU_DEDUCT = {Decimal(4): ("587", "588"), Decimal(10): ("635", "636"), Decimal(21): ("637", "638")}
-CONFIG = ("nif", "surname", "first_name", "activity", "activity_code", "iae", "register_note", "output_dir")
+CONFIG = ("nif", "surname", "first_name", "activity", "activity_code", "iae", "register_dir", "output_dir")
 
 
 def compute(issued: list[dict], received: list[dict], year: int) -> tuple[dict[str, Decimal], dict[str, list[str]]]:
@@ -113,14 +113,14 @@ def main(argv: list[str]) -> int:
         print(__doc__.strip(), file=sys.stderr)
         return 2
     try:
-        cfg = json.loads(Path(args[0]).expanduser().read_text(encoding="utf-8"))
+        cfg = aeat303.load_config(args[0])
         year = int(args[1])
         missing = [k for k in CONFIG if not cfg.get(k)]
         if missing:
             raise GenError(f"config is missing: {', '.join(missing)}")
         design = aeat303.load_design(year, "390")
-        note = Path(cfg["register_note"]).expanduser()
-        boxes, src = compute(register.read(note, "issued"), register.read(note, "received"), year)
+        reg = Path(cfg["register_dir"]).expanduser()
+        boxes, src = compute(register.read(reg, "issued"), register.read(reg, "received"), year)
         text = build(design, cfg, year, boxes)
         out = Path(cfg["output_dir"]).expanduser() / "390"
         txt, md = out / f"{year}.txt", out / f"{year}.md"

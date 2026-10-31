@@ -22,8 +22,7 @@ class Aeat303Test(unittest.TestCase):
     def setUp(self):
         self.design = aeat303.load_design(2026)
         self.dir = tempfile.TemporaryDirectory()
-        self.note = Path(self.dir.name) / "register.md"
-        self.note.write_text("# Register\n", encoding="utf-8")
+        self.note = Path(self.dir.name) / "Register"
         register.init(self.note)
         register.add(self.note, "issued", ISSUED)
         register.add(self.note, "received", EU)
@@ -106,6 +105,14 @@ class Aeat303Test(unittest.TestCase):
         b, _ = aeat303.compute([], [], 2027, 1, Decimal("50.00"))
         self.assertEqual((b["78"], b["87"], b["71"]), (Decimal(0), Decimal("50.00"), Decimal(0)))
 
+    def test_config_pointer(self):
+        real = Path(self.dir.name) / "one-invoices.json"
+        real.write_text(json.dumps(CFG), encoding="utf-8")
+        ptr = Path(self.dir.name) / "config.json"
+        ptr.write_text(json.dumps({"config": str(real)}), encoding="utf-8")
+        self.assertEqual(aeat303.load_config(str(ptr)), CFG)
+        self.assertEqual(aeat303.load_config(str(real)), CFG)
+
     def test_eu_supplier_needs_country_prefix(self):
         with self.assertRaisesRegex(register.RegisterError, "EU country code"):
             register.validate("received", {**EU, "supplier_tax_id": "1234567X"})
@@ -113,7 +120,7 @@ class Aeat303Test(unittest.TestCase):
     def test_cli_writes_and_refuses_overwrite(self):
         out = Path(self.dir.name) / "out"
         cfg = Path(self.dir.name) / "config.json"
-        cfg.write_text(json.dumps({**CFG, "register_note": str(self.note), "output_dir": str(out)}), encoding="utf-8")
+        cfg.write_text(json.dumps({**CFG, "register_dir": str(self.note), "output_dir": str(out)}), encoding="utf-8")
         self.assertEqual(aeat303.main([str(cfg), "2026", "4"]), 0)
         self.assertTrue((out / "303" / "2026-T4.txt").exists())
         self.assertIn("| [71] |", (out / "303" / "2026-T4.md").read_text(encoding="utf-8"))
