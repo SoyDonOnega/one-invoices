@@ -39,9 +39,10 @@ The register is a folder with one Markdown note per invoice; its fields are the 
    6. **Write (Drive mode).** For each confirmed row:
       1. `python3 scripts/register.py check work/Register <issued|received> '<row JSON>'` (totals, duplicates). On an error, fix the row with the user and retry.
       2. `python3 scripts/register.py render <issued|received> '<row JSON>' --pdf-dir <issued_pdfs|received_pdfs>` prints the note name, the PDF name and the note text.
-      3. Search Drive for the PDF name in `drive.issued` / `drive.received` and the note name in `drive.register`. If either exists, stop for that row and say so: Drive mode cannot overwrite.
-      4. Create the PDF in `drive.issued` or `drive.received` (base64 of the attachment, `contentMimeType` `application/pdf`, `disableConversionToGoogleType` true), then the note in `drive.register` (`textContent`, `contentMimeType` `text/markdown`, `disableConversionToGoogleType` true). If the note fails after the PDF was created, say so and name the PDF.
-      5. Report what was added. The notes reach the Mac when Google Drive syncs.
+      3. Search Drive for the note name in `drive.register`. If it exists, stop for that row and say so: Drive mode cannot overwrite.
+      4. **The PDF is saved by the user.** The connector takes file content inside the call itself, so a PDF of any real size cannot be copied into it reliably; never try. Ask the user to save the PDF into the issued or received folder (`issued_pdfs` / `received_pdfs`) with the exact name from `render` (from a phone: share the file to Google Drive and pick that folder). Then search `drive.issued` / `drive.received` for that name. If it is not there yet, offer to wait or to create the note anyway (its PDF link works once the file arrives).
+      5. Create the note in `drive.register` (`textContent`, `contentMimeType` `text/markdown`, `disableConversionToGoogleType` true). The app asks the user to approve each Drive write; if the user declines, stop and say nothing was created.
+      6. Report what was added. The notes reach the Mac when Google Drive syncs.
 4. **`303 <year> <quarter>`**
    1. Run `python3 scripts/register.py list <register_dir>` and show the rows of that quarter.
    2. Ask how the result is settled only if it is not the default (pay if positive, carry forward if negative, zero return if zero): direct debit (`--type U --iban <IBAN>`) or refund (`--type D --iban <IBAN>`).
@@ -55,7 +56,7 @@ The register is a folder with one Markdown note per invoice; its fields are the 
 6. **`390 <year>`**
    1. Run `python3 scripts/aeat390.py CONFIG <year>`. If the file exists, ask before adding `--force`.
    2. Show the summary and tell the user to compare it with the four 303 filed for the year, import the `.txt` in the AEAT site, check it and file it there.
-7. **Saving the files (Drive mode).** The generators write into `work/out/<model>/`. In Drive, find the folder titled `303`, `349` or `390` with `parentId` = `drive.output` (create it as a folder if missing). If a file of the same name is already there, do not upload: say so (Drive mode cannot overwrite; the user deletes the old one or runs it in local mode). Otherwise create the `.txt` with `base64Content` of its bytes (ISO-8859-1, `contentMimeType` `text/plain`, `disableConversionToGoogleType` true) and the `.md` with `textContent` (`text/markdown`, same flag). Also offer the `.txt` as a file in the chat, so the user can import it from the device.
+7. **Saving the files (Drive mode).** The generators write into `work/out/<model>/`. In Drive, find the folder titled `303`, `349` or `390` with `parentId` = `drive.output` (create it as a folder if missing). If a file of the same name is already there, do not upload: say so (Drive mode cannot overwrite; the user deletes the old one or runs it in local mode). Otherwise create the `.txt` with `base64Content` of its bytes (a few KB; ISO-8859-1, `contentMimeType` `text/plain`, `disableConversionToGoogleType` true) and the `.md` with `textContent` (`text/markdown`, same flag). Also offer the `.txt` as a file in the chat, so the user can import it from the device.
 
 ## Rules
 

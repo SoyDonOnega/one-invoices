@@ -14,7 +14,11 @@ In Drive mode the tool SHALL read the configuration and every register note from
 - **THEN** the tool says which one is missing and stops
 
 ### Requirement: Create, never overwrite
-In Drive mode the tool SHALL only create files (PDF, invoice note, generated files) in the configured folders, and SHALL stop for any file whose name already exists there.
+In Drive mode the tool SHALL only create files (invoice note, generated files) in the configured folders, and SHALL stop for any file whose name already exists there. It SHALL NOT upload invoice PDFs through the connector: the user saves the PDF into its folder under the name the tool gives, and the tool checks it is there.
+
+#### Scenario: PDF saved by the user
+- **WHEN** an invoice is confirmed in Drive mode
+- **THEN** the tool gives the exact PDF name and folder, checks the file is there, and creates the note
 
 #### Scenario: Note already in Drive
 - **WHEN** the note for a confirmed invoice already exists in the register folder
