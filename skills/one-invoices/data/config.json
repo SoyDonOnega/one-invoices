@@ -10,7 +10,13 @@
   "iae": "",
   "issued_pdfs": "",
   "received_pdfs": "",
-  "register_note": "",
+  "register_dir": "",
   "output_dir": "",
-  "inbox": "~/Downloads"
+  "inbox": "~/Downloads",
+  "drive": {
+    "register": "",
+    "issued": "",
+    "received": "",
+    "output": ""
+  }
 }

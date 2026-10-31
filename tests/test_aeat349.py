@@ -54,11 +54,10 @@ class Aeat349Test(unittest.TestCase):
 
     def test_nothing_to_declare_writes_nothing(self):
         with tempfile.TemporaryDirectory() as d:
-            note = Path(d) / "r.md"
-            note.write_text("# R\n", encoding="utf-8")
+            note = Path(d) / "Register"
             register.init(note)
             cfg = Path(d) / "c.json"
-            cfg.write_text(json.dumps({**CFG, "register_note": str(note), "output_dir": d}), encoding="utf-8")
+            cfg.write_text(json.dumps({**CFG, "register_dir": str(note), "output_dir": d}), encoding="utf-8")
             r = subprocess.run([sys.executable, str(SCRIPTS / "aeat349.py"), str(cfg), "2026", "4"],
                                capture_output=True, text=True)
             self.assertEqual(r.returncode, 0)

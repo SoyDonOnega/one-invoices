@@ -42,6 +42,14 @@ def load_design(year: int, model: str = "303") -> dict:
     return d
 
 
+def load_config(path: str) -> dict:
+    """Read the config; a file with only {"config": <path>} points to the real one (e.g. kept in the notes)."""
+    cfg = json.loads(Path(path).expanduser().read_text(encoding="utf-8"))
+    if set(cfg) == {"config"}:
+        cfg = json.loads(Path(cfg["config"]).expanduser().read_text(encoding="utf-8"))
+    return cfg
+
+
 def box_fields(page: list[dict]) -> dict[str, dict]:
     """Box number -> first field with it (390 repeats some boxes in a later section)."""
     out: dict[str, dict] = {}
@@ -214,16 +222,16 @@ def main(argv: list[str]) -> int:
         print(__doc__.strip(), file=sys.stderr)
         return 2
     try:
-        cfg = json.loads(Path(args[0]).expanduser().read_text(encoding="utf-8"))
+        cfg = load_config(args[0])
         year, q = int(args[1]), int(args[2])
         if q not in (1, 2, 3, 4):
             raise GenError("quarter must be 1-4")
-        missing = [k for k in ("nif", "name", "register_note", "output_dir") if not cfg.get(k)]
+        missing = [k for k in ("nif", "name", "register_dir", "output_dir") if not cfg.get(k)]
         if missing:
             raise GenError(f"config is missing: {', '.join(missing)}")
         design = load_design(year)
-        note = Path(cfg["register_note"]).expanduser()
-        issued, received = register.read(note, "issued"), register.read(note, "received")
+        reg = Path(cfg["register_dir"]).expanduser()
+        issued, received = register.read(reg, "issued"), register.read(reg, "received")
         chain = [] if "--carry" in opts else pending(issued, received, year, q)
         carry = register.money(opts["--carry"]) if "--carry" in opts else sum((a for *_, a in chain), Decimal(0))
         if carry < 0:
