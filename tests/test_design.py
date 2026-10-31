@@ -26,6 +26,11 @@ class DesignTest(unittest.TestCase):
         self.assertEqual(lengths["DP30303"], 1017)
         self.assertEqual(lengths["DP303DID"], 823)
 
+    def test_comp_column_does_not_shift_descriptions(self):
+        # DP30302 and DP30305 have an extra "Comp" column before "Descripción".
+        for name in ("DP30302", "DP30305"):
+            self.assertTrue(all(f["desc"] not in ("", "C") for f in self.d["pages"][name]), name)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -9,13 +9,15 @@ Agent skill `/one-invoices`: register a Spanish freelancer's invoices and expens
 - Generates the fixed-length `.txt` file that the AEAT online form imports, following the official record design of each model and year, plus a Markdown summary by box.
 - Never files anything: the user imports the file in the AEAT site, reviews it and files it.
 
-Status: phase 1 (register, PDF intake, model 303) is implemented in `openspec/changes/add-303-generation/`; it still needs the byte-for-byte check against a file exported from the AEAT site. Models 349 and 390 come next.
+Status: register, PDF intake and models 303, 349 and 390 are implemented (`openspec/changes/add-303-generation/`, `add-349-390/`). Each still needs the byte-for-byte check against a file exported from the AEAT site.
 
 ## Usage
 
 ```
 /one-invoices add <pdf>          read a PDF and add it to the register
 /one-invoices 303 <year> <T1-T4> generate 303/<year>-T<n>.txt and .md
+/one-invoices 349 <year> <T1-T4> generate 349/<year>-T<n>.txt and .md (only with EU operations)
+/one-invoices 390 <year>         generate 390/<year>.txt and .md
 ```
 
 ## Install

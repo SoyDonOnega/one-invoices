@@ -2,11 +2,13 @@
 """Build the AEAT model 303 import file (fixed-length text) and a summary by box from the invoice register.
 
 Usage:
-    python3 scripts/aeat303.py <config.json> <year> <quarter 1-4> [--type I|U|C|D|N] [--iban ES..] [--force]
+    python3 scripts/aeat303.py <config.json> <year> <quarter 1-4> [--type I|U|C|D|N] [--iban ES..] [--carry 0.00] [--force]
 
 Writes <output_dir>/303/<year>-T<q>.txt and <year>-T<q>.md. Never files anything.
 --type: I pay, U direct debit (needs --iban), C carry forward, D refund (needs --iban), N zero/no activity.
-Default: I if the result is positive, C if negative, N if zero. Standard library only.
+Default: I if the result is positive, C if negative, N if zero.
+--carry: amount pending from earlier quarters ([110]); default: computed from the register, assuming every
+negative quarter was carried forward. Standard library only.
 """
 import json
 import re
@@ -19,7 +21,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import register  # noqa: E402
 
 REFS = Path(__file__).resolve().parent.parent / "references"
-TESTED = {2026: "101"}  # design versions the generator is tested against
+TESTED = {("303", 2026): "101", ("390", 2026): "100", ("349", 2026): "anexo"}  # design versions tested
 RATE_BOXES = {Decimal(4): ("01", "03"), Decimal(10): ("04", "06"), Decimal(21): ("07", "09")}
 CONST = re.compile(r'^\s*(?:Constante\s*)?"([^"]*)"[\s.]*(?:Nota\b.*)?$', re.I)
 BOX = re.compile(r"\[(\d+)\]\s*$")
@@ -29,25 +31,30 @@ class GenError(Exception):
     pass
 
 
-def load_design(year: int) -> dict:
-    path = REFS / f"303-{year}.json"
+def load_design(year: int, model: str = "303") -> dict:
+    path = REFS / f"{model}-{year}.json"
     if not path.exists():
-        raise GenError(f"no record design for {year}: download DR303e{year % 100:02d}v*.xlsx from the AEAT site "
+        raise GenError(f"no record design of model {model} for {year}: download it from the AEAT site "
                        f"(Ayuda > Diseños de registro > Modelos 300 al 399) and run scripts/extract_design.py")
     d = json.loads(path.read_text(encoding="utf-8"))
-    if TESTED.get(year) != d["version"]:
+    if TESTED.get((model, year)) != d["version"]:
         raise GenError(f"design {d['source_file']} (version {d['version']}) is not the version tested for {year}")
     return d
 
 
 def box_fields(page: list[dict]) -> dict[str, dict]:
-    return {m.group(1): f for f in page if (m := BOX.search(f["desc"]))}
+    """Box number -> first field with it (390 repeats some boxes in a later section)."""
+    out: dict[str, dict] = {}
+    for f in page:
+        if m := BOX.search(f["desc"]):
+            out.setdefault(m.group(1), f)
+    return out
 
 
 def clean_text(s: str) -> str:
     s = s.upper()
     s = s.translate(str.maketrans("ÁÉÍÓÚÜÀÈÌÒÙ", "AEIOUUAEIOU"))
-    return re.sub(r"[^A-Z0-9Ñ ]", " ", s)
+    return re.sub(r"[^A-Z0-9ÑÇ ]", " ", s)  # ISO-8859-1 keeps Ñ and Ç
 
 
 def encode(f: dict, value) -> str:
@@ -84,8 +91,9 @@ def in_quarter(d: str, year: int, q: int) -> bool:
     return x.year == year and (x.month - 1) // 3 + 1 == q
 
 
-def compute(issued: list[dict], received: list[dict], year: int, q: int) -> tuple[dict[str, Decimal], dict[str, list[str]]]:
-    """Box number -> amount, and box number -> register rows behind it."""
+def compute(issued: list[dict], received: list[dict], year: int, q: int,
+            carry: Decimal = Decimal(0)) -> tuple[dict[str, Decimal], dict[str, list[str]]]:
+    """Box number -> amount, and box number -> register rows behind it. carry: [110], pending from earlier quarters."""
     boxes: dict[str, Decimal] = {}
     src: dict[str, list[str]] = {}
 
@@ -110,8 +118,48 @@ def compute(issued: list[dict], received: list[dict], year: int, q: int) -> tupl
     accrued = sum((boxes.get(b, Decimal(0)) for b in ("03", "06", "09", "11")), Decimal(0))
     deductible = sum((boxes.get(b, Decimal(0)) for b in ("29", "31", "37")), Decimal(0))
     boxes.update({"27": accrued, "45": deductible, "46": accrued - deductible})
-    boxes.update({"64": boxes["46"], "65": Decimal(100), "66": boxes["46"], "69": boxes["46"], "71": boxes["46"]})
+    applied = min(carry, max(boxes["46"], Decimal(0)))
+    result = boxes["46"] - applied
+    boxes.update({"64": boxes["46"], "65": Decimal(100), "66": boxes["46"], "110": carry, "78": applied,
+                  "87": carry - applied, "69": result, "71": result})
     return boxes, src
+
+
+def quarters(start: tuple[int, int], end: tuple[int, int]):
+    y, q = start
+    while (y, q) < end:
+        yield y, q
+        y, q = (y + 1, 1) if q == 4 else (y, q + 1)
+
+
+def history(issued: list[dict], received: list[dict], year: int, q: int):
+    """Run the quarters from the first one with register rows up to (year, q), excluded, assuming every negative
+    quarter was carried forward. Returns (pending, log): pending as (year, q, amount) oldest first; log as
+    (year, q, boxes, [(origin year, origin q, amount used)])."""
+    dates = [date.fromisoformat(r["date"]) for r in issued + received]
+    chain: list[tuple[int, int, Decimal]] = []
+    log = []
+    if not dates:
+        return chain, log
+    first = min(dates)
+    for y, qq in quarters((first.year, (first.month - 1) // 3 + 1), (year, q)):
+        b, _ = compute(issued, received, y, qq, sum((a for *_, a in chain), Decimal(0)))
+        use, used = b["78"], []
+        while use > 0:  # compensation uses the oldest amounts first
+            oy, oq, amt = chain[0]
+            take = min(use, amt)
+            use -= take
+            used.append((oy, oq, take))
+            chain = ([(oy, oq, amt - take)] if amt > take else []) + chain[1:]
+        if b["71"] < 0:
+            chain.append((y, qq, -b["71"]))
+        log.append((y, qq, b, used))
+    return chain, log
+
+
+def pending(issued: list[dict], received: list[dict], year: int, q: int) -> list[tuple[int, int, Decimal]]:
+    """Negative results of earlier quarters still to carry forward into (year, q), oldest first."""
+    return history(issued, received, year, q)[0]
 
 
 def build(design: dict, cfg: dict, year: int, q: int, boxes: dict[str, Decimal], kind: str, iban: str) -> str:
@@ -132,7 +180,8 @@ def build(design: dict, cfg: dict, year: int, q: int, boxes: dict[str, Decimal],
     return head + body + f"</T3030{year}{period}0000>"
 
 
-def summary(design: dict, year: int, q: int, boxes: dict[str, Decimal], src: dict[str, list[str]], kind: str) -> str:
+def summary(design: dict, year: int, q: int, boxes: dict[str, Decimal], src: dict[str, list[str]], kind: str,
+            chain: list[tuple[int, int, Decimal]] | None = None) -> str:
     labels = {}
     for name in ("DP30301", "DP30303"):
         for b, f in box_fields(design["pages"][name]).items():
@@ -146,6 +195,9 @@ def summary(design: dict, year: int, q: int, boxes: dict[str, Decimal], src: dic
             lines.append(f"| [{b}] | {labels.get(b, '')} | {boxes[b]:.2f} | {', '.join(src.get(b, []))} |")
     if not any(boxes[b] for b in ("27", "45")):
         lines += ["", "No register rows in this quarter: zero return."]
+    if chain:
+        lines += ["", "Pending from earlier quarters ([110]), oldest first — check against the amount the AEAT site shows:", ""]
+        lines += [f"- {y} Q{qq}: {a:.2f}" for y, qq, a in chain]
     return "\n".join(lines) + "\n"
 
 
@@ -154,7 +206,7 @@ def main(argv: list[str]) -> int:
     for a in it:
         if a == "--force":
             opts[a] = "1"
-        elif a in ("--type", "--iban"):
+        elif a in ("--type", "--iban", "--carry"):
             opts[a] = next(it, "")
         else:
             args.append(a)
@@ -171,7 +223,12 @@ def main(argv: list[str]) -> int:
             raise GenError(f"config is missing: {', '.join(missing)}")
         design = load_design(year)
         note = Path(cfg["register_note"]).expanduser()
-        boxes, src = compute(register.read(note, "issued"), register.read(note, "received"), year, q)
+        issued, received = register.read(note, "issued"), register.read(note, "received")
+        chain = [] if "--carry" in opts else pending(issued, received, year, q)
+        carry = register.money(opts["--carry"]) if "--carry" in opts else sum((a for *_, a in chain), Decimal(0))
+        if carry < 0:
+            raise GenError("--carry cannot be negative")
+        boxes, src = compute(issued, received, year, q, carry)
         res = boxes["71"]
         kind = opts.get("--type") or ("I" if res > 0 else "C" if res < 0 else "N")
         iban = (opts.get("--iban") or "").replace(" ", "").upper()
@@ -186,7 +243,7 @@ def main(argv: list[str]) -> int:
             raise GenError(f"{txt} already exists — run again with --force to overwrite")
         out.mkdir(parents=True, exist_ok=True)
         txt.write_text(text, encoding="latin-1", newline="")
-        md.write_text(summary(design, year, q, boxes, src, kind), encoding="utf-8")
+        md.write_text(summary(design, year, q, boxes, src, kind, chain), encoding="utf-8")
         print(f"{txt}\n{md}\nresult [71]: {res:.2f} EUR, type {kind}")
     except (GenError, register.RegisterError, FileNotFoundError, json.JSONDecodeError, ValueError) as e:
         print(f"error: {e}", file=sys.stderr)

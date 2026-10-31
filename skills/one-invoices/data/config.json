@@ -1,6 +1,13 @@
 {
   "nif": "",
   "name": "",
+  "surname": "",
+  "first_name": "",
+  "phone": "",
+  "contact_name": "",
+  "activity": "",
+  "activity_code": "",
+  "iae": "",
   "issued_pdfs": "",
   "received_pdfs": "",
   "register_note": "",
