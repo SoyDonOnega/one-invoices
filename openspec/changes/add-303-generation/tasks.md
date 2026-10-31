@@ -26,7 +26,7 @@
 ## 5. Skill
 
 - [x] 5.1 `check_skill.py --embedded` with 0 errors
-- [x] 5.2 Add the skill to `onestack/skills.manifest.json` and install it
+- [x] 5.2 Install the skill (copied into the skills folder; kept out of OneStack, 2026-10-31)
 
 ## Workflow follow-up
 
