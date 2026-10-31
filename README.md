@@ -6,7 +6,7 @@ Agent skill `/one-invoices`: register a Spanish freelancer's invoices and expens
 
 - Reads invoice PDFs (issued or received) dropped into the chat or found in Downloads, proposes the register rows, and after the user confirms adds them and files each PDF in its folder under a uniform name.
 - Keeps the register as one Markdown note per invoice (fields as note properties), shown as two tables by an Obsidian Base.
-- Runs where it has local files (Claude Code) or only code execution and a Google Drive connector (the Claude app, web or phone): there it reads the register from Drive and only creates files.
+- Runs where it has local files (Claude Code) or only code execution and a Google Drive connector (the Claude app, web or phone): there it reads the register from Drive, only creates notes and files PDFs that are already in Drive by moving them (e.g. from a shared inbox another assistant fills), since the connector cannot upload a PDF of real size.
 - Generates the fixed-length `.txt` file that the AEAT online form imports, following the official record design of each model and year, plus a Markdown summary by box.
 - Never files anything: the user imports the file in the AEAT site, reviews it and files it.
 

@@ -17,6 +17,8 @@
     "register": "",
     "issued": "",
     "received": "",
-    "output": ""
-  }
+    "output": "",
+    "inbox": ""
+  },
+  "shared_inbox": ""
 }
