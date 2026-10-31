@@ -60,10 +60,22 @@ The register is a folder with one Markdown note per invoice; its fields are the 
    2. Show the summary and tell the user to compare it with the four 303 filed for the year, import the `.txt` in the AEAT site, check it and file it there.
 7. **Saving the files (Drive mode).** The generators write into `work/out/<model>/`. In Drive, find the folder titled `303`, `349` or `390` with `parentId` = `drive.output` (create it as a folder if missing). If a file of the same name is already there, do not upload: say so (Drive mode cannot overwrite; the user deletes the old one or runs it in local mode). Otherwise create the `.txt` with `base64Content` of its bytes (a few KB; ISO-8859-1, `contentMimeType` `text/plain`, `disableConversionToGoogleType` true) and the `.md` with `textContent` (`text/markdown`, same flag). Also offer the `.txt` as a file in the chat, so the user can import it from the device.
 
+## Automatic mode (local mode, unattended runs)
+
+For scheduled runs where the user has chosen, in advance, not to confirm each invoice. The user's standing choice replaces the confirmation in step 3; every check still runs. Only in local mode.
+
+1. **`auto-register`** — every PDF in `shared_inbox`:
+   1. Read it (`pdftotext -layout`). No text, or a field that cannot be read: leave the PDF where it is and list it in the report.
+   2. Issued when the issuer's tax ID is `nif`; received otherwise.
+   3. Received `kind`: `eu-services` when the supplier's tax ID starts with an EU country code other than ES and no VAT is charged; `domestic` in every other case (the user's standing choice: every expense is deductible). Never `investment` or `not-deductible` in this mode. `country`: the tax ID's country prefix; `ES` when it has none.
+   4. Run step 3.5 (`register.py add … --pdf <file> --to …`). A refused row (totals, duplicate) leaves the PDF in place; a duplicate of an invoice already registered with the same PDF is moved to `My Drive/_Para borrar (<today>)/` instead. List every case in the report.
+2. **`auto-generate <year> <quarter>`** — run `auto-register`, then the generators without questions: `aeat303.py` with the default type (`--carry` only if the config has `carry_override`), `aeat349.py` (it writes nothing without EU operations) and, for Q4, `aeat390.py <year>`. Overwrite earlier generated files of the same period (`--force`): they are derived from the register.
+3. **Report**: one short block, written for the user: invoices registered (number, party, total), invoices left in the inbox and why, and for each generated file its path and result ([71] for 303, operators for 349, [86] for 390).
+
 ## Rules
 
 - Never file, sign or submit anything to the AEAT, and never ask for the user's certificate or credentials.
-- Never add an invoice without the user's confirmation, and never edit or delete an invoice note: corrections are made by the user in Obsidian.
+- Never add an invoice without the user's confirmation, except in automatic mode, which the user turned on in advance; never edit or delete an invoice note: corrections are made by the user in Obsidian.
 - Amounts come from the invoice as printed; never recompute them except the self-assessed VAT of EU services, which the script does.
 - Never write invoices, the register or generated files inside the skill folder or a repo.
 - Never pass a PDF's bytes through the conversation (base64 in a tool call): file PDFs by moving them.
