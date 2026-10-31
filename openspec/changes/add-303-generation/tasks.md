@@ -14,6 +14,7 @@
 ## 3. Intake
 
 - [x] 3.1 SKILL.md `add` flow: folder check, `pdftotext`, proposed row, confirmation, `register.py add`
+- [x] 3.3 Accept PDFs from anywhere (chat, Downloads), several at once; move and rename on confirmation (`register.py add --pdf --to`)
 - [ ] 3.2 Try it on the October 2026 Shakers self-bill and one Anthropic invoice
 
 ## 4. Model 303
