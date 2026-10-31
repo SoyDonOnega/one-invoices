@@ -4,17 +4,23 @@
 Usage:
     python3 scripts/register.py init <note.md>
     python3 scripts/register.py list <note.md> [issued|received]
-    python3 scripts/register.py add <note.md> issued|received '<row as JSON>'
+    python3 scripts/register.py add <note.md> issued|received '<row as JSON>' [--pdf <file> --to <folder>]
+
+With --pdf, the file is moved into --to as YYYY-MM_<party>_<number>.pdf and the row links to it; the move
+happens only after the row passes every check, and is undone if the row cannot be written.
 
 Rows are append-only. Amounts are written with a dot and two decimals (1200.00); dates as YYYY-MM-DD.
 Standard library only.
 """
 import json
 import re
+import shutil
 import sys
+import unicodedata
 from datetime import date
 from decimal import ROUND_HALF_UP, Decimal
 from pathlib import Path
+from urllib.parse import quote
 
 HEADINGS = {"issued": "## Issued invoices", "received": "## Received invoices"}
 COLUMNS = {
@@ -142,12 +148,49 @@ def fmt(v) -> str:
     return f"{v:.2f}" if isinstance(v, Decimal) else str(v)
 
 
-def add(note: Path, kind: str, row: dict) -> dict:
-    r = validate(kind, row)
+def check_new(note: Path, kind: str, r: dict) -> None:
     party = "client_tax_id" if kind == "issued" else "supplier_tax_id"
     for old in read(note, kind):
         if old["number"] == r["number"] and old[party].upper() == r[party]:
             raise RegisterError(f"already in the register: {old['number']} ({old[party]}) of {old['date']}")
+
+
+def pdf_name(kind: str, r: dict) -> str:
+    """YYYY-MM_<party>_<number>.pdf, ASCII letters, digits and hyphens only."""
+    def slug(s: str) -> str:
+        s = unicodedata.normalize("NFKD", s).encode("ascii", "ignore").decode()
+        return re.sub(r"[^A-Za-z0-9]+", "-", s).strip("-") or "x"
+    party = r["client"] if kind == "issued" else r["supplier"]
+    return f"{r['date'][:7]}_{slug(party.split()[0] if party else '')}_{slug(r['number'])}.pdf"
+
+
+def pdf_link(path: Path) -> str:
+    return f"[{path.name}](file://{quote(str(path))})"
+
+
+def add_with_pdf(note: Path, kind: str, row: dict, src: Path, folder: Path) -> dict:
+    """Validate the row, move the PDF into folder with a uniform name, then write the row linking to it."""
+    r = validate(kind, row)
+    check_new(note, kind, r)
+    if not src.is_file() or src.suffix.lower() != ".pdf":
+        raise RegisterError(f"not a PDF file: {src}")
+    dest = folder.expanduser() / pdf_name(kind, r)
+    if src.resolve() != dest.resolve():
+        if dest.exists():
+            raise RegisterError(f"{dest} already exists")
+        folder.expanduser().mkdir(parents=True, exist_ok=True)
+        shutil.move(str(src), str(dest))
+    try:
+        return add(note, kind, {**row, "pdf": pdf_link(dest)})
+    except Exception:
+        if src.resolve() != dest.resolve():
+            shutil.move(str(dest), str(src))
+        raise
+
+
+def add(note: Path, kind: str, row: dict) -> dict:
+    r = validate(kind, row)
+    check_new(note, kind, r)
     lines = note.read_text(encoding="utf-8").splitlines()
     _, end = find_table(lines, kind)
     rate = r["vat_rate"].normalize()
@@ -167,8 +210,16 @@ def main(argv: list[str]) -> int:
                 for r in read(Path(argv[1]), kind):
                     print(kind, json.dumps({k: str(v.normalize()) if k == "vat_rate" else fmt(v) for k, v in r.items()},
                                            ensure_ascii=False))
-        elif len(argv) == 4 and argv[0] == "add" and argv[2] in KEYS:
-            r = add(Path(argv[1]), argv[2], json.loads(argv[3]))
+        elif len(argv) in (4, 8) and argv[0] == "add" and argv[2] in KEYS:
+            opts = dict(zip(argv[4::2], argv[5::2]))
+            if len(argv) == 8 and set(opts) != {"--pdf", "--to"}:
+                print(__doc__.strip(), file=sys.stderr)
+                return 2
+            row = json.loads(argv[3])
+            if opts:
+                r = add_with_pdf(Path(argv[1]), argv[2], row, Path(opts["--pdf"]).expanduser(), Path(opts["--to"]))
+            else:
+                r = add(Path(argv[1]), argv[2], row)
             print(f"added {argv[2]} {r['number']} of {r['date']}: total {r['total']}")
         else:
             print(__doc__.strip(), file=sys.stderr)

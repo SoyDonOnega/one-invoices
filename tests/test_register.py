@@ -23,6 +23,41 @@ class RegisterTest(unittest.TestCase):
     def tearDown(self):
         self.dir.cleanup()
 
+    def pdf(self, name="download (1).pdf"):
+        src = Path(self.dir.name) / "Downloads" / name
+        src.parent.mkdir(exist_ok=True)
+        src.write_bytes(b"%PDF-1.4 test")
+        return src
+
+    def test_add_with_pdf_moves_and_links(self):
+        src, folder = self.pdf(), Path(self.dir.name) / "Received Ñ"
+        register.add_with_pdf(self.note, "received", EU, src, folder)
+        dest = folder / "2026-11_Anthropic_IE-1.pdf"
+        self.assertTrue(dest.exists())
+        self.assertFalse(src.exists())
+        row = register.read(self.note, "received")[0]
+        self.assertEqual(row["pdf"], register.pdf_link(dest))
+        self.assertIn("Received%20%C3%91/2026-11_Anthropic_IE-1.pdf", row["pdf"])
+
+    def test_add_with_pdf_leaves_file_on_bad_row(self):
+        src, folder = self.pdf(), Path(self.dir.name) / "Received"
+        with self.assertRaises(register.RegisterError):
+            register.add_with_pdf(self.note, "received", {**EU, "total": "99"}, src, folder)
+        register.add(self.note, "received", EU)
+        with self.assertRaisesRegex(register.RegisterError, "already in the register"):
+            register.add_with_pdf(self.note, "received", EU, src, folder)
+        self.assertTrue(src.exists())
+        self.assertFalse(folder.exists())
+
+    def test_add_with_pdf_never_overwrites(self):
+        folder = Path(self.dir.name) / "Received"
+        folder.mkdir()
+        (folder / "2026-11_Anthropic_IE-1.pdf").write_bytes(b"old")
+        src = self.pdf()
+        with self.assertRaisesRegex(register.RegisterError, "already exists"):
+            register.add_with_pdf(self.note, "received", EU, src, folder)
+        self.assertTrue(src.exists())
+
     def test_init_adds_both_tables_once(self):
         self.assertEqual(register.init(self.note), [])
         text = self.note.read_text(encoding="utf-8")

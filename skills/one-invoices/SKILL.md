@@ -3,10 +3,10 @@ name: one-invoices
 description: >-
   Registers a Spanish freelancer's issued and received invoices from their PDFs and generates
   the AEAT import files for models 303, 349 and 390 with a summary. Never files anything.
-  Use when the user runs /one-invoices add <pdf>, 303 <year> <quarter>, 349 <year> <quarter> or 390 <year>.
+  Use when the user runs /one-invoices add [<pdf> …], 303 <year> <quarter>, 349 <year> <quarter> or 390 <year>.
 license: MIT
 compatibility: Requires Python 3.12 and pdftotext (poppler).
-argument-hint: "add <pdf> | 303 <year> <T1-T4> | 349 <year> <T1-T4> | 390 <year>"
+argument-hint: "add [<pdf> …] | 303 <year> <T1-T4> | 349 <year> <T1-T4> | 390 <year>"
 disable-model-invocation: true
 ---
 
@@ -17,13 +17,14 @@ Paths in this file are relative to the skill root (the folder that contains this
 
 ## When invoked
 
-1. **Configuration.** Read `skill-data/one-invoices/config.json` (the folder next to the skills folder). If it is missing, copy `data/config.json` there. If a field the command needs is empty, ask the user for it, save it and continue. Always: `nif`, `name` (surnames then first name, as in the census registration), `issued_pdfs`, `received_pdfs`, `register_note`, `output_dir`. For 349 also `phone`, `contact_name`. For 390 also `surname`, `first_name`, `activity`, `activity_code`, `iae` (as in the census registration).
+1. **Configuration.** Read `skill-data/one-invoices/config.json` (the folder next to the skills folder). If it is missing, copy `data/config.json` there. If a field the command needs is empty, ask the user for it, save it and continue. Always: `nif`, `name` (surnames then first name, as in the census registration), `issued_pdfs`, `received_pdfs`, `register_note`, `output_dir`; optional `inbox` (default `~/Downloads`). For 349 also `phone`, `contact_name`. For 390 also `surname`, `first_name`, `activity`, `activity_code`, `iae` (as in the census registration).
 2. **Register ready.** Run `python3 scripts/register.py init <register_note>`. It adds the issued and received tables if they are missing and refuses if a header was changed by hand; show that error and stop.
-3. **`add <pdf>`**
-   1. The PDF must be inside `issued_pdfs` (issued) or `received_pdfs` (received). Otherwise ask the user to move it there and stop.
-   2. Run `pdftotext -layout <pdf> -`. No text: say so and ask the user for the fields; never guess.
-   3. Propose the row as a table with every field (issued: number, date, client, client tax ID, base, VAT %, VAT, IRPF withheld, total; received: number, date, supplier, supplier tax ID, country, kind, base, VAT %, VAT, total). Mark fields you could not read. Received `kind`: `domestic`, `eu-services` (EU supplier, no VAT charged), `investment` (asset used for more than a year), `not-deductible`. Ask the user to confirm or correct; never decide the kind alone when unsure.
-   4. On confirmation run `python3 scripts/register.py add <register_note> <issued|received> '<row JSON>'` with `pdf` set to a Markdown link to the file. On an error, show it, fix the row with the user and retry.
+3. **`add [<pdf> …]`** — one or more invoices, issued or received.
+   1. **Find the PDFs.** Take every PDF the user gave: an argument, an `@` mention or a file dropped into the chat (the app passes its path). With none, list the PDFs in `inbox` (default `~/Downloads`) changed in the last 14 days and ask which to add. A PDF shown without a path on disk cannot be moved: ask the user to drop the file itself or save it to `inbox`.
+   2. **Read each one.** Run `pdftotext -layout <pdf> -`. No text: say so and ask the user for the fields; never guess.
+   3. **Issued or received.** Issued when the issuer's tax ID is the user's `nif` (the client's self-bills are issued in the user's name); received otherwise.
+   4. **Propose.** Show one table with a row per PDF and every field (issued: number, date, client, client tax ID, base, VAT %, VAT, IRPF withheld, total; received: number, date, supplier, supplier tax ID, country, kind, base, VAT %, VAT, total), plus issued/received and the file name it will get (`YYYY-MM_<party>_<number>.pdf`). Mark fields you could not read. Received `kind`: `domestic`, `eu-services` (EU supplier, no VAT charged), `investment` (asset used for more than a year), `not-deductible`. Never decide the kind alone when unsure: ask. The user confirms all rows, some, or corrects any field.
+   5. **Write.** For each confirmed row run `python3 scripts/register.py add <register_note> <issued|received> '<row JSON>' --pdf <file> --to <issued_pdfs|received_pdfs>`. It checks the row, moves the PDF into its folder under the new name (never overwriting), then writes the row with a link to it; on any error nothing is moved or written. Show the error, fix the row with the user and retry. Report what was added and where each PDF went.
 4. **`303 <year> <quarter>`**
    1. Run `python3 scripts/register.py list <register_note>` and show the rows of that quarter.
    2. Ask how the result is settled only if it is not the default (pay if positive, carry forward if negative, zero return if zero): direct debit (`--type U --iban <IBAN>`) or refund (`--type D --iban <IBAN>`).
@@ -48,7 +49,7 @@ Paths in this file are relative to the skill root (the folder that contains this
 
 ## Resources
 
-- `scripts/register.py` — `init`, `list` and `add` (validates totals, refuses duplicates, append-only) on the two Markdown tables.
+- `scripts/register.py` — `init`, `list` and `add` (validates totals, refuses duplicates, append-only; with `--pdf --to` moves the PDF into its folder under a uniform name and links it) on the two Markdown tables.
 - `scripts/aeat303.py` — builds `<output_dir>/303/<year>-T<q>.txt` (AEAT import file) and `.md` (summary by box) from the register.
 - `scripts/aeat349.py` — builds `<output_dir>/349/<year>-T<q>.txt` and `.md` (summary by EU operator).
 - `scripts/aeat390.py` — builds `<output_dir>/390/<year>.txt` and `.md` (summary by box).
