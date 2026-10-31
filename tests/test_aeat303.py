@@ -1,0 +1,112 @@
+import json
+import sys
+import tempfile
+import unittest
+from decimal import Decimal
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "skills" / "one-invoices" / "scripts"))
+import aeat303  # noqa: E402
+import register  # noqa: E402
+from test_register import EU, ISSUED  # noqa: E402
+
+GOLDEN = Path(__file__).resolve().parent / "golden"
+CFG = {"nif": "00000000T", "name": "Apellido Apellido Nombre"}
+
+
+def field(text: str, page_start: int, f: dict) -> str:
+    return text[page_start + f["pos"] - 1: page_start + f["pos"] - 1 + f["len"]]
+
+
+class Aeat303Test(unittest.TestCase):
+    def setUp(self):
+        self.design = aeat303.load_design(2026)
+        self.dir = tempfile.TemporaryDirectory()
+        self.note = Path(self.dir.name) / "register.md"
+        self.note.write_text("# Register\n", encoding="utf-8")
+        register.init(self.note)
+        register.add(self.note, "issued", ISSUED)
+        register.add(self.note, "received", EU)
+        register.add(self.note, "received", {**EU, "number": "ES-1", "supplier": "Shop", "supplier_tax_id": "B99999999",
+                                             "country": "ES", "kind": "domestic", "base": "100", "vat": "21", "total": "121"})
+        register.add(self.note, "received", {**EU, "number": "ND-1", "supplier": "Lunch", "supplier_tax_id": "B88888888",
+                                             "country": "ES", "kind": "not-deductible", "base": "10", "vat": "1", "vat_rate": "10",
+                                             "total": "11"})
+        register.add(self.note, "issued", {**ISSUED, "number": "2027-001", "date": "2027-01-31"})
+
+    def tearDown(self):
+        self.dir.cleanup()
+
+    def boxes(self):
+        return aeat303.compute(register.read(self.note, "issued"), register.read(self.note, "received"), 2026, 4)
+
+    def test_boxes(self):
+        b, src = self.boxes()
+        self.assertEqual((b["07"], b["09"]), (Decimal("1200.00"), Decimal("252.00")))
+        self.assertEqual((b["10"], b["11"], b["36"], b["37"]), (Decimal("18.00"), Decimal("3.78"), Decimal("18.00"), Decimal("3.78")))
+        self.assertEqual((b["28"], b["29"]), (Decimal("100.00"), Decimal("21.00")))
+        self.assertEqual(b["27"], Decimal("255.78"))
+        self.assertEqual(b["45"], Decimal("24.78"))
+        self.assertEqual(b["71"], Decimal("231.00"))
+        self.assertIn("issued 2026-001 (2026-10-31)", src["09"])
+        self.assertNotIn("ND-1", " ".join(sum(src.values(), [])))
+
+    def test_file_layout(self):
+        b, _ = self.boxes()
+        text = aeat303.build(self.design, CFG, 2026, 4, b, "I", "")
+        p = self.design["pages"]
+        self.assertTrue(text.startswith("<T303020264T0000><AUX>"))
+        self.assertTrue(text.endswith("</T303020264T0000>"))
+        start1 = 328
+        self.assertEqual(text[start1:start1 + 11], "<T30301000>")
+        f = {x["n"]: x for x in p["DP30301"]}
+        self.assertEqual(field(text, start1, f[6]), "I")
+        self.assertEqual(field(text, start1, f[8]).rstrip(), "APELLIDO APELLIDO NOMBRE")
+        self.assertEqual(field(text, start1, f[42]), "02100")
+        self.assertEqual(field(text, start1, f[43]), "00000000000025200")
+        self.assertEqual(field(text, start1, f[86]), "00000000000023100")
+        start3 = start1 + 1581
+        self.assertEqual(text[start3:start3 + 11], "<T30303000>")
+        self.assertEqual(len(text), 328 + 1581 + 1017 + 823 + 18)
+
+    def test_negative_result_uses_n_prefix(self):
+        f = {"n": 1, "len": 17, "type": "N", "content": "", "desc": "x"}
+        self.assertEqual(aeat303.encode(f, Decimal("-12.34")), "N0000000000001234")
+        with self.assertRaises(aeat303.GenError):
+            aeat303.encode({**f, "type": "Num"}, Decimal("-1"))
+
+    def test_zero_quarter(self):
+        b, _ = aeat303.compute([], [], 2026, 3)
+        self.assertEqual(b["71"], Decimal(0))
+        self.assertIn("zero return", aeat303.summary(self.design, 2026, 3, b, {}, "N"))
+
+    def test_year_without_design(self):
+        with self.assertRaisesRegex(aeat303.GenError, "no record design for 2031"):
+            aeat303.load_design(2031)
+
+    def test_cli_writes_and_refuses_overwrite(self):
+        out = Path(self.dir.name) / "out"
+        cfg = Path(self.dir.name) / "config.json"
+        cfg.write_text(json.dumps({**CFG, "register_note": str(self.note), "output_dir": str(out)}), encoding="utf-8")
+        self.assertEqual(aeat303.main([str(cfg), "2026", "4"]), 0)
+        self.assertTrue((out / "303" / "2026-T4.txt").exists())
+        self.assertIn("| [71] |", (out / "303" / "2026-T4.md").read_text(encoding="utf-8"))
+        self.assertEqual(aeat303.main([str(cfg), "2026", "4"]), 1)
+        self.assertEqual(aeat303.main([str(cfg), "2026", "4", "--force", "--type", "U", "--iban", "ES0000000000000000000000"]), 0)
+
+
+@unittest.skipUnless((GOLDEN / "golden.json").exists(), "no AEAT export in tests/golden/ yet (task 4.3)")
+class GoldenTest(unittest.TestCase):
+    """tests/golden/golden.json: {"year", "quarter", "type", "iban", "nif", "name", "boxes": {"07": "1200.00", ...},
+    "file": "<file exported from the AEAT site>"}."""
+
+    def test_matches_aeat_export(self):
+        g = json.loads((GOLDEN / "golden.json").read_text(encoding="utf-8"))
+        boxes = {k: Decimal(v) for k, v in g["boxes"].items()}
+        text = aeat303.build(aeat303.load_design(g["year"]), g, g["year"], g["quarter"], boxes, g["type"], g.get("iban", ""))
+        expected = (GOLDEN / g["file"]).read_bytes().decode("latin-1")
+        self.assertEqual(text, expected)
+
+
+if __name__ == "__main__":
+    unittest.main()

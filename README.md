@@ -9,7 +9,7 @@ Agent skill `/one-invoices`: register a Spanish freelancer's invoices and expens
 - Generates the fixed-length `.txt` file that the AEAT online form imports, following the official record design of each model and year, plus a Markdown summary by box.
 - Never files anything: the user imports the file in the AEAT site, reviews it and files it.
 
-Status: phase 1 (model 303) is planned in `openspec/changes/add-303-generation/`. Nothing is implemented yet.
+Status: phase 1 (register, PDF intake, model 303) is implemented in `openspec/changes/add-303-generation/`; it still needs the byte-for-byte check against a file exported from the AEAT site. Models 349 and 390 come next.
 
 ## Usage
 
@@ -33,7 +33,7 @@ OneStack: `./sync-install.sh` — or copy `skills/one-invoices/` as `<skills dir
 - `skills/one-invoices/scripts/` — deterministic tools (register, file generators).
 - `skills/one-invoices/references/` — AEAT record designs as JSON, with source URL and version.
 - `skills/one-invoices/data/config.json` — empty configuration template.
-- `tests/` — tests, including byte-for-byte comparison with files exported from the AEAT site.
+- `tests/` — tests (`python3 -m unittest discover -s tests`), including a byte-for-byte comparison with a file exported from the AEAT site once `tests/golden/` has one.
 - `openspec/` — specs and changes (OpenSpec, schema spec-driven).
 
 ## Private data
