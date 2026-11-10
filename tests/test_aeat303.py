@@ -50,6 +50,22 @@ class Aeat303Test(unittest.TestCase):
         self.assertIn("issued 2026-001 (2026-10-31)", src["09"])
         self.assertNotIn("ND-1", " ".join(sum(src.values(), [])))
 
+    def test_not_subject_issued_services(self):
+        zero = {**ISSUED, "vat_rate": "0", "vat": "0", "irpf": "0"}
+        register.add(self.note, "issued", {**zero, "number": "EU-1", "client": "Acme GmbH", "client_tax_id": "DE123456789",
+                                           "kind": "eu-services", "base": "500", "total": "500"})
+        register.add(self.note, "issued", {**zero, "number": "US-1", "client": "Acme Inc", "client_tax_id": "US123",
+                                           "kind": "non-eu-services", "base": "300", "total": "300"})
+        b, src = self.boxes()
+        self.assertEqual((b["59"], b["120"]), (Decimal("500.00"), Decimal("300.00")))
+        self.assertEqual((b["07"], b["27"], b["71"]), (Decimal("1200.00"), Decimal("255.78"), Decimal("231.00")))
+        self.assertEqual(src["59"], ["issued EU-1 (2026-10-31)"])
+        text = aeat303.build(self.design, CFG, 2026, 4, b, "I", "")
+        f = {x["n"]: x for x in self.design["pages"]["DP30303"]}
+        start3 = 328 + 1581
+        self.assertEqual(field(text, start3, f[5]), "00000000000050000")
+        self.assertEqual(field(text, start3, f[7]), "00000000000030000")
+
     def test_file_layout(self):
         b, _ = self.boxes()
         text = aeat303.build(self.design, CFG, 2026, 4, b, "I", "")

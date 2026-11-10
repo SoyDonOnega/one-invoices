@@ -26,6 +26,8 @@ EU_ACCRUED = {Decimal(4): ("545", "546"), Decimal(10): ("547", "548"), Decimal(2
 DOMESTIC = {Decimal(4): ("190", "191"), Decimal(10): ("603", "604"), Decimal(21): ("605", "606")}
 INVESTMENT = {Decimal(4): ("196", "197"), Decimal(10): ("611", "612"), Decimal(21): ("613", "614")}
 EU_DEDUCT = {Decimal(4): ("587", "588"), Decimal(10): ("635", "636"), Decimal(21): ("637", "638")}
+# Counterparts of the 303 [59] and [120] in section 10 (volume of operations).
+NOT_SUBJECT = {"eu-services": "103", "non-eu-services": "110"}
 CONFIG = ("nif", "surname", "first_name", "activity", "activity_code", "iae", "register_dir", "output_dir")
 
 
@@ -45,7 +47,12 @@ def compute(issued: list[dict], received: list[dict], year: int) -> tuple[dict[s
 
     year_rows = lambda rows: [r for r in rows if r["date"].startswith(f"{year}-")]  # noqa: E731
     for r in year_rows(issued):
-        put(ACCRUED, r, "issued")
+        if r["kind"] in NOT_SUBJECT:
+            b = NOT_SUBJECT[r["kind"]]
+            boxes[b] = boxes.get(b, Decimal(0)) + r["base"]
+            src.setdefault(b, []).append(f"issued {r['number']} ({r['date']})")
+        else:
+            put(ACCRUED, r, "issued")
     for r in year_rows(received):
         if r["kind"] == "domestic":
             put(DOMESTIC, r, "received")
@@ -76,7 +83,7 @@ def compute(issued: list[dict], received: list[dict], year: int) -> tuple[dict[s
     boxes["97"] = sum((a for y, q, a in chain if (y, q) == (year, 4)), Decimal(0))
     boxes["662"] = sum((a for y, q, a in chain if y == year and q < 4), Decimal(0))
     boxes["99"] = total(*pairs(ACCRUED)[0::2])
-    boxes["108"] = boxes["99"]
+    boxes["108"] = total("99", "103", "110")  # 390 instructions: 108 = 99 + 103 + 110 + boxes not used here
     return boxes, src
 
 

@@ -23,6 +23,8 @@ import register  # noqa: E402
 REFS = Path(__file__).resolve().parent.parent / "references"
 TESTED = {("303", 2026): "101", ("390", 2026): "100", ("349", 2026): "anexo"}  # design versions tested
 RATE_BOXES = {Decimal(4): ("01", "03"), Decimal(10): ("04", "06"), Decimal(21): ("07", "09")}
+# Issued services not subject to Spanish VAT: [59] with a valid EU VAT number, [120] the rest (AEAT Pre303 2026 note).
+NOT_SUBJECT = {"eu-services": "59", "non-eu-services": "120"}
 CONST = re.compile(r'^\s*(?:Constante\s*)?"([^"]*)"[\s.]*(?:Nota\b.*)?$', re.I)
 BOX = re.compile(r"\[(\d+)\]\s*$")
 
@@ -112,6 +114,11 @@ def compute(issued: list[dict], received: list[dict], year: int, q: int,
             src.setdefault(b, []).append(f"{who} {row['number']} ({row['date']})")
 
     for r in (r for r in issued if in_quarter(r["date"], year, q)):
+        if r["kind"] in NOT_SUBJECT:  # information only: no VAT accrued
+            b = NOT_SUBJECT[r["kind"]]
+            boxes[b] = boxes.get(b, Decimal(0)) + r["base"]
+            src.setdefault(b, []).append(f"issued {r['number']} ({r['date']})")
+            continue
         if r["vat_rate"] not in RATE_BOXES:
             raise GenError(f"issued {r['number']}: VAT rate {r['vat_rate']} % is not 4, 10 or 21")
         put(*RATE_BOXES[r["vat_rate"]], r, "issued")

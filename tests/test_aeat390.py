@@ -61,6 +61,18 @@ class Aeat390Test(unittest.TestCase):
         self.assertEqual((b["97"], b["662"]), (0, 0))
         self.assertEqual(b["99"], Decimal("2400.00"))
 
+    def test_not_subject_issued_services(self):
+        v = register.validate
+        zero = {**ISSUED, "vat_rate": "0", "vat": "0", "irpf": "0"}
+        issued = self.issued + [v("issued", {**zero, "number": "EU-1", "client_tax_id": "DE123456789", "kind": "eu-services",
+                                             "base": "500", "total": "500"}),
+                                v("issued", {**zero, "number": "US-1", "client_tax_id": "US123", "kind": "non-eu-services",
+                                             "base": "300", "total": "300"})]
+        b, _ = aeat390.compute(issued, self.received, 2026)
+        self.assertEqual((b["99"], b["103"], b["110"]), (Decimal("2400.00"), Decimal("500.00"), Decimal("300.00")))
+        self.assertEqual(b["108"], Decimal("3200.00"))
+        self.assertEqual(b["47"], aeat390.compute(self.issued, self.received, 2026)[0]["47"])
+
     def test_file_layout(self):
         b, _ = aeat390.compute(self.issued, self.received, 2026)
         text = aeat390.build(self.design, CFG, 2026, b)
