@@ -115,5 +115,37 @@ class RegisterTest(unittest.TestCase):
         self.assertEqual(register.read(self.note, "issued"), [])
 
 
+    def test_issued_kind_defaults_to_domestic(self):
+        r = register.add(self.note, "issued", ISSUED)
+        self.assertEqual(r["kind"], "domestic")
+        text = (self.note / "2026-10_Shakers_2026-001.md").read_text(encoding="utf-8")
+        self.assertIn('\nkind: "domestic"\n', text)
+
+    def test_issued_note_without_kind_reads_as_domestic(self):
+        register.add(self.note, "issued", ISSUED)
+        f = self.note / "2026-10_Shakers_2026-001.md"
+        f.write_text(f.read_text(encoding="utf-8").replace('kind: "domestic"\n', ""), encoding="utf-8")
+        self.assertEqual(register.read(self.note, "issued")[0]["kind"], "domestic")
+
+    def test_issued_zero_rate_needs_a_foreign_kind(self):
+        zero = {**ISSUED, "vat_rate": "0", "vat": "0", "irpf": "0", "total": "1200"}
+        with self.assertRaisesRegex(register.RegisterError, "not 4, 10 or 21"):
+            register.validate("issued", zero)
+        self.assertEqual(register.validate("issued", {**zero, "kind": "non-eu-services", "client_tax_id": "US123"})["kind"],
+                         "non-eu-services")
+        self.assertEqual(register.validate("issued", {**zero, "kind": "eu-services", "client_tax_id": "de123456789"})
+                         ["client_tax_id"], "DE123456789")
+
+    def test_issued_foreign_kind_checks(self):
+        zero = {**ISSUED, "vat_rate": "0", "vat": "0", "irpf": "0", "total": "1200", "client_tax_id": "DE123456789"}
+        with self.assertRaisesRegex(register.RegisterError, "must be 0"):
+            register.validate("issued", {**ISSUED, "kind": "eu-services", "client_tax_id": "DE123456789"})
+        with self.assertRaisesRegex(register.RegisterError, "client tax ID 'B12345678' must start with an EU country code"):
+            register.validate("issued", {**zero, "kind": "eu-services", "client_tax_id": "B12345678"})
+        with self.assertRaisesRegex(register.RegisterError, "kind must be one of"):
+            register.validate("issued", {**zero, "kind": "investment"})
+        with self.assertRaisesRegex(register.RegisterError, "starts with an EU country code"):
+            register.validate("issued", {**zero, "kind": "non-eu-services"})
+
 if __name__ == "__main__":
     unittest.main()

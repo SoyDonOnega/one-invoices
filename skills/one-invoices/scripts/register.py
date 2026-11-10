@@ -27,11 +27,15 @@ from pathlib import Path
 from urllib.parse import quote
 
 KEYS = {
-    "issued": ["number", "date", "client", "client_tax_id", "base", "vat_rate", "vat", "irpf", "total", "pdf"],
+    "issued": ["number", "date", "client", "client_tax_id", "kind", "base", "vat_rate", "vat", "irpf", "total", "pdf"],
     "received": ["number", "date", "supplier", "supplier_tax_id", "country", "kind", "base", "vat_rate", "vat", "total", "pdf"],
 }
 AMOUNTS = {"base", "vat", "irpf", "total"}
 KINDS = {"domestic", "eu-services", "investment", "not-deductible"}
+# Issued: domestic (Spanish VAT charged), eu-services (B2B service to an EU client: 0 %, 303 [59], 390 [103], 349 S),
+# non-eu-services (service to a client outside the EU, not subject by place of supply: 0 %, 303 [120], 390 [110]).
+ISSUED_KINDS = {"domestic", "eu-services", "non-eu-services"}
+DOMESTIC_RATES = {Decimal(4), Decimal(10), Decimal(21)}
 # EU VAT number prefixes (model 349 annex, without GB; Greece is EL).
 EU_PREFIXES = {"AT", "BE", "BG", "CY", "CZ", "DE", "DK", "EE", "EL", "ES", "FI", "FR", "HR", "HU", "IE", "IT", "LT", "LU",
                "LV", "MT", "NL", "PL", "PT", "RO", "SE", "SI", "SK"}
@@ -87,6 +91,8 @@ def read(folder: Path, kind: str) -> list[dict]:
         props = frontmatter(f.read_text(encoding="utf-8"), f.name)
         if props.get("register") != kind:
             continue
+        if kind == "issued":
+            props.setdefault("kind", "domestic")  # notes written before issued kinds existed
         missing = [k for k in KEYS[kind] if k != "pdf" and k not in props]
         if missing:
             raise RegisterError(f"{f.name}: missing properties {', '.join(missing)}")
@@ -100,6 +106,8 @@ def read(folder: Path, kind: str) -> list[dict]:
 
 
 def validate(kind: str, row: dict) -> dict:
+    if kind == "issued" and not str(row.get("kind", "")).strip():
+        row = {**row, "kind": "domestic"}
     missing = [k for k in KEYS[kind] if k != "pdf" and str(row.get(k, "")).strip() == ""]
     if missing:
         raise RegisterError(f"missing fields: {', '.join(missing)}")
@@ -116,6 +124,13 @@ def validate(kind: str, row: dict) -> dict:
         expected = base + vat - r["irpf"]
         if abs(expected - total) > CENT:
             raise RegisterError(f"base {base} + VAT {vat} − IRPF {r['irpf']} = {expected}, but total is {total}")
+        if r["kind"] not in ISSUED_KINDS:
+            raise RegisterError(f"kind must be one of {', '.join(sorted(ISSUED_KINDS))}: {r['kind']!r}")
+        if r["kind"] == "domestic" and r["vat_rate"] not in DOMESTIC_RATES:
+            raise RegisterError(f"domestic issued invoice: VAT rate {r['vat_rate']} % is not 4, 10 or 21 "
+                                f"(no Spanish VAT: kind eu-services or non-eu-services)")
+        if r["kind"] != "domestic" and (r["vat_rate"] or vat):
+            raise RegisterError(f"{r['kind']} issued invoice: VAT rate and VAT must be 0")
     else:
         if r["kind"] not in KINDS:
             raise RegisterError(f"kind must be one of {', '.join(sorted(KINDS))}: {r['kind']!r}")
@@ -128,8 +143,12 @@ def validate(kind: str, row: dict) -> dict:
             raise RegisterError(f"base {base} + VAT {vat} = {base + vat}, but total is {total}")
     party = "client_tax_id" if kind == "issued" else "supplier_tax_id"
     r[party] = r[party].upper().replace(" ", "")
-    if kind == "received" and r["kind"] == "eu-services" and (r[party][:2] not in EU_PREFIXES - {"ES"} or len(r[party]) < 4):
-        raise RegisterError(f"EU service invoice {r['number']}: supplier tax ID {r[party]!r} must start with an EU country code")
+    if r["kind"] == "eu-services" and (r[party][:2] not in EU_PREFIXES - {"ES"} or len(r[party]) < 4):
+        who = "client" if kind == "issued" else "supplier"
+        raise RegisterError(f"EU service invoice {r['number']}: {who} tax ID {r[party]!r} must start with an EU country code other than ES")
+    if r["kind"] == "non-eu-services" and r[party][:2] in EU_PREFIXES:
+        raise RegisterError(f"non-EU service invoice {r['number']}: client tax ID {r[party]!r} starts with an EU country code "
+                            f"(EU client: kind eu-services)")
     return r
 
 
